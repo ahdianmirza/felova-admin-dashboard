@@ -9,6 +9,9 @@ export default {
         extend: {
             fontFamily: {
                 'poppins': ['Poppins']
+            },
+            screens: {
+                '2xl': '1366px'
             }
         },
     },
