@@ -14,17 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'title' => 'Dashboard'
+    ]);
 });
 
-// Route::get('/graphics', function () {
-//     return 'Graphics';
-// });
+Route::get('/graphics', function () {
+    return view('graphics', [
+        'title' => 'Graphics'
+    ]);
+});
 
-// Route::get('/manual', function () {
-//     return 'Manual';
-// });
+Route::get('/manual', function () {
+    return view('manual', [
+        'title' => 'Manual'
+    ]);
+});
 
-// Route::get('/timer', function () {
-//     return 'Timer';
-// });
+Route::get('/timer', function () {
+    return view('timer', [
+        'title' => 'Timer'
+    ]);
+});

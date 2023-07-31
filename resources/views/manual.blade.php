@@ -6,8 +6,7 @@
             <div class="w-full self-center">
                 <!-- Judul Section -->
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
-                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px]">Dashboard</h1>
-                    <p class="text-[#CCCCCC]">Good to see you, Vincent !</p>
+                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px]">Manual</h1>
                 </div>
             </div>
         </div>
