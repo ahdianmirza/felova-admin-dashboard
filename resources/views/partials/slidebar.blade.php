@@ -30,8 +30,9 @@
                     <ul class="py-8">
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/"
-                                class="flex flex-row items-center {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }}">
-                                <div class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4">
+                                class="flex flex-row items-center group {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }}">
+                                <div
+                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -45,14 +46,15 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }} text-[14px] 2xl:text-base">
+                                    class="font-medium {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Dashboard</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
-                            <a href="/graphics" class="flex flex-row items-center">
+                            <a href="/graphics"
+                                class="flex flex-row items-center group {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
-                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }}">
+                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -66,14 +68,15 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }} text-[14px] 2xl:text-base">
+                                    class="font-medium {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Graphics</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
-                            <a href="/data" class="flex flex-row items-center">
+                            <a href="/data"
+                                class="flex flex-row items-center group {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
-                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] text-lightGray {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }} mr-4">
+                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -90,14 +93,15 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }} text-[14px] 2xl:text-base">
+                                    class="font-medium {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Data</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
-                            <a href="/manual" class="flex flex-row items-center">
+                            <a href="/manual"
+                                class="flex flex-row items-center group {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
-                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] text-lightGray {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }} mr-4">
+                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] group-hover:text-white mr-4">
                                     <svg width="24" height="24" class="fill-current" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -113,13 +117,14 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }} text-[14px] 2xl:text-base">
+                                    class="font-medium text-lightGray {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Manual</h3>
                             </a>
                         <li class="flex flex-col py-5 pl-7">
-                            <a href="/timer" class="flex flex-row items-center">
+                            <a href="/timer"
+                                class="flex flex-row items-center group {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
-                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }} mr-4">
+                                    class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] group-hover:text-white mr-4">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -131,7 +136,7 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }} text-[14px] 2xl:text-base">
+                                    class="font-medium text-lightGray {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Timer</h3>
                             </a>
                         </li>
