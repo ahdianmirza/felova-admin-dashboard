@@ -4,6 +4,7 @@
     <div class="container">
         <div class="flex flex-wrap">
             <div class="w-full self-center">
+                {{-- Top Part Start --}}
                 <div class="w-[84vw] flex justify-center items-center mt-12 lg:ml-[16vw] mb-4 md:mb-7">
                     <div class="w-full flex justify-between items-center">
                         <!-- Judul Section -->
@@ -40,6 +41,120 @@
                         </div>
                     </div>
                 </div>
+                {{-- Top Part End --}}
+
+                {{-- Dashboard Layout Start --}}
+                <main class="lg:ml-[16vw] flex flex-col justify-center items-center">
+                    <div class="flex flex-col">
+                        <div class="flex flex-col justify-center items-center">
+                            {{-- Last Task Box Start --}}
+                            <div
+                                class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
+                                {{-- Title --}}
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h1 class="text-2xl font-extrabold">Last Task</h1>
+                                        <p><span class="font-bold">120 total</span>, <small class="text-[#A3A4A8]">proceed
+                                                to resolve them</small>
+                                        </p>
+                                    </div>
+
+                                    <div class="flex">
+                                        <div class="flex flex-col items-center mr-4">
+                                            <h1 class="text-2xl font-extrabold mb-1">94</h1>
+                                            <p class="text-[#A3A4A8]">Done</p>
+                                        </div>
+                                        <div class="border-l-2 border-slate-100"></div>
+                                        <div class="flex flex-col items-center ml-4">
+                                            <h1 class="text-2xl font-extrabold mb-1">23</h1>
+                                            <p class="text-[#A3A4A8]">In Progress</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Title --}}
+
+                                <div class="mt-5">
+                                    <table class="table-auto border-none text-xs md:text-[14px] w-full">
+                                        <thead>
+                                            <tr class="border-t-2">
+                                                <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Device</th>
+                                                <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Status Pompa
+                                                </th>
+                                                <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Status Selenoid
+                                                </th>
+                                                <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b-2">
+                                                <td class="text-center">HC001</td>
+                                                <td class="text-center">
+                                                    <span
+                                                        class="border-none py-1 px-3 rounded-full bg-[#AACA77] text-xs">ON</span>
+                                                </td>
+                                                <td class="text-center flex flex-col items-center py-2">
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">1</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">2</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">3</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">4</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="flex justify-center items-center">
+                                                        <div
+                                                            class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFDFF]">
+                                                            <div class="stroke-current text-[#4F8A90] mr-1">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
+                                                                        stroke-width="1.5" />
+                                                                    <path d="M12 8V12L14 14" stroke-width="1.5" />
+                                                                </svg>
+                                                            </div>
+                                                            <p class="text-[#4F8A90]">In Progress</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b-2">
+                                                <td class="text-center">HC001</td>
+                                                <td class="text-center">
+                                                    <span
+                                                        class="border-none py-1 px-3 rounded-full bg-[#FED4D5] text-xs">OFF</span>
+                                                </td>
+                                                <td class="text-center flex flex-col items-center py-2">
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">1</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">2</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">3</p>
+                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">4</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="flex justify-center items-center">
+                                                        <div
+                                                            class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFEEB]">
+                                                            <div class="stroke-current text-[#375028] mr-1">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
+                                                                        stroke-width="1.5" />
+                                                                    <path d="M12 8V12L14 14" stroke-width="1.5" />
+                                                                </svg>
+                                                            </div>
+                                                            <p class="text-[#375028]">Done</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {{-- Last Task Box Start --}}
+                        </div>
+                    </div>
+                </main>
+                {{-- Dashboard Layout End --}}
             </div>
         </div>
     </div>
