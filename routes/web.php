@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Manual;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManualController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +27,7 @@ Route::get('/graphics', function () {
     ]);
 });
 
-Route::get('/manual', function () {
-    return view('manual', [
-        'title' => 'Manual'
-    ]);
-});
+Route::get('/manual', [ManualController::class, 'index']);
 
 Route::get('/timer', function () {
     return view('timer', [
