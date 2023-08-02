@@ -87,37 +87,79 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="border-b-2">
-                                                <td class="text-center">HC001</td>
-                                                <td class="text-center">
-                                                    <span
-                                                        class="border-none py-1 px-3 rounded-full bg-[#AACA77] text-xs">ON</span>
-                                                </td>
-                                                <td class="text-center flex flex-col items-center py-2">
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">1</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">2</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">3</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">4</p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="flex justify-center items-center">
-                                                        <div
-                                                            class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFDFF]">
-                                                            <div class="stroke-current text-[#4F8A90] mr-1">
-                                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
-                                                                        stroke-width="1.5" />
-                                                                    <path d="M12 8V12L14 14" stroke-width="1.5" />
-                                                                </svg>
+                                            @foreach ($manuals as $manual)
+                                                <tr class="border-b-2">
+                                                    <td class="text-center">{{ $manual->device }}</td>
+                                                    <td class="text-center">
+                                                        @if ($manual->pompa == 1)
+                                                            <span
+                                                                class="border-none py-1 px-3 rounded-full bg-[#AACA77] text-xs">ON</span>
+                                                        @else
+                                                            <span
+                                                                class="border-none py-1 px-3 rounded-full bg-[#FED4D5] text-xs">OFF</span>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center flex flex-col items-center py-2">
+                                                        @if ($manual->sol_1 == 1)
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
+                                                                ON
+                                                            </p>
+                                                        @else
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
+                                                                OFF
+                                                            </p>
+                                                        @endif
+
+                                                        @if ($manual->sol_2 == 1)
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
+                                                                ON
+                                                            </p>
+                                                        @else
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
+                                                                OFF
+                                                            </p>
+                                                        @endif
+
+                                                        @if ($manual->sol_3 == 1)
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
+                                                                ON
+                                                            </p>
+                                                        @else
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
+                                                                OFF
+                                                            </p>
+                                                        @endif
+
+                                                        @if ($manual->sol_4 == 1)
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
+                                                                ON
+                                                            </p>
+                                                        @else
+                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
+                                                                OFF
+                                                            </p>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="flex justify-center items-center">
+                                                            <div
+                                                                class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFDFF]">
+                                                                <div class="stroke-current text-[#4F8A90] mr-1">
+                                                                    <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
+                                                                            stroke-width="1.5" />
+                                                                        <path d="M12 8V12L14 14" stroke-width="1.5" />
+                                                                    </svg>
+                                                                </div>
+                                                                <p class="text-[#4F8A90]">In Progress</p>
                                                             </div>
-                                                            <p class="text-[#4F8A90]">In Progress</p>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="border-b-2">
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            {{-- <tr class="border-b-2">
                                                 <td class="text-center">HC001</td>
                                                 <td class="text-center">
                                                     <span
@@ -150,7 +192,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>

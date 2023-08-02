@@ -3,6 +3,8 @@
 use App\Models\Manual;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManualController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,23 +17,12 @@ use App\Http\Controllers\ManualController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard', [
-        'title' => 'Dashboard'
-    ]);
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/graphics', function () {
     return view('graphics', [
         'title' => 'Graphics'
     ]);
-});
-
-Route::get('/manual',  function() {
-    return view('manual.manual', [
-            'title' => 'Manual',
-            'manual_data' => Manual::all()
-        ]);
 });
 
 Route::resource('/manual', ManualController::class);
