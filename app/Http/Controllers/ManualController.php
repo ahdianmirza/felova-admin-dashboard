@@ -13,13 +13,70 @@ class ManualController extends Controller
      */
     public function index()
     {
-        return view('manual', [
+        return view('manual.index', [
             'title' => 'Manual',
-            'manual_data' => Manual::all()
+            'manuals' => Manual::all()
         ]);
     }
 
-    public function list() {
-        return Manual::first();
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('manual.create', [
+            'title' => 'Create New Setting'
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'device' => 'required|max:255',
+            'pompa' => 'required',
+            'sol_1' => 'required',
+            'sol_2' => 'required',
+            'sol_3' => 'required',
+            'sol_4' => 'required',
+        ]);
+
+        Manual::create($validatedData);
+
+        return redirect('/manual')->with('success', 'New setting has been added!');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Manual $manual)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Manual $manual)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Manual $manual)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Manual $manual)
+    {
+        //
     }
 }

@@ -27,7 +27,14 @@ Route::get('/graphics', function () {
     ]);
 });
 
-Route::get('/manual', [ManualController::class, 'index']);
+Route::get('/manual',  function() {
+    return view('manual.manual', [
+            'title' => 'Manual',
+            'manual_data' => Manual::all()
+        ]);
+});
+
+Route::resource('/manual', ManualController::class);
 
 Route::get('/timer', function () {
     return view('timer', [

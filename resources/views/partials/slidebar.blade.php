@@ -15,7 +15,15 @@
             </div>
 
             <a href="/" class="flex justify-center items-center mb-6 mt-6">
-                <img src="img/felova-logo.svg" alt="Logo Ikan" class="w-[45px] 2xl:w-[60px]">
+                {{-- <img src="img/felova-logo.svg" alt="Logo Ikan" class="w-[45px] 2xl:w-[60px]"> --}}
+                <div>
+                    <svg width="47" height="33" viewBox="0 0 47 33" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.73953 27.8605C3.42128 29.6145 2.76501 31.302 2.4718 32.2433C2.33807 32.6724 1.89575 32.9281 1.45717 32.8297C0.995846 32.7264 0.708282 32.2706 0.814682 31.8102C1.56656 28.5586 3.08999 22.2742 12.2988 16.3551C23.3963 9.22214 30.8042 16.1508 39.8177 8.29159C39.8177 8.29159 35.0827 11.5469 21.771 10.4541C11.2344 9.58924 4.91073 18.6941 4.78078 18.8347C4.79014 18.6872 5.46974 9.22324 14.4985 4.0105C24.5435 -1.78901 36.2881 8.45514 46.9902 0.24578C46.9902 0.24578 47.1704 17.4789 34.4073 24.8477C25.9827 29.7117 17.8942 26.7442 11.4481 25.3508C8.92332 24.8049 6.29544 25.79 4.73953 27.8605Z"
+                            fill="white" />
+                    </svg>
+                </div>
                 <h3 class="ml-2 font-bold text-white text-[18px] md:text-[20px] 2xl:text-2xl">Felova</h3>
             </a>
 
@@ -30,7 +38,7 @@
                     <ul class="py-8">
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/"
-                                class="flex flex-row items-center group {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('/') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
@@ -46,13 +54,13 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium {{ $title == 'Dashboard' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium {{ Request::is('/') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Dashboard</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/graphics"
-                                class="flex flex-row items-center group {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('graphics') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
@@ -68,13 +76,13 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium {{ $title == 'Graphics' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium {{ Request::is('graphics') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Graphics</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/data"
-                                class="flex flex-row items-center group {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('data') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] mr-4 group-hover:text-white">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
@@ -93,13 +101,13 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium {{ $title == 'Data' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium {{ Request::is('data') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Data</h3>
                             </a>
                         </li>
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/manual"
-                                class="flex flex-row items-center group {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('manual*') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] group-hover:text-white mr-4">
                                     <svg width="24" height="24" class="fill-current" viewBox="0 0 24 24"
@@ -117,12 +125,12 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ $title == 'Manual' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium text-lightGray {{ Request::is('manual*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Manual</h3>
                             </a>
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/timer"
-                                class="flex flex-row items-center group {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('timer') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] group-hover:text-white mr-4">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
@@ -136,7 +144,7 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ $title == 'Timer' ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium text-lightGray {{ Request::is('timer') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Timer</h3>
                             </a>
                         </li>
