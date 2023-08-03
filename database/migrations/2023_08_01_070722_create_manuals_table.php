@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('manuals', function (Blueprint $table) {
             $table->id();
             $table->string('device');
+            $table->string('slug')->unique();
             $table->boolean('pompa')->default(false);
             $table->boolean('sol_1')->default(false);
             $table->boolean('sol_2')->default(false);

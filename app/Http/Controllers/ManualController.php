@@ -11,7 +11,7 @@ class ManualController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Manual $manual)
     {
         return view('manual.index', [
             'title' => 'Manual',
@@ -34,13 +34,34 @@ class ManualController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request['pompa'] == null) {
+            $request['pompa'] = 0;
+        }
+
+        if ($request['sol_1'] == null) {
+            $request['sol_1'] = 0;
+        }
+
+        if ($request['sol_2'] == null) {
+            $request['sol_2'] = 0;
+        }
+
+        if ($request['sol_3'] == null) {
+            $request['sol_3'] = 0;
+        }
+
+        if ($request['sol_4'] == null) {
+            $request['sol_4'] = 0;
+        }
+
         $validatedData = $request->validate([
             'device' => 'required|max:255',
-            'pompa' => 'required',
-            'sol_1' => 'required',
-            'sol_2' => 'required',
-            'sol_3' => 'required',
-            'sol_4' => 'required',
+            'slug' => 'required|max:255',
+            'pompa' => 'nullable',
+            'sol_1' => 'nullable',
+            'sol_2' => 'nullable',
+            'sol_3' => 'nullable',
+            'sol_4' => 'nullable',
         ]);
 
         Manual::create($validatedData);
@@ -53,7 +74,7 @@ class ManualController extends Controller
      */
     public function show(Manual $manual)
     {
-        //
+        
     }
 
     /**
@@ -61,7 +82,10 @@ class ManualController extends Controller
      */
     public function edit(Manual $manual)
     {
-        //
+        return view('manual.edit', [
+            'title' => 'Update Setting',
+            'setting' => $manual
+        ]);
     }
 
     /**
@@ -77,6 +101,14 @@ class ManualController extends Controller
      */
     public function destroy(Manual $manual)
     {
-        //
+        Manual::destroy($manual->id);
+
+        return redirect('/manual')->with('success', 'Setting has been deleted!');
+    }
+
+    public function list() {
+        // $filtered_manual = Manual::where('slug');
+        
+        return Manual::all();
     }
 }

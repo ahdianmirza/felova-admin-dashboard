@@ -18,6 +18,8 @@
     <div class="container">
         @yield('container')
     </div>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
