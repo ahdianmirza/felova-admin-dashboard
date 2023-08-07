@@ -68,7 +68,8 @@
             <div class="w-full self-center">
                 <!-- Judul Section -->
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
-                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px]">Create New Setting</h1>
+                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px] text-[#353535]">Create New Setting
+                    </h1>
 
                     <div
                         class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md mt-4">
@@ -76,9 +77,12 @@
                             <form action="/manual" method="post">
                                 @csrf
                                 <div>
-                                    <label for="device">Device</label>
-                                    <input type="text" name="device" id="device" oninput="myFunction()"
-                                        class="border block p-1" value="{{ old('device') }}" required>
+                                    <label for="device" class="text-[#353535]">Device</label>
+                                    {{-- <input type="text" name="device" id="device" oninput="myFunction()"
+                                        class="border block p-1" value="{{ old('device') }}" required> --}}
+                                    <input type="text" placeholder="Type device name" name="device" id="device"
+                                        oninput="myFunction()" value="{{ old('device') }}" autofocus required
+                                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-2" />
                                     <input type="hidden" name="slug" id="slug" value="" class="border">
                                     @error('device')
                                         <small class="text-[#FF5789] mt-2">{{ $message }}</small>
@@ -86,7 +90,7 @@
                                 </div>
                                 <div class="flex">
                                     <div class="mt-4 flex flex-col justify-center items-center">
-                                        <label for="pompa">Pompa</label>
+                                        <label for="pompa" class="text-[#353535]">Pompa</label>
                                         <label class="switch mt-2">
                                             <input type="checkbox" id="checkPompa" onclick="check()">
                                             <span class="slider round"></span>
@@ -94,7 +98,7 @@
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_1">Solenoid 1</label>
+                                        <label for="sol_1" class="text-[#353535]">Solenoid 1</label>
                                         <label class="switch mt-2">
                                             <input type="checkbox" id="checkSol1" onclick="check2()">
                                             <span
@@ -104,7 +108,7 @@
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_2">Solenoid 2</label>
+                                        <label for="sol_2" class="text-[#353535]">Solenoid 2</label>
                                         <label class="switch mt-2">
                                             <input type="checkbox" id="checkSol2" onclick="check3()">
                                             <span class="slider round"></span>
@@ -112,7 +116,7 @@
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_3">Solenoid 3</label>
+                                        <label for="sol_3" class="text-[#353535]">Solenoid 3</label>
                                         <label class="switch mt-2">
                                             <input type="checkbox" id="checkSol3" onclick="check4()">
                                             <span class="slider round"></span>
@@ -120,7 +124,7 @@
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_4">Solenoid 4</label>
+                                        <label for="sol_4" class="text-[#353535]">Solenoid 4</label>
                                         <label class="switch mt-2">
                                             <input type="checkbox" id="checkSol4" onclick="check5()">
                                             <span class="slider round"></span>
@@ -128,7 +132,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="px-3 py-1 bg-slate-300 mt-4">Create
+                                <button type="submit"
+                                    class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4">Create
                                     setting</button>
                             </form>
                         </div>

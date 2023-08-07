@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("list", [ApiController::class, 'list']);
+Route::post("/list", [ApiController::class, 'list']);
+Route::put("/update", [ApiController::class, 'update']);
