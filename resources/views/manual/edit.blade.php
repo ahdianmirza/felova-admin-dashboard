@@ -79,8 +79,10 @@
                                 <div>
                                     <label for="device">Device</label>
                                     <input type="text" name="device" id="device" oninput="myFunction()"
-                                        class="border block p-1" value="{{ old('device', $setting->device) }}" required>
-                                    <input type="hidden" name="slug" id="slug" value="" class="border">
+                                        class="border block p-1" value="{{ old('device', $setting->device) }}" autofocus
+                                        required>
+                                    <input type="hidden" name="slug" id="slug"
+                                        value="{{ old('slug', $setting->slug) }}" class="border">
                                     @error('device')
                                         <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                                     @enderror
@@ -89,40 +91,50 @@
                                     <div class="mt-4 flex flex-col justify-center items-center">
                                         <label for="pompa">Pompa</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" name="pompa">
+                                            <input type="checkbox" id="checkPompa" onclick="checkClick()">
                                             <span class="slider round"></span>
+                                            <input type="hidden" name="pompa" id="pompa"
+                                                value="{{ $setting->pompa }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_1">Solenoid 1</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" name="sol_1">
+                                            <input type="checkbox" id="checkSol1" onclick="checkClick()">
                                             <span class="slider round"></span>
+                                            <input type="hidden" name="sol_1" id="sol_1"
+                                                value="{{ $setting->sol_1 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_2">Solenoid 2</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" name="sol_2">
+                                            <input type="checkbox" id="checkSol2" onclick="checkClick()">
                                             <span class="slider round"></span>
+                                            <input type="hidden" name="sol_2" id="sol_2"
+                                                value="{{ $setting->sol_2 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_3">Solenoid 3</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" name="sol_3">
+                                            <input type="checkbox" id="checkSol3" onclick="checkClick()">
                                             <span class="slider round"></span>
+                                            <input type="hidden" name="sol_3" id="sol_3"
+                                                value="{{ $setting->sol_3 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_4">Solenoid 4</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" name="sol_4">
+                                            <input type="checkbox" id="checkSol4" onclick="checkClick()">
                                             <span class="slider round"></span>
+                                            <input type="hidden" name="sol_4" id="sol_4"
+                                                value="{{ $setting->sol_4 }}">
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="px-3 py-1 bg-slate-300 mt-4">Create
+                                <button type="submit" class="px-3 py-1 bg-slate-300 mt-4">Edit
                                     setting</button>
                             </form>
                         </div>
@@ -136,6 +148,84 @@
         function myFunction() {
             let text = document.getElementById("device").value;
             document.getElementById("slug").value = text.toLowerCase();
+        }
+    </script>
+
+    <script>
+        function checkPompa() {
+            let checkBox = document.getElementById("pompa");
+            let checkBox2 = document.getElementById("sol_1");
+            let checkBox3 = document.getElementById("sol_2");
+            let checkBox4 = document.getElementById("sol_3");
+            let checkBox5 = document.getElementById("sol_4");
+
+            if (checkBox.value == 1) {
+                document.getElementById("checkPompa").checked = true;
+            } else {
+                document.getElementById("checkPompa").checked = false;
+            }
+
+            if (checkBox2.value == 1) {
+                document.getElementById("checkSol1").checked = true;
+            } else {
+                document.getElementById("checkSol1").checked = false;
+            }
+
+            if (checkBox3.value == 1) {
+                document.getElementById("checkSol2").checked = true;
+            } else {
+                document.getElementById("checkSol2").checked = false;
+            }
+
+            if (checkBox4.value == 1) {
+                document.getElementById("checkSol3").checked = true;
+            } else {
+                document.getElementById("checkSol3").checked = false;
+            }
+
+            if (checkBox5.value == 1) {
+                document.getElementById("checkSol4").checked = true;
+            } else {
+                document.getElementById("checkSol4").checked = false;
+            }
+        }
+
+        function checkClick() {
+            let checkBox = document.getElementById("checkPompa");
+            let checkBox2 = document.getElementById("checkSol1");
+            let checkBox3 = document.getElementById("checkSol2");
+            let checkBox4 = document.getElementById("checkSol3");
+            let checkBox5 = document.getElementById("checkSol4");
+
+            if (checkBox.checked == true) {
+                document.getElementById("pompa").value = 1;
+            } else {
+                document.getElementById("pompa").value = "0";
+            }
+
+            if (checkBox2.checked == true) {
+                document.getElementById("sol_1").value = 1;
+            } else {
+                document.getElementById("sol_1").value = "0";
+            }
+
+            if (checkBox3.checked == true) {
+                document.getElementById("sol_2").value = 1;
+            } else {
+                document.getElementById("sol_2").value = "0";
+            }
+
+            if (checkBox4.checked == true) {
+                document.getElementById("sol_3").value = 1;
+            } else {
+                document.getElementById("sol_3").value = "0";
+            }
+
+            if (checkBox5.checked == true) {
+                document.getElementById("sol_4").value = 1;
+            } else {
+                document.getElementById("sol_4").value = "0";
+            }
         }
     </script>
 @endsection
