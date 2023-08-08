@@ -9,7 +9,7 @@
                     <div class="w-full flex justify-between items-center">
                         <!-- Judul Section -->
                         <div class="flex flex-col justify-center pl-10">
-                            <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px]">Dashboard</h1>
+                            <h1 class="font-extrabold text-[#353535] text-[24px] md:text-[32px]">Dashboard</h1>
                             <p class="text-[#CCCCCC]">Good to see you, Vincent !</p>
                         </div>
 
@@ -35,7 +35,7 @@
 
                         {{-- Date and Profil --}}
                         <div class="flex justify-center items-center pr-12">
-                            <p class="mr-[34px]">29 July 2023</p>
+                            <p class="mr-[34px] text-[#353535]">29 July 2023</p>
                             <img src="img/profile.png" class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full"
                                 alt="Profil">
                         </div>
@@ -46,27 +46,28 @@
                 {{-- Dashboard Layout Start --}}
                 <main class="lg:ml-[16vw] flex flex-col justify-center items-center">
                     <div class="flex flex-col">
-                        <div class="flex flex-col justify-center items-center">
+                        <div class="flex">
                             {{-- Last Task Box Start --}}
                             <div
-                                class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
+                                class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md flex flex-col justify-center">
                                 {{-- Title --}}
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <h1 class="text-2xl font-extrabold">Last Task</h1>
-                                        <p><span class="font-bold">120 total</span>, <small class="text-[#A3A4A8]">proceed
+                                        <h1 class="text-2xl font-extrabold text-[#353535]">Last Task</h1>
+                                        <p><span class="font-bold text-[#353535]">120 total,</span> <small
+                                                class="text-[#A3A4A8]">proceed
                                                 to resolve them</small>
                                         </p>
                                     </div>
 
                                     <div class="flex">
                                         <div class="flex flex-col items-center mr-4">
-                                            <h1 class="text-2xl font-extrabold mb-1">94</h1>
+                                            <h1 class="text-2xl font-extrabold mb-1 text-[#353535]">94</h1>
                                             <p class="text-[#A3A4A8]">Done</p>
                                         </div>
                                         <div class="border-l-2 border-slate-100"></div>
                                         <div class="flex flex-col items-center ml-4">
-                                            <h1 class="text-2xl font-extrabold mb-1">23</h1>
+                                            <h1 class="text-2xl font-extrabold mb-1 text-[#353535]">23</h1>
                                             <p class="text-[#A3A4A8]">In Progress</p>
                                         </div>
                                     </div>
@@ -74,7 +75,7 @@
                                 {{-- Title --}}
 
                                 {{-- Table --}}
-                                <div class="mt-5">
+                                <div class="mt-5 w-full">
                                     <table class="table-auto border-none text-xs md:text-[14px] w-full">
                                         <thead>
                                             <tr class="border-t-2">
@@ -89,55 +90,105 @@
                                         <tbody>
                                             @foreach ($manuals as $manual)
                                                 <tr class="border-b-2">
-                                                    <td class="text-center">{{ $manual->device }}</td>
-                                                    <td class="text-center">
+                                                    <td class="text-center text-[#353535] font-semibold">
+                                                        {{ $manual->device }}</td>
+                                                    <td class="text-center text-[#353535] font-semibold">
                                                         @if ($manual->pompa == 1)
                                                             <span
-                                                                class="border-none py-1 px-3 rounded-full bg-[#AACA77] text-xs">ON</span>
+                                                                class="border-none py-1 px-3 rounded-full bg-[#b3d086]">ON</span>
                                                         @else
                                                             <span
-                                                                class="border-none py-1 px-3 rounded-full bg-[#FED4D5] text-xs">OFF</span>
+                                                                class="border-none py-1 px-3 rounded-full bg-[#fda4a6]">OFF</span>
                                                         @endif
                                                     </td>
-                                                    <td class="text-center flex flex-col items-center py-2">
+                                                    <td
+                                                        class="text-center flex justify-center gap-2 items-center py-2 text-[#353535] font-semibold">
                                                         @if ($manual->sol_1 == 1)
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
-                                                                ON
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    1
+                                                                </span>
+                                                                <p>
+                                                                    ON </p>
+                                                            </div>
                                                         @else
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
-                                                                OFF
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    1
+                                                                </span>
+                                                                <p>
+                                                                    OFF </p>
+                                                            </div>
                                                         @endif
 
                                                         @if ($manual->sol_2 == 1)
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
-                                                                ON
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    2
+                                                                </span>
+                                                                <p>
+                                                                    ON </p>
+                                                            </div>
                                                         @else
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
-                                                                OFF
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    2
+                                                                </span>
+                                                                <p>
+                                                                    OFF </p>
+                                                            </div>
                                                         @endif
 
                                                         @if ($manual->sol_3 == 1)
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
-                                                                ON
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    3
+                                                                </span>
+                                                                <p>
+                                                                    ON </p>
+                                                            </div>
                                                         @else
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
-                                                                OFF
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    3
+                                                                </span>
+                                                                <p>
+                                                                    OFF </p>
+                                                            </div>
                                                         @endif
 
                                                         @if ($manual->sol_4 == 1)
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">
-                                                                ON
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    4
+                                                                </span>
+                                                                <p>
+                                                                    ON </p>
+                                                            </div>
                                                         @else
-                                                            <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">
-                                                                OFF
-                                                            </p>
+                                                            <div
+                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                <span
+                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    4
+                                                                </span>
+                                                                <p>
+                                                                    OFF </p>
+                                                            </div>
                                                         @endif
                                                     </td>
                                                     <td class="text-center">
@@ -159,40 +210,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            {{-- <tr class="border-b-2">
-                                                <td class="text-center">HC001</td>
-                                                <td class="text-center">
-                                                    <span
-                                                        class="border-none py-1 px-3 rounded-full bg-[#FED4D5] text-xs">OFF</span>
-                                                </td>
-                                                <td class="text-center flex flex-col items-center py-2">
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">1</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">2</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#AACA77]">3</p>
-                                                    <p class="border-none my-1 py-1 px-4 rounded-full bg-[#FED4D5]">4</p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="flex justify-center items-center">
-                                                        <div
-                                                            class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFEEB]">
-                                                            <div class="stroke-current text-[#375028] mr-1">
-                                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12Z"
-                                                                        stroke-width="1.5" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                    <path
-                                                                        d="M9.75 12.75L10.1837 13.6744C10.5275 14.407 11.5536 14.4492 11.9564 13.7473L14.25 9.75"
-                                                                        stroke-width="1.5" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </svg>
-                                                            </div>
-                                                            <p class="text-[#375028]">Done</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>

@@ -69,7 +69,6 @@
                 <!-- Judul Section -->
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
                     <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px] text-[#353535]">Edit Setting</h1>
-                    {{-- @dd($setting->device) --}}
 
                     <div
                         class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md mt-4">
