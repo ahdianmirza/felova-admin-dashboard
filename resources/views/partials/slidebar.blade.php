@@ -130,7 +130,7 @@
                             </a>
                         <li class="flex flex-col py-5 pl-7">
                             <a href="/timer"
-                                class="flex flex-row items-center group {{ Request::is('timer') ? 'text-white' : 'text-[#B4B990]' }}">
+                                class="flex flex-row items-center group {{ Request::is('timer*') ? 'text-white' : 'text-[#B4B990]' }}">
                                 <div
                                     class="w-5 h-5 md:w-6 md:h-6 2xl:w-[26px] 2xl:h-[26px] group-hover:text-white mr-4">
                                     <svg width="24" height="24" class="stroke-current" viewBox="0 0 24 24"
@@ -144,7 +144,7 @@
                                 </div>
 
                                 <h3
-                                    class="font-medium text-lightGray {{ Request::is('timer') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
+                                    class="font-medium text-lightGray {{ Request::is('timer*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">
                                     Timer</h3>
                             </a>
                         </li>

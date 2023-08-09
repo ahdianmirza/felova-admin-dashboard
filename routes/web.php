@@ -2,6 +2,7 @@
 
 use App\Models\Manual;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TimerController;
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\DashboardController;
 
@@ -27,8 +28,4 @@ Route::get('/graphics', function () {
 
 Route::resource('/manual', ManualController::class);
 
-Route::get('/timer', function () {
-    return view('timer', [
-        'title' => 'Timer'
-    ]);
-});
+Route::resource('/timer', TimerController::class);

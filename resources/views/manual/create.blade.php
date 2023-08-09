@@ -68,7 +68,8 @@
             <div class="w-full self-center">
                 <!-- Judul Section -->
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
-                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px] text-[#353535]">Create New Setting
+                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px] text-[#353535]">Create New Manual
+                        Setting
                     </h1>
 
                     <div

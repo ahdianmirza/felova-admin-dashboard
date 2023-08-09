@@ -6,13 +6,7 @@
             <div class="w-full self-center">
                 <!-- Judul Section -->
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
-                    <h1 class="font-extrabold text-[#353535] text-[24px] md:text-[32px]">Manual</h1>
-
-                    <div class="mt-4 mb-6">
-                        <a href="/manual/create"
-                            class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
-                            setting</a>
-                    </div>
+                    <h1 class="font-extrabold text-[#353535] text-[24px] md:text-[32px] mb-4">Manual</h1>
 
                     @if (session()->has('success'))
                         <div class="alert alert-success mt-4 mb-4">
@@ -27,14 +21,23 @@
 
                     {{-- Table --}}
                     <div
-                        class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-                        <div>
-                            <h1 class="text-2xl font-extrabold text-[#353535]">Manual Setting Lists</h1>
-                            <p><span class="font-bold text-[#353535]">120 total,</span> <small
-                                    class="text-[#A3A4A8]">proceed
-                                    to resolve them</small>
-                            </p>
+                        class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white p-3 rounded-lg md:rounded-xl shadow-md md:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="ml-2">
+                                <h1 class="text-2xl font-extrabold text-[#353535]">Manual Setting Lists</h1>
+                                <p><span class="font-bold text-[#353535]">120 total,</span> <small
+                                        class="text-[#A3A4A8]">proceed
+                                        to resolve them</small>
+                                </p>
+                            </div>
+
+                            <div class="mr-2">
+                                <a href="/manual/create"
+                                    class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
+                                    setting</a>
+                            </div>
                         </div>
+
 
                         <div class="mt-5">
                             <table class="table-auto border-none text-xs md:text-[14px] w-full">
