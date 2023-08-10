@@ -15,10 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('device');
             $table->string('slug')->unique();
+            $table->string('hari');
+            $table->integer('noJadwal')->unique();
+            $table->boolean('sol_1')->default(false);
+            $table->boolean('sol_2')->default(false);
+            $table->boolean('sol_3')->default(false);
+            $table->boolean('sol_4')->default(false);
             $table->integer('jam');
             $table->integer('menit');
             $table->integer('detik');
             $table->integer('durasi');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

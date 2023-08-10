@@ -55,8 +55,8 @@
                                 <tbody>
                                     @foreach ($manuals as $manual)
                                         <tr class="border-b-2">
-                                            <td class="text-center text-[#353535] font-semibold">{{ $loop->iteration }}</td>
-                                            <td class="text-center text-[#353535] font-semibold">{{ $manual->device }}</td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $manual->device }}</td>
                                             <td class="text-center text-[#353535] font-semibold py-2">
                                                 <div class="flex justify-center items-center">
                                                     @if ($manual->pompa == 1)

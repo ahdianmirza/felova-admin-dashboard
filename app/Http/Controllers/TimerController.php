@@ -11,11 +11,11 @@ class TimerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Timer $timer)
     {
         return view('timer.index', [
             'title' => 'Timer',
-            // 'manuals' => Manual::all()
+            'timers' => $timer->all()
         ]);
     }
 
@@ -34,13 +34,40 @@ class TimerController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request['sol_1'] == null) {
+            $request['sol_1'] = 0;
+        }
+
+        if ($request['sol_2'] == null) {
+            $request['sol_2'] = 0;
+        }
+
+        if ($request['sol_3'] == null) {
+            $request['sol_3'] = 0;
+        }
+
+        if ($request['sol_4'] == null) {
+            $request['sol_4'] = 0;
+        }
+
+        if ($request['status'] == null) {
+            $request['status'] = 0;
+        }
+
         $validatedData = $request->validate([
             'device' => 'required|max:255',
             'slug' => 'required|max:255',
+            'hari' => 'required|max:255',
+            'noJadwal' => 'required|numeric',
+            'sol_1' => 'nullable',
+            'sol_2' => 'nullable',
+            'sol_3' => 'nullable',
+            'sol_4' => 'nullable',
             'jam' => 'required|numeric|between:0,24',
             'menit' => 'required|numeric|between:0,60',
             'detik' => 'required|numeric|between:0,60',
-            'durasi' => 'required|numeric|between:1,60'
+            'durasi' => 'required|numeric|between:1,60',
+            'status' => 'nullable'
         ]);
 
         Timer::create($validatedData);

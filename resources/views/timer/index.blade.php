@@ -34,19 +34,38 @@
                                     <tr class="border-t-2">
                                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">No</th>
                                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Device</th>
-                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Pompa
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Hari</th>
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">No. Jadwal</th>
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Waktu
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Solenoid</th>
                                         </th>
-                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Selenoid
-                                        </th>
-                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Action</th>
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Durasi</th>
+                                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
+                                    @foreach ($timers as $timer)
+                                        <tr class="border-b-2">
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->device }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->hari }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->noJadwal }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">
+                                                {{ $timer->jam < 10 ? "0$timer->jam" : "$timer->jam" }}:{{ $timer->menit < 10 ? "0$timer->menit" : "$timer->menit" }}:{{ $timer->detik < 10 ? "0$timer->detik" : "$timer->detik" }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->solenoid }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->durasi }}
+                                                menit
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $timer->status }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
