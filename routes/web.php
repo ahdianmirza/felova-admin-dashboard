@@ -27,5 +27,4 @@ Route::get('/graphics', function () {
 });
 
 Route::resource('/manual', ManualController::class);
-
 Route::resource('/timer', TimerController::class);

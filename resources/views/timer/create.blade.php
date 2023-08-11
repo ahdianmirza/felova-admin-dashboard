@@ -30,13 +30,13 @@
                                     <select name="hari" id="hari"
                                         class="select select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
                                         <option disabled selected>Select the day</option>
-                                        <option value="senin">Senin</option>
-                                        <option value="selasa">Selasa</option>
-                                        <option value="rabu">Rabu</option>
-                                        <option value="kamis">Kamis</option>
-                                        <option value="jumat">Jumat</option>
-                                        <option value="sabtu">Sabtu</option>
-                                        <option value="minggu">Minggu</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                        <option value="Rabu">Rabu</option>
+                                        <option value="Kamis">Kamis</option>
+                                        <option value="Jumat">Jumat</option>
+                                        <option value="Sabtu">Sabtu</option>
+                                        <option value="Minggu">Minggu</option>
                                     </select>
                                     @error('hari')
                                         <small class="text-[#FF5789] mt-2">{{ $message }}</small>

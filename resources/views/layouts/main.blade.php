@@ -12,14 +12,12 @@
     <title>Felova | {{ $title }}</title>
 </head>
 
-<body class="bg-[#F7F7F7] font-poppins" onload="checkPompa()">
+<body class="bg-[#F7F7F7] font-poppins">
     @include('partials.slidebar')
 
     <div class="container">
         @yield('container')
     </div>
-
-    <script src="js/script.js"></script>
 </body>
 
 </html>

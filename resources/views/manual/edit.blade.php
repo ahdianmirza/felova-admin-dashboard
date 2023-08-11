@@ -92,7 +92,8 @@
                                     <div class="mt-4 flex flex-col justify-center items-center">
                                         <label for="pompa" class="text-[#353535]">Pompa</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" id="checkPompa" onclick="checkClick()">
+                                            <input type="checkbox" id="checkPompa" onclick="checkClick()"
+                                                {{ $setting->pompa == 1 ? 'checked' : '' }}>
                                             <span class="slider round"></span>
                                             <input type="hidden" name="pompa" id="pompa"
                                                 value="{{ $setting->pompa }}">
@@ -101,7 +102,8 @@
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_1" class="text-[#353535]">Solenoid 1</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol1" onclick="checkClick()">
+                                            <input type="checkbox" id="checkSol1" onclick="checkClick()"
+                                                {{ $setting->sol_1 == 1 ? 'checked' : '' }}>
                                             <span class="slider round"></span>
                                             <input type="hidden" name="sol_1" id="sol_1"
                                                 value="{{ $setting->sol_1 }}">
@@ -110,7 +112,8 @@
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_2" class="text-[#353535]">Solenoid 2</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol2" onclick="checkClick()">
+                                            <input type="checkbox" id="checkSol2" onclick="checkClick()"
+                                                {{ $setting->sol_2 == 1 ? 'checked' : '' }}>
                                             <span class="slider round"></span>
                                             <input type="hidden" name="sol_2" id="sol_2"
                                                 value="{{ $setting->sol_2 }}">
@@ -119,7 +122,8 @@
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_3" class="text-[#353535]">Solenoid 3</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol3" onclick="checkClick()">
+                                            <input type="checkbox" id="checkSol3" onclick="checkClick()"
+                                                {{ $setting->sol_3 == 1 ? 'checked' : '' }}>
                                             <span class="slider round"></span>
                                             <input type="hidden" name="sol_3" id="sol_3"
                                                 value="{{ $setting->sol_3 }}">
@@ -128,7 +132,8 @@
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
                                         <label for="sol_4" class="text-[#353535]">Solenoid 4</label>
                                         <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol4" onclick="checkClick()">
+                                            <input type="checkbox" id="checkSol4" onclick="checkClick()"
+                                                {{ $setting->sol_4 == 1 ? 'checked' : '' }}>
                                             <span class="slider round"></span>
                                             <input type="hidden" name="sol_4" id="sol_4"
                                                 value="{{ $setting->sol_4 }}">
@@ -154,44 +159,6 @@
     </script>
 
     <script>
-        function checkPompa() {
-            let checkBox = document.getElementById("pompa");
-            let checkBox2 = document.getElementById("sol_1");
-            let checkBox3 = document.getElementById("sol_2");
-            let checkBox4 = document.getElementById("sol_3");
-            let checkBox5 = document.getElementById("sol_4");
-
-            if (checkBox.value == 1) {
-                document.getElementById("checkPompa").checked = true;
-            } else {
-                document.getElementById("checkPompa").checked = false;
-            }
-
-            if (checkBox2.value == 1) {
-                document.getElementById("checkSol1").checked = true;
-            } else {
-                document.getElementById("checkSol1").checked = false;
-            }
-
-            if (checkBox3.value == 1) {
-                document.getElementById("checkSol2").checked = true;
-            } else {
-                document.getElementById("checkSol2").checked = false;
-            }
-
-            if (checkBox4.value == 1) {
-                document.getElementById("checkSol3").checked = true;
-            } else {
-                document.getElementById("checkSol3").checked = false;
-            }
-
-            if (checkBox5.value == 1) {
-                document.getElementById("checkSol4").checked = true;
-            } else {
-                document.getElementById("checkSol4").checked = false;
-            }
-        }
-
         function checkClick() {
             let checkBox = document.getElementById("checkPompa");
             let checkBox2 = document.getElementById("checkSol1");
