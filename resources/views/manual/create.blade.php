@@ -90,45 +90,43 @@
                                     @enderror
                                 </div>
                                 <div class="flex">
-                                    <div class="mt-4 flex flex-col justify-center items-center">
-                                        <label for="pompa" class="text-[#353535]">Pompa</label>
-                                        <label class="switch mt-2">
-                                            <input type="checkbox" id="checkPompa" onclick="check()">
-                                            <span class="slider round"></span>
+                                    <div class="mt-4 flex flex-col justify-center">
+                                        <label for="pompa" class="text-[#353535] font-semibold">Pompa</label>
+                                        <label class="mt-2">
+                                            <input type="checkbox" id="checkPompa" onclick="check()"
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="pompa" id="pompa">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_1" class="text-[#353535]">Solenoid 1</label>
-                                        <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol1" onclick="check2()">
-                                            <span
-                                                class="slider
-                                                round"></span>
+                                        <label for="sol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                                        <label class="mt-2">
+                                            <input type="checkbox" id="checkSol1" onclick="check2()"
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_1" id="sol_1">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_2" class="text-[#353535]">Solenoid 2</label>
-                                        <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol2" onclick="check3()">
-                                            <span class="slider round"></span>
+                                        <label for="sol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                                        <label class="mt-2">
+                                            <input type="checkbox" id="checkSol2" onclick="check3()"
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_2" id="sol_2">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_3" class="text-[#353535]">Solenoid 3</label>
-                                        <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol3" onclick="check4()">
-                                            <span class="slider round"></span>
+                                        <label for="sol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
+                                        <label class="mt-2">
+                                            <input type="checkbox" id="checkSol3" onclick="check4()"
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_3" id="sol_3">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_4" class="text-[#353535]">Solenoid 4</label>
-                                        <label class="switch mt-2">
-                                            <input type="checkbox" id="checkSol4" onclick="check5()">
-                                            <span class="slider round"></span>
+                                        <label for="sol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
+                                        <label class="mt-2">
+                                            <input type="checkbox" id="checkSol4" onclick="check5()"
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_4" id="sol_4">
                                         </label>
                                     </div>

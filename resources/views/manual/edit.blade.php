@@ -90,51 +90,48 @@
                                 </div>
                                 <div class="flex">
                                     <div class="mt-4 flex flex-col justify-center items-center">
-                                        <label for="pompa" class="text-[#353535]">Pompa</label>
-                                        <label class="switch mt-2">
+                                        <label for="pompa" class="text-[#353535] font-semibold">Pompa</label>
+                                        <label class="mt-2">
                                             <input type="checkbox" id="checkPompa" onclick="checkClick()"
-                                                {{ $setting->pompa == 1 ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                                {{ $setting->pompa == 1 ? 'checked' : '' }} class="toggle toggle-success" />
                                             <input type="hidden" name="pompa" id="pompa"
                                                 value="{{ $setting->pompa }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_1" class="text-[#353535]">Solenoid 1</label>
-                                        <label class="switch mt-2">
+                                        <label for="sol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                                        <label class="mt-2">
                                             <input type="checkbox" id="checkSol1" onclick="checkClick()"
-                                                {{ $setting->sol_1 == 1 ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                                {{ $setting->sol_1 == 1 ? 'checked' : '' }} class="toggle toggle-success" />
                                             <input type="hidden" name="sol_1" id="sol_1"
                                                 value="{{ $setting->sol_1 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_2" class="text-[#353535]">Solenoid 2</label>
-                                        <label class="switch mt-2">
+                                        <label for="sol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                                        <label class="mt-2">
                                             <input type="checkbox" id="checkSol2" onclick="checkClick()"
-                                                {{ $setting->sol_2 == 1 ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                                {{ $setting->sol_2 == 1 ? 'checked' : '' }} class="toggle toggle-success" />
                                             <input type="hidden" name="sol_2" id="sol_2"
                                                 value="{{ $setting->sol_2 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_3" class="text-[#353535]">Solenoid 3</label>
-                                        <label class="switch mt-2">
+                                        <label for="sol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
+                                        <label class="mt-2">
                                             <input type="checkbox" id="checkSol3" onclick="checkClick()"
-                                                {{ $setting->sol_3 == 1 ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                                {{ $setting->sol_3 == 1 ? 'checked' : '' }}
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_3" id="sol_3"
                                                 value="{{ $setting->sol_3 }}">
                                         </label>
                                     </div>
                                     <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_4" class="text-[#353535]">Solenoid 4</label>
-                                        <label class="switch mt-2">
+                                        <label for="sol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
+                                        <label class="mt-2">
                                             <input type="checkbox" id="checkSol4" onclick="checkClick()"
-                                                {{ $setting->sol_4 == 1 ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                                {{ $setting->sol_4 == 1 ? 'checked' : '' }}
+                                                class="toggle toggle-success" />
                                             <input type="hidden" name="sol_4" id="sol_4"
                                                 value="{{ $setting->sol_4 }}">
                                         </label>
