@@ -54,7 +54,7 @@
                                 {{-- Title --}}
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <h1 class="text-2xl font-extrabold text-[#353535]">Last Task</h1>
+                                        <h1 class="text-2xl font-extrabold text-[#353535]">Latest Task</h1>
                                         <p><span class="font-bold text-[#353535]">{{ $manuals->count() }} total,</span>
                                             <small class="text-[#A3A4A8]">proceed
                                                 to resolve them</small>

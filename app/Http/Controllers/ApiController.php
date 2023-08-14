@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manual;
+use App\Models\Timer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {
-    public function list() {
+    public function listManual() {
         $data_post = request()->all();
         $data = Manual::firstWhere('slug', $data_post['device']);
 
@@ -34,7 +35,13 @@ class ApiController extends Controller
         }
     }
 
-    public function getData() {
-        return Manual::all();
+    public function getDataManual() {
+        return Manual::latest()->get();
+    }
+
+    public function listTimer() {
+        $data_post = request()->all();
+        $data = Timer::firstWhere('device', $data_post['device']);
+        return response()->json($data);
     }
 }
