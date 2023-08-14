@@ -8,13 +8,24 @@
                 <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
                     <h1 class="font-extrabold text-[#353535] text-[24px] md:text-[32px] mb-4">Timer</h1>
 
+                    @if (session()->has('success'))
+                        <div class="alert alert-success mt-4 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    @endif
+
                     {{-- Table --}}
                     <div
                         class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white p-3 rounded-lg md:rounded-xl shadow-md md:shadow-md">
                         <div class="flex items-center justify-between">
                             <div class="ml-2">
                                 <h1 class="text-2xl font-extrabold text-[#353535]">Timer Setting Lists</h1>
-                                <p><span class="font-bold text-[#353535]">120 total,</span> <small
+                                <p><span class="font-bold text-[#353535]">{{ $timers->count() }} total,</span> <small
                                         class="text-[#A3A4A8]">proceed
                                         to resolve them</small>
                                 </p>

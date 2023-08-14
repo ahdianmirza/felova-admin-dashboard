@@ -35,7 +35,8 @@
 
                         {{-- Date and Profil --}}
                         <div class="flex justify-center items-center pr-12">
-                            <p class="mr-[34px] text-[#353535]">29 July 2023</p>
+                            <p class="mr-[34px] text-[#353535]">{{ \Carbon\Carbon::now()->format('d F Y') }}
+                            </p>
                             <img src="img/profile.png" class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full"
                                 alt="Profil">
                         </div>
@@ -54,8 +55,8 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <h1 class="text-2xl font-extrabold text-[#353535]">Last Task</h1>
-                                        <p><span class="font-bold text-[#353535]">120 total,</span> <small
-                                                class="text-[#A3A4A8]">proceed
+                                        <p><span class="font-bold text-[#353535]">{{ $manuals->count() }} total,</span>
+                                            <small class="text-[#A3A4A8]">proceed
                                                 to resolve them</small>
                                         </p>
                                     </div>

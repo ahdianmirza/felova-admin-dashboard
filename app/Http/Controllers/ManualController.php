@@ -15,7 +15,7 @@ class ManualController extends Controller
     {
         return view('manual.index', [
             'title' => 'Manual',
-            'manuals' => Manual::all()
+            'manuals' => Manual::latest()->get()
         ]);
     }
 

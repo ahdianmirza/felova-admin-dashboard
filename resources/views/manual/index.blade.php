@@ -25,7 +25,7 @@
                         <div class="flex items-center justify-between">
                             <div class="ml-2">
                                 <h1 class="text-2xl font-extrabold text-[#353535]">Manual Setting Lists</h1>
-                                <p><span class="font-bold text-[#353535]">120 total,</span> <small
+                                <p><span class="font-bold text-[#353535]">{{ $manuals->count() }} total,</span> <small
                                         class="text-[#A3A4A8]">proceed
                                         to resolve them</small>
                                 </p>
@@ -55,8 +55,10 @@
                                 <tbody>
                                     @foreach ($manuals as $manual)
                                         <tr class="border-b-2">
-                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
-                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $manual->device }}</td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}
+                                            </td>
+                                            <td class="text-center text-[#353535] font-semibold py-2">{{ $manual->device }}
+                                            </td>
                                             <td class="text-center text-[#353535] font-semibold py-2">
                                                 <div class="flex justify-center items-center">
                                                     @if ($manual->pompa == 1)
