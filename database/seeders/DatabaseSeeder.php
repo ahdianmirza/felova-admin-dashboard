@@ -71,6 +71,26 @@ class DatabaseSeeder extends Seeder
             'sol_4' => 1,
         ]);
 
+        Manual::create([
+            'device' => 'HC006',
+            'slug' => 'hc006',
+            'pompa' => 0,
+            'sol_1' => 0,
+            'sol_2' => 1,
+            'sol_3' => 0,
+            'sol_4' => 0,
+        ]);
+
+        Manual::create([
+            'device' => 'HC007',
+            'slug' => 'hc007',
+            'pompa' => 0,
+            'sol_1' => 0,
+            'sol_2' => 0,
+            'sol_3' => 0,
+            'sol_4' => 0,
+        ]);
+
         Timer::create([
             'device' => 'HC001',
             'slug' => 'hc001',

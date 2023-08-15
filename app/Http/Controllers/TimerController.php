@@ -15,7 +15,7 @@ class TimerController extends Controller
     {
         return view('timer.index', [
             'title' => 'Timer',
-            'timers' => $timer->latest()->get()
+            'timers' => $timer->orderBy('created_at', 'desc')->limit(7)->get()
         ]);
     }
 

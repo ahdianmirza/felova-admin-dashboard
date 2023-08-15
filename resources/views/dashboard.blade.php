@@ -29,7 +29,7 @@
                                     </div>
                                 </label>
                                 <input type="text" name="search" id="search" placeholder="Track data"
-                                    class="w-full block py-[13px] pl-2 pr-[48px] bg-[#F7F7F7] rounded-2xl placeholder:text-[#CCCCCC] focus:outline-none">
+                                    class="w-full block py-[13px] pl-2 pr-[48px] text-[#353535] bg-[#F7F7F7] rounded-2xl placeholder:text-[#CCCCCC] focus:outline-none">
                             </form>
                         </div>
 
@@ -55,7 +55,8 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <h1 class="text-2xl font-extrabold text-[#353535]">Latest Task</h1>
-                                        <p><span class="font-bold text-[#353535]">{{ $manuals->count() }} total,</span>
+                                        <p><span class="font-bold text-[#353535]">{{ $manuals_all->count() }}
+                                                total,</span>
                                             <small class="text-[#A3A4A8]">proceed
                                                 to resolve them</small>
                                         </p>
