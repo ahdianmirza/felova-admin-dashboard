@@ -18,6 +18,8 @@
     <div class="container">
         @yield('container')
     </div>
+
+    <script src="{{ asset('../node_modules/tw-elements/dist/js/tw-elements.umd.min.js') }}"></script>
 </body>
 
 </html>

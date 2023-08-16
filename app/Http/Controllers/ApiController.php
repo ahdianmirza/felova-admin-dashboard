@@ -17,7 +17,7 @@ class ApiController extends Controller
         return response()->json($data);
     }
 
-    public function update(Request $request) {
+    public function updateManual(Request $request) {
         $device = Manual::firstWhere('device', $request->device);
         $device->device = $request->device;
         $device->slug = $request->slug;
@@ -26,6 +26,31 @@ class ApiController extends Controller
         $device->sol_2 = $request->sol_2;
         $device->sol_3 = $request->sol_3;
         $device->sol_4 = $request->sol_4;
+        $result = $device->save();
+
+        if($result) {
+            return ["result" => "Data has been updated"];
+        } else {
+            return ["result" => "Update operastion has been failed"];
+        }
+    }
+
+    public function updateTimer(Request $request) {
+        $device = Timer::firstWhere('device', $request->device);
+        $device->device = $request->device;
+        $device->slug = $request->slug;
+        $device->hari = $request->hari;
+        $device->noJadwal = $request->noJadwal;
+        $device->sol_1 = $request->sol_1;
+        $device->sol_2 = $request->sol_2;
+        $device->sol_3 = $request->sol_3;
+        $device->sol_4 = $request->sol_4;
+        $device->jam = $request->jam;
+        $device->menit = $request->menit;
+        $device->detik = $request->detik;
+        $device->durasi = $request->durasi;
+        $device->status = $request->status;
+        
         $result = $device->save();
 
         if($result) {

@@ -20,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("/list-manual", [ApiController::class, 'listManual']);
-Route::put("/update", [ApiController::class, 'update']);
+Route::put("/update-manual", [ApiController::class, 'updateManual']);
+Route::put("/update-timer", [ApiController::class, 'updateTimer']);
 Route::post("/list-timer", [ApiController::class, 'listTimer']);

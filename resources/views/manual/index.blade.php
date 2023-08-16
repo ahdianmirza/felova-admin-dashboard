@@ -33,7 +33,7 @@
 
                             <div class="mr-2">
                                 <a href="/manual/create"
-                                    class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
+                                    class="ds-btn ds-btn-sm ds-btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
                                     setting</a>
                             </div>
                         </div>

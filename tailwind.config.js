@@ -5,18 +5,20 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/tw-elements/dist/js/**/*.js",
     ],
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
             screens: {
                 "2xl": "1366px",
             },
         },
     },
-    plugins: [require("daisyui")],
+    plugins: [require("daisyui"), require("tw-elements/dist/plugin.cjs")],
+    darkMode: "class",
     daisyui: {
         themes: false, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
         darkTheme: "dark", // name of one of the included themes for dark mode
