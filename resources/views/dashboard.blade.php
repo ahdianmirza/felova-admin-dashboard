@@ -5,37 +5,18 @@
         <div class="flex flex-wrap">
             <div class="w-full self-center">
                 {{-- Top Part Start --}}
-                <div class="w-[84vw] flex justify-center items-center mt-12 lg:ml-[16vw] mb-4 md:mb-7">
+                <div class="w-full lg:w-[84vw] flex justify-center items-center mt-4 lg:mt-12 lg:ml-[16vw] mb-5 md:mb-7">
                     <div class="w-full flex justify-between items-center">
                         <!-- Judul Section -->
-                        <div class="flex flex-col justify-center pl-10">
-                            <h1 class="font-extrabold text-[#353535] text-[24px] md:text-[32px]">Dashboard</h1>
-                            <p class="text-[#CCCCCC]">Good to see you, Vincent !</p>
-                        </div>
-
-                        {{-- Search Bar --}}
-                        <div class="flex justify-center">
-                            <form action=""
-                                class="flex justify-center items-center w-[360px] h-[52px] border border-[#353535] rounded-2xl">
-                                <label for="search">
-                                    <div class="px-2">
-                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M25.6667 25.6667L20.6667 20.6667M6.33337 14.6667C6.33337 10.0643 10.0643 6.33334 14.6667 6.33334C19.2691 6.33334 23 10.0643 23 14.6667C23 19.2691 19.2691 23 14.6667 23C10.0643 23 6.33337 19.2691 6.33337 14.6667Z"
-                                                stroke="#353535" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </div>
-                                </label>
-                                <input type="text" name="search" id="search" placeholder="Track data"
-                                    class="w-full block py-[13px] pl-2 pr-[48px] text-[#353535] bg-[#F7F7F7] rounded-2xl placeholder:text-[#CCCCCC] focus:outline-none">
-                            </form>
+                        <div class="flex flex-col justify-center ml-4 lg:pl-10">
+                            <h1 class="font-extrabold text-[#353535] text-lg lg:text-[32px]">Dashboard</h1>
+                            <p class="text-[#CCCCCC] text-xs lg:text-base">Good to see you, Vincent !</p>
                         </div>
 
                         {{-- Date and Profil --}}
-                        <div class="flex justify-center items-center pr-12">
-                            <p class="mr-[34px] text-[#353535]">{{ \Carbon\Carbon::now()->format('d F Y') }}
+                        <div class="flex lg:justify-center items-center mr-4 lg:pr-12">
+                            <p class="mr-2 lg:mr-[34px] text-[#353535] text-xs lg:text-base">
+                                {{ \Carbon\Carbon::now()->format('d F Y') }}
                             </p>
                             <img src="img/profile.png" class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full"
                                 alt="Profil">
@@ -54,23 +35,45 @@
                                 {{-- Title --}}
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <h1 class="text-2xl font-extrabold text-[#353535]">Latest Task</h1>
-                                        <p><span class="font-bold text-[#353535]">{{ $manuals_all->count() }}
+                                        <h1 class="text-lg lg:text-2xl font-extrabold text-[#353535]">Latest Task</h1>
+                                        <p class="text-xs lg:text-base"><span
+                                                class="font-bold text-[#353535]">{{ $manuals_all->count() }}
                                                 total,</span>
-                                            <small class="text-[#A3A4A8]">proceed
+                                            <small class="text-[#A3A4A8] text-xs lg:text-base">proceed
                                                 to resolve them</small>
                                         </p>
                                     </div>
 
+                                    {{-- Search Bar --}}
+                                    <div class="flex justify-center">
+                                        <form action=""
+                                            class="hidden lg:flex justify-center items-center w-[100px] lg:w-[360px] lg:h-[52px] border border-[#353535] rounded-2xl">
+                                            <label for="search">
+                                                <div class="px-2">
+                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M25.6667 25.6667L20.6667 20.6667M6.33337 14.6667C6.33337 10.0643 10.0643 6.33334 14.6667 6.33334C19.2691 6.33334 23 10.0643 23 14.6667C23 19.2691 19.2691 23 14.6667 23C10.0643 23 6.33337 19.2691 6.33337 14.6667Z"
+                                                            stroke="#353535" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                            <input type="text" name="search" id="search" placeholder="Track data"
+                                                class="w-full block py-[13px] pl-2 pr-[48px] text-[#353535] bg-white rounded-2xl placeholder:text-[#CCCCCC] focus:outline-none">
+                                        </form>
+                                    </div>
+
                                     <div class="flex">
-                                        <div class="flex flex-col items-center mr-4">
-                                            <h1 class="text-2xl font-extrabold mb-1 text-[#353535]">94</h1>
-                                            <p class="text-[#A3A4A8]">Done</p>
+                                        <div class="flex flex-col items-center mr-2 lg:mr-4">
+                                            <h1 class="text-lg lg:text-2xl font-extrabold lg:mb-1 text-[#353535]">94</h1>
+                                            <p class="text-[#A3A4A8] text-xs lg:text-base">Done</p>
                                         </div>
                                         <div class="border-l-2 border-slate-100"></div>
-                                        <div class="flex flex-col items-center ml-4">
-                                            <h1 class="text-2xl font-extrabold mb-1 text-[#353535]">23</h1>
-                                            <p class="text-[#A3A4A8]">In Progress</p>
+                                        <div class="flex flex-col items-center ml-2 lg:ml-4">
+                                            <h1 class="text-lg lg:text-2xl font-extrabold lg:mb-1 text-[#353535]">23
+                                            </h1>
+                                            <p class="text-[#A3A4A8] text-xs lg:text-base">In Progress</p>
                                         </div>
                                     </div>
                                 </div>
@@ -98,8 +101,9 @@
                                                         <div class="flex justify-center items-center">
                                                             @if ($manual->pompa == 1)
                                                                 <div
-                                                                    class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
-                                                                    <span class="mr-1 text-[#f5f8ed] stroke-current">
+                                                                    class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                                                    <span
+                                                                        class="hidden lg:block text-[#f5f8ed] stroke-current">
                                                                         <svg width="24" height="24"
                                                                             viewBox="0 0 24 24" fill="none"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -113,13 +117,13 @@
                                                                                 stroke-linejoin="round" />
                                                                         </svg>
                                                                     </span>
-                                                                    <p>
-                                                                        ON </p>
+                                                                    ON
                                                                 </div>
                                                             @else
                                                                 <div
-                                                                    class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
-                                                                    <span class="mr-1 text-[#fef2f2] stroke-current">
+                                                                    class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                                                    <span
+                                                                        class="hidden lg:block text-[#fef2f2] stroke-current">
                                                                         <svg width="20" height="20"
                                                                             viewBox="0 0 24 24" fill="none"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -130,8 +134,7 @@
                                                                         </svg>
 
                                                                     </span>
-                                                                    <p>
-                                                                        OFF </p>
+                                                                    OFF
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -140,108 +143,100 @@
                                                         class="text-center flex justify-center gap-2 items-center py-2 text-[#353535] font-semibold">
                                                         @if ($manual->sol_1 == 1)
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                                     1
                                                                 </span>
-                                                                <p>
-                                                                    ON </p>
+                                                                ON
                                                             </div>
                                                         @else
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                                     1
                                                                 </span>
-                                                                <p>
-                                                                    OFF </p>
+                                                                OFF
                                                             </div>
                                                         @endif
 
                                                         @if ($manual->sol_2 == 1)
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                                     2
                                                                 </span>
-                                                                <p>
-                                                                    ON </p>
+                                                                ON
                                                             </div>
                                                         @else
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                                     2
                                                                 </span>
-                                                                <p>
-                                                                    OFF </p>
+                                                                OFF
                                                             </div>
                                                         @endif
 
                                                         @if ($manual->sol_3 == 1)
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                                     3
                                                                 </span>
-                                                                <p>
-                                                                    ON </p>
+                                                                ON
                                                             </div>
                                                         @else
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                                     3
                                                                 </span>
-                                                                <p>
-                                                                    OFF </p>
+                                                                OFF
                                                             </div>
                                                         @endif
 
                                                         @if ($manual->sol_4 == 1)
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#b3d086]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#f5f8ed] bg-[#97bc5f]">
+                                                                    class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                                     4
                                                                 </span>
-                                                                <p>
-                                                                    ON </p>
+                                                                ON
                                                             </div>
                                                         @else
                                                             <div
-                                                                class="flex justify-center items-center border-none my-1 w-20 h-7 rounded-full bg-[#fda4a6]">
+                                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                                                 <span
-                                                                    class="text-xs rounded-full px-2 mr-1 text-[#fef2f2] bg-[#fa6f72]">
+                                                                    class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                                     4
                                                                 </span>
-                                                                <p>
-                                                                    OFF </p>
+                                                                OFF
                                                             </div>
                                                         @endif
                                                     </td>
                                                     <td class="text-center">
-                                                        <div class="flex justify-center items-center">
-                                                            <div
-                                                                class="flex justify-center items-center px-2 py-1 border-none rounded-md bg-[#EFFDFF]">
-                                                                <div class="stroke-current text-[#4F8A90] mr-1">
-                                                                    <svg width="24" height="24"
-                                                                        viewBox="0 0 24 24" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
-                                                                            stroke-width="1.5" />
-                                                                        <path d="M12 8V12L14 14" stroke-width="1.5" />
-                                                                    </svg>
-                                                                </div>
-                                                                <p class="text-[#4F8A90]">In Progress</p>
+                                                        <div
+                                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-lg text-xs lg:text-[14px] bg-[#EFFDFF] hover:bg-[#cff7fe] cursor-default hover:shadow-md border-none">
+                                                            <div class="stroke-current text-[#4F8A90]">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
+                                                                        stroke-width="1.5" />
+                                                                    <path d="M12 8V12L14 14" stroke-width="1.5" />
+                                                                </svg>
                                                             </div>
+                                                            <p
+                                                                class="hidden lg:block text-xs lg:text-[14px] text-[#4F8A90] font-semibold">
+                                                                In
+                                                                Progress</p>
                                                         </div>
                                                     </td>
                                                 </tr>

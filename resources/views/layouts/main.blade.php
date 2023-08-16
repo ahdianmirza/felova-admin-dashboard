@@ -12,7 +12,7 @@
     <title>Felova | {{ $title }}</title>
 </head>
 
-<body class="bg-[#F7F7F7] font-poppins">
+<body class="bg-[#F7F7F7] font-sans">
     @include('partials.slidebar')
 
     <div class="container">

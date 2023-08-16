@@ -1,5 +1,5 @@
 <!-- Sidebar Section Start -->
-<section class="absolute top-0 left-0 flex items-center">
+<section class="absolute top-0 left-0 hidden lg:flex items-center">
     <div class="container">
         <div class="lg:flex flex-col bg-[#434738] w-[40vw] md:w-[25vw] lg:w-[10vw] xl:w-[16vw] h-[100vh] fixed z-10">
             <div class="flex justify-end items-center mt-5 lg:mt-0 mr-4">
@@ -15,7 +15,6 @@
             </div>
 
             <a href="/" class="flex justify-center items-center mb-6 mt-6">
-                {{-- <img src="img/felova-logo.svg" alt="Logo Ikan" class="w-[45px] 2xl:w-[60px]"> --}}
                 <div>
                     <svg width="47" height="33" viewBox="0 0 47 33" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
