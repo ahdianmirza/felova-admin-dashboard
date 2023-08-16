@@ -15,4 +15,12 @@ class DashboardController extends Controller
             'manuals_all' => Manual::all()
         ]);
     }
+
+    public function indexCoba() {
+        return view('dashboard-coba', [
+            'title' => 'Dashboard',
+            'manuals' => Manual::orderBy('created_at', 'desc')->limit(5)->get(),
+            'manuals_all' => Manual::all()
+        ]);
+    }
 }
