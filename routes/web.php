@@ -19,7 +19,6 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/coba', [DashboardController::class, 'indexCoba']);
 
 Route::get('/graphics', function () {
     return view('graphics', [

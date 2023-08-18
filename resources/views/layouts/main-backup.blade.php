@@ -8,17 +8,16 @@
 
     {{-- Tailwind Style --}}
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
 
     <title>Felova | {{ $title }}</title>
 </head>
 
 <body class="bg-[#F7F7F7] font-sans">
-    @include('partials.slider-twelements')
+    @include('partials.slidebar')
 
-    <main class="p-2 lg:p-4 !pl-[260px] text-center" id="content">
+    <div class="container">
         @yield('container')
-    </main>
+    </div>
 
     <script src="{{ asset('../node_modules/tw-elements/dist/js/tw-elements.umd.min.js') }}"></script>
 </body>
