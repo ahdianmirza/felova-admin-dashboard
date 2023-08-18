@@ -16,9 +16,9 @@
 <body class="bg-[#F7F7F7] font-sans">
     @include('partials.slider-twelements')
 
-    <div class="container">
+    <main class="p-2 lg:p-4 !pl-[260px] text-center" id="content">
         @yield('container')
-    </div>
+    </main>
 
     <script src="{{ asset('../node_modules/tw-elements/dist/js/tw-elements.umd.min.js') }}"></script>
 </body>
