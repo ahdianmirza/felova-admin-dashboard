@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="flex flex-col text-start text-black">
-        <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
+    <div class="flex flex-col text-start">
+        <div class="w-full flex justify-center items-center mt-4 mb-4">
             <div class="w-full flex justify-between items-center">
                 <div class="flex justify-center items-center">
                     <!-- Toggler -->
@@ -26,7 +26,7 @@
         {{-- Top Part End --}}
 
         @if (session()->has('success'))
-            <div class="alert alert-success mt-4 mb-4">
+            <div class="ds-alert ds-alert-success mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

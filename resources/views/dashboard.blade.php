@@ -2,7 +2,7 @@
 
 @section('container')
     {{-- Top Part Start --}}
-    <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
+    <div class="w-full flex justify-center items-center mt-4 mb-4">
         <div class="w-full flex justify-between items-center">
             <div class="flex justify-center items-center">
                 <!-- Toggler -->

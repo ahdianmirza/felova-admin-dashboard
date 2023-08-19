@@ -1,145 +1,87 @@
 @extends('layouts.main')
 
 @section('container')
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 45px;
-            height: 25px;
-        }
+    <div class="flex flex-col text-start">
+        <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
+            <div class="w-full flex justify-between items-center">
+                <div class="flex justify-center items-center">
+                    <!-- Toggler -->
+                    <button data-te-sidenav-toggle-ref data-te-target="#sidenav-1"
+                        class="block ds-btn ds-btn-sm ds-btn-accent border-none mr-4 px-2.5 text-gray-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 xl:hidden"
+                        aria-controls="#sidenav-1" aria-haspopup="true">
+                        <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                                <path fill-rule="evenodd"
+                                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
 
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 20px;
-            width: 20px;
-            left: 2px;
-            bottom: 2px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked+.slider {
-            background-color: #2196F3;
-        }
-
-        input:focus+.slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(20px);
-            -ms-transform: translateX(20px);
-            transform: translateX(20px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
-
-    <div class="flex flex-wrap">
-        <div>
-            <div class="w-full self-center">
-                <!-- Judul Section -->
-                <div class="mt-12 ml-4 mb-4 md:mb-7 lg:ml-[16rem]">
-                    <h1 class="font-extrabold text-textColor text-[24px] md:text-[32px] text-[#353535]">Create New Manual
-                        Setting
-                    </h1>
-
-                    <div
-                        class="w-[95vw] lg:w-[74vw] xl:w-[78vw] bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md mt-4">
-                        <div class="mt-5">
-                            <form action="/manual" method="post">
-                                @csrf
-                                <div>
-                                    <label for="device" class="text-[#353535]">Device</label>
-                                    {{-- <input type="text" name="device" id="device" oninput="myFunction()"
-                                        class="border block p-1" value="{{ old('device') }}" required> --}}
-                                    <input type="text" placeholder="Type device name" name="device" id="device"
-                                        oninput="myFunction()" value="{{ old('device') }}" autofocus required
-                                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-2" />
-                                    <input type="hidden" name="slug" id="slug" value="" class="border">
-                                    @error('device')
-                                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="flex">
-                                    <div class="mt-4 flex flex-col justify-center">
-                                        <label for="pompa" class="text-[#353535] font-semibold">Pompa</label>
-                                        <label class="mt-2">
-                                            <input type="checkbox" id="checkPompa" onclick="check()"
-                                                class="toggle toggle-success" />
-                                            <input type="hidden" name="pompa" id="pompa">
-                                        </label>
-                                    </div>
-                                    <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
-                                        <label class="mt-2">
-                                            <input type="checkbox" id="checkSol1" onclick="check2()"
-                                                class="toggle toggle-success" />
-                                            <input type="hidden" name="sol_1" id="sol_1">
-                                        </label>
-                                    </div>
-                                    <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
-                                        <label class="mt-2">
-                                            <input type="checkbox" id="checkSol2" onclick="check3()"
-                                                class="toggle toggle-success" />
-                                            <input type="hidden" name="sol_2" id="sol_2">
-                                        </label>
-                                    </div>
-                                    <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
-                                        <label class="mt-2">
-                                            <input type="checkbox" id="checkSol3" onclick="check4()"
-                                                class="toggle toggle-success" />
-                                            <input type="hidden" name="sol_3" id="sol_3">
-                                        </label>
-                                    </div>
-                                    <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                                        <label for="sol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
-                                        <label class="mt-2">
-                                            <input type="checkbox" id="checkSol4" onclick="check5()"
-                                                class="toggle toggle-success" />
-                                            <input type="hidden" name="sol_4" id="sol_4">
-                                        </label>
-                                    </div>
-                                </div>
-                                <button type="submit"
-                                    class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4">Create
-                                    setting</button>
-                            </form>
-                        </div>
-                    </div>
+                    <!-- Judul Section -->
+                    <h1 class="font-extrabold text-[#353535] text-lg lg:text-[32px]">Create New Manual
+                        Setting</h1>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
+        <form action="/manual" method="post">
+            @csrf
+            <div>
+                <div class="flex flex-col justify-center text-start">
+                    <label for="device" class="text-[#353535] font-semibold">Device</label>
+                    <input type="text" placeholder="Type device name" name="device" id="device"
+                        oninput="myFunction()" value="{{ old('device') }}" autofocus required
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-2" />
+                    <input type="hidden" name="slug" id="slug" value="" class="border">
+                </div>
+                @error('device')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="flex">
+                <div class="mt-4 flex flex-col justify-center">
+                    <label for="pompa" class="text-[#353535] font-semibold">Pompa</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkPompa" onclick="check()" class="ds-toggle ds-toggle-success" />
+                        <input type="hidden" name="pompa" id="pompa">
+                    </label>
+                </div>
+                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                    <label for="sol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSol1" onclick="check2()" class="ds-toggle ds-toggle-success" />
+                        <input type="hidden" name="sol_1" id="sol_1">
+                    </label>
+                </div>
+                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                    <label for="sol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSol2" onclick="check3()" class="ds-toggle ds-toggle-success" />
+                        <input type="hidden" name="sol_2" id="sol_2">
+                    </label>
+                </div>
+                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                    <label for="sol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSol3" onclick="check4()" class="ds-toggle ds-toggle-success" />
+                        <input type="hidden" name="sol_3" id="sol_3">
+                    </label>
+                </div>
+                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                    <label for="sol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSol4" onclick="check5()" class="ds-toggle ds-toggle-success" />
+                        <input type="hidden" name="sol_4" id="sol_4">
+                    </label>
+                </div>
+            </div>
+            <button type="submit"
+                class="ds-btn ds-btn-sm ds-btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4 text-start flex">Create
+                setting</button>
+        </form>
     </div>
 
     <script>
