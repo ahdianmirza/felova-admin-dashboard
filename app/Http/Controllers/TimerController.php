@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Timer;
+use App\Models\Schedule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -11,11 +12,12 @@ class TimerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Timer $timer)
+    public function index(Timer $timer, Schedule $schedule)
     {
         return view('timer.index', [
             'title' => 'Timer',
-            'timers' => $timer->orderBy('created_at', 'desc')->limit(7)->get()
+            'timers' => $timer->orderBy('created_at', 'desc')->limit(7)->get(),
+            'schedules' => $schedule->all()
         ]);
     }
 

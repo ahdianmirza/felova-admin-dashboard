@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Manual;
 use App\Models\Timer;
+use App\Models\Device;
+use App\Models\Schedule;
 
 class DatabaseSeeder extends Seeder
 {
@@ -201,6 +203,151 @@ class DatabaseSeeder extends Seeder
             'detik' => 16,
             'durasi' => 7,
             'status' => 0,
+        ]);
+
+        Device::create([
+            'name' => 'HC001',
+            'slug' => 'hc001'
+        ]);
+
+        Device::create([
+            'name' => 'HC002',
+            'slug' => 'hc002'
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 1,
+            'hari' => 'Senin',
+            'sol_1' => 1,
+            'sol_2' => 0,
+            'sol_3' => 0,
+            'sol_4' => 0,
+            'jam' => 6,
+            'menit' => 10,
+            'detik' => 10,
+            'durasi' => 1,
+            'status' => 0
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 2,
+            'hari' => 'Selasa',
+            'sol_1' => 0,
+            'sol_2' => 1,
+            'sol_3' => 0,
+            'sol_4' => 0,
+            'jam' => 7,
+            'menit' => 11,
+            'detik' => 11,
+            'durasi' => 2,
+            'status' => 1
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 3,
+            'hari' => 'Rabu',
+            'sol_1' => 0,
+            'sol_2' => 0,
+            'sol_3' => 1,
+            'sol_4' => 0,
+            'jam' => 8,
+            'menit' => 12,
+            'detik' => 12,
+            'durasi' => 3,
+            'status' => 0
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 4,
+            'hari' => 'Kamis',
+            'sol_1' => 0,
+            'sol_2' => 0,
+            'sol_3' => 0,
+            'sol_4' => 1,
+            'jam' => 9,
+            'menit' => 13,
+            'detik' => 13,
+            'durasi' => 4,
+            'status' => 1
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 5,
+            'hari' => 'Jumat',
+            'sol_1' => 1,
+            'sol_2' => 1,
+            'sol_3' => 0,
+            'sol_4' => 0,
+            'jam' => 10,
+            'menit' => 14,
+            'detik' => 14,
+            'durasi' => 5,
+            'status' => 0
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 6,
+            'hari' => 'Sabtu',
+            'sol_1' => 1,
+            'sol_2' => 0,
+            'sol_3' => 1,
+            'sol_4' => 0,
+            'jam' => 11,
+            'menit' => 15,
+            'detik' => 15,
+            'durasi' => 6,
+            'status' => 1
+        ]);
+
+        Schedule::create([
+            'device_id' => 1,
+            'noJadwal' => 7,
+            'hari' => 'Minggu',
+            'sol_1' => 1,
+            'sol_2' => 0,
+            'sol_3' => 0,
+            'sol_4' => 1,
+            'jam' => 12,
+            'menit' => 16,
+            'detik' => 16,
+            'durasi' => 7,
+            'status' => 0
+        ]);
+
+        Schedule::create([
+            'device_id' => 2,
+            'noJadwal' => 1,
+            'hari' => 'Senin',
+            'sol_1' => 1,
+            'sol_2' => 0,
+            'sol_3' => 0,
+            'sol_4' => 0,
+            'jam' => 8,
+            'menit' => 10,
+            'detik' => 10,
+            'durasi' => 1,
+            'status' => 1
+        ]);
+
+        Schedule::create([
+            'device_id' => 2,
+            'noJadwal' => 2,
+            'hari' => 'Selasa',
+            'sol_1' => 1,
+            'sol_2' => 1,
+            'sol_3' => 0,
+            'sol_4' => 0,
+            'jam' => 9,
+            'menit' => 11,
+            'detik' => 11,
+            'durasi' => 2,
+            'status' => 0
         ]);
     }
 }
