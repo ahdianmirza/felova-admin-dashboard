@@ -26,25 +26,28 @@
     </div>
 
     <div class="w-full bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <div class="mt-5">
-            <form action="/timer/{{ $setting_time->id }}" method="post">
-                @method('put')
-                @csrf
-                <div class="mb-4">
+        <form action="/timer/{{ $setting_time->id }}" method="post">
+            @method('put')
+            @csrf
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="device" class="text-[#353535] font-semibold">Device</label>
                     <input type="text" placeholder="Type device name" name="device" id="device"
                         oninput="myFunction3()" value="{{ old('device', $setting_time->device) }}" autofocus required
-                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                     <input type="hidden" name="slug" id="slug" value="{{ old('slug', $setting_time->slug) }}"
                         class="border">
-                    @error('device')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
                 </div>
-                <div class="mb-4">
+                @error('device')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="hari" class="text-[#353535] font-semibold">Hari</label>
                     <select name="hari" id="hari"
-                        class="select select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1" id="hariSelect">
+                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1"
+                        id="hariSelect">
                         <option disabled selected>Select the day</option>
                         <option value="Senin" id="senin" {{ $setting_time->hari == 'Senin' ? 'selected' : '' }}>Senin
                         </option>
@@ -61,14 +64,16 @@
                         <option value="Minggu" id="minggu" {{ $setting_time->hari == 'Minggu' ? 'selected' : '' }}>
                             Minggu</option>
                     </select>
-                    @error('hari')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
                 </div>
-                <div class="mb-4">
+                @error('hari')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="noJadwal" class="text-[#353535] font-semibold">No. Jadwal</label>
                     <select name="noJadwal" id="noJadwal"
-                        class="select select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
                         <option disabled selected>Select the number of schedule</option>
                         <option value="1" {{ $setting_time->noJadwal == '1' ? 'selected' : '' }}>1
                         </option>
@@ -85,96 +90,104 @@
                         <option value="7" {{ $setting_time->noJadwal == '7' ? 'selected' : '' }}>7
                         </option>
                     </select>
-                    @error('noJadwal')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
                 </div>
-                <div class="flex mb-4">
-                    <div class="flex flex-col justify-center">
-                        <label for="checkSolTimUp1" class="text-[#353535] font-semibold">Solenoid 1</label>
-                        <label class="mt-2">
-                            <input type="checkbox" id="checkSolTimUp1" class="toggle toggle-success" onclick="checkClick3()"
-                                {{ $setting_time->sol_1 == 1 ? 'checked' : '' }}>
-                            <input type="hidden" name="sol_1" id="timSolUp1" value="{{ $setting_time->sol_1 }}">
-                        </label>
-                    </div>
-                    <div class="ml-6 flex flex-col justify-center">
-                        <label for="checkSolTimUp2" class="text-[#353535] font-semibold">Solenoid 2</label>
-                        <label class="mt-2">
-                            <input type="checkbox" id="checkSolTimUp2" class="toggle toggle-success" onclick="checkClick3()"
-                                {{ $setting_time->sol_2 == 1 ? 'checked' : '' }} />
-                            <input type="hidden" name="sol_2" id="timSolUp2" value="{{ $setting_time->sol_2 }}">
-                        </label>
-                    </div>
-                    <div class="ml-6 flex flex-col justify-center">
-                        <label for="checkSolTimUp3" class="text-[#353535] font-semibold">Solenoid
-                            3</label>
-                        <label class="mt-2">
-                            <input type="checkbox" id="checkSolTimUp3" class="toggle toggle-success"
-                                onclick="checkClick3()" {{ $setting_time->sol_3 == 1 ? 'checked' : '' }} />
-                            <input type="hidden" name="sol_3" id="timSolUp3"value="{{ $setting_time->sol_3 }}">
-                        </label>
-                    </div>
-                    <div class="ml-6 flex flex-col justify-center">
-                        <label for="checkSolTimUp4" class="text-[#353535] font-semibold">Solenoid
-                            4</label>
-                        <label class="mt-2">
-                            <input type="checkbox" id="checkSolTimUp4" class="toggle toggle-success"
-                                onclick="checkClick3()" {{ $setting_time->sol_4 == 1 ? 'checked' : '' }} />
-                            <input type="hidden" name="sol_4" id="timSolUp4" value="{{ $setting_time->sol_4 }}">
-                        </label>
-                    </div>
+                @error('noJadwal')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="flex mb-4">
+                <div class="flex flex-col justify-center">
+                    <label for="checkSolTimUp1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSolTimUp1" class="ds-toggle ds-toggle-success"
+                            onclick="checkClick3()" {{ $setting_time->sol_1 == 1 ? 'checked' : '' }}>
+                        <input type="hidden" name="sol_1" id="timSolUp1" value="{{ $setting_time->sol_1 }}">
+                    </label>
                 </div>
-                <div class="mb-4">
+                <div class="ml-6 flex flex-col justify-center">
+                    <label for="checkSolTimUp2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSolTimUp2" class="ds-toggle ds-toggle-success"
+                            onclick="checkClick3()" {{ $setting_time->sol_2 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_2" id="timSolUp2" value="{{ $setting_time->sol_2 }}">
+                    </label>
+                </div>
+                <div class="ml-6 flex flex-col justify-center">
+                    <label for="checkSolTimUp3" class="text-[#353535] font-semibold">Solenoid
+                        3</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSolTimUp3" class="ds-toggle ds-toggle-success"
+                            onclick="checkClick3()" {{ $setting_time->sol_3 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_3" id="timSolUp3"value="{{ $setting_time->sol_3 }}">
+                    </label>
+                </div>
+                <div class="ml-6 flex flex-col justify-center">
+                    <label for="checkSolTimUp4" class="text-[#353535] font-semibold">Solenoid
+                        4</label>
+                    <label class="mt-2">
+                        <input type="checkbox" id="checkSolTimUp4" class="ds-toggle ds-toggle-success"
+                            onclick="checkClick3()" {{ $setting_time->sol_4 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_4" id="timSolUp4" value="{{ $setting_time->sol_4 }}">
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="jam" class="text-[#353535] font-semibold">Jam</label>
                     <input type="number" placeholder="Type jam" name="jam" id="jam"
                         value="{{ old('jam', $setting_time->jam) }}" required
-                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    @error('jam')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
-                <div class="mb-4">
+                @error('jam')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="menit" class="text-[#353535] font-semibold">Menit</label>
                     <input type="number" placeholder="Type menit" name="menit" id="menit"
                         value="{{ old('menit', $setting_time->menit) }}" required
-                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    @error('menit')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
-                <div class="mb-4">
+                @error('menit')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="detik" class="text-[#353535] font-semibold">Detik</label>
                     <input type="number" placeholder="Type detik" name="detik" id="detik"
                         value="{{ old('detik', $setting_time->detik) }}" required
-                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    @error('detik')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
-                <div class="mb-4">
+                @error('detik')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <div class="flex flex-col justify-center items-start">
                     <label for="durasi" class="text-[#353535] font-semibold">Durasi</label>
                     <input type="number" placeholder="Type durasi" name="durasi" id="durasi"
                         value="{{ old('durasi', $setting_time->durasi) }}" required
-                        class="input input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    @error('durasi')
-                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                    @enderror
+                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
-                <div class="flex flex-col justify-center">
-                    <label for="status" class="text-[#353535] font-semibold">Status</label>
-                    <label class="mt-2">
-                        <input type="checkbox" id="checkStatusUp" onclick="checkClick3()" class="toggle toggle-success"
-                            {{ $setting_time->status == 1 ? 'checked' : '' }} />
-                        <input type="hidden" name="status" id="statusUp" value="{{ $setting_time->status }}">
-                    </label>
-                </div>
+                @error('durasi')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="flex flex-col justify-center items-start">
+                <label for="status" class="text-[#353535] font-semibold">Status</label>
+                <label class="mt-2">
+                    <input type="checkbox" id="checkStatusUp" onclick="checkClick3()"
+                        class="ds-toggle ds-toggle-success" {{ $setting_time->status == 1 ? 'checked' : '' }} />
+                    <input type="hidden" name="status" id="statusUp" value="{{ $setting_time->status }}">
+                </label>
+            </div>
 
-                <button type="submit"
-                    class="btn btn-sm btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4">Edit
-                    setting</button>
-            </form>
-        </div>
+            <button type="submit"
+                class="ds-btn ds-btn-sm ds-btn-primary flex border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4">Edit
+                setting</button>
+        </form>
     </div>
 
     <script>
