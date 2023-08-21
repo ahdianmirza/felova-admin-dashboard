@@ -101,9 +101,13 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit(Schedule $schedule, Device $device)
     {
-        //
+        return view('timer.edit', [
+            'title' => 'Edit Setting',
+            'schedule' => $schedule,
+            'device' => $device
+        ]);
     }
 
     /**

@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    @dd($setting_timer->id)
-
     <div class="flex flex-col text-start">
         <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
             <div class="w-full flex justify-between items-center">
@@ -28,17 +26,22 @@
     </div>
 
     <div class="w-full bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/timer/{{ $setting_time->id }}" method="post">
-            @method('put')
+        <form action="/update-timer/{{ $device->id }}/{{ $schedule->id }}/edit" method="post">
+            {{-- @method('put') --}}
             @csrf
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
                     <label for="device" class="text-[#353535] font-semibold">Device</label>
-                    <input type="text" placeholder="Type device name" name="device" id="device"
-                        oninput="myFunction3()" value="{{ old('device', $setting_time->device) }}" autofocus required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    <input type="hidden" name="slug" id="slug" value="{{ old('slug', $setting_time->slug) }}"
-                        class="border">
+                    <div class="flex flex-col justify-center items-start">
+                        <select name="device_id" id="device_id"
+                            class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                            <option disabled selected>Select the device</option>
+                            @foreach ($devices as $device)
+                                <option value="{{ $device->id }}" {{ $device->id == $device_id ? 'selected' : '' }}>
+                                    {{ $device->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 @error('device')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
@@ -51,19 +54,19 @@
                         class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1"
                         id="hariSelect">
                         <option disabled selected>Select the day</option>
-                        <option value="Senin" id="senin" {{ $setting_time->hari == 'Senin' ? 'selected' : '' }}>Senin
+                        <option value="Senin" id="senin" {{ $schedule->hari == 'Senin' ? 'selected' : '' }}>Senin
                         </option>
-                        <option value="Selasa" id="selasa" {{ $setting_time->hari == 'Selasa' ? 'selected' : '' }}>Selasa
+                        <option value="Selasa" id="selasa" {{ $schedule->hari == 'Selasa' ? 'selected' : '' }}>Selasa
                         </option>
-                        <option value="Rabu" id="rabu" {{ $setting_time->hari == 'Rabu' ? 'selected' : '' }}>Rabu
+                        <option value="Rabu" id="rabu" {{ $schedule->hari == 'Rabu' ? 'selected' : '' }}>Rabu
                         </option>
-                        <option value="Kamis" id="kamis" {{ $setting_time->hari == 'Kamis' ? 'selected' : '' }}>Kamis
+                        <option value="Kamis" id="kamis" {{ $schedule->hari == 'Kamis' ? 'selected' : '' }}>Kamis
                         </option>
-                        <option value="Jumat" id="jumat" {{ $setting_time->hari == 'Jumat' ? 'selected' : '' }}>Jumat
+                        <option value="Jumat" id="jumat" {{ $schedule->hari == 'Jumat' ? 'selected' : '' }}>Jumat
                         </option>
-                        <option value="Sabtu" id="sabtu" {{ $setting_time->hari == 'Sabtu' ? 'selected' : '' }}>Sabtu
+                        <option value="Sabtu" id="sabtu" {{ $schedule->hari == 'Sabtu' ? 'selected' : '' }}>Sabtu
                         </option>
-                        <option value="Minggu" id="minggu" {{ $setting_time->hari == 'Minggu' ? 'selected' : '' }}>
+                        <option value="Minggu" id="minggu" {{ $schedule->hari == 'Minggu' ? 'selected' : '' }}>
                             Minggu</option>
                     </select>
                 </div>
@@ -77,19 +80,19 @@
                     <select name="noJadwal" id="noJadwal"
                         class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
                         <option disabled selected>Select the number of schedule</option>
-                        <option value="1" {{ $setting_time->noJadwal == '1' ? 'selected' : '' }}>1
+                        <option value="1" {{ $schedule->noJadwal == '1' ? 'selected' : '' }}>1
                         </option>
-                        <option value="2" {{ $setting_time->noJadwal == '2' ? 'selected' : '' }}>2
+                        <option value="2" {{ $schedule->noJadwal == '2' ? 'selected' : '' }}>2
                         </option>
-                        <option value="3" {{ $setting_time->noJadwal == '3' ? 'selected' : '' }}>3
+                        <option value="3" {{ $schedule->noJadwal == '3' ? 'selected' : '' }}>3
                         </option>
-                        <option value="4" {{ $setting_time->noJadwal == '4' ? 'selected' : '' }}>4
+                        <option value="4" {{ $schedule->noJadwal == '4' ? 'selected' : '' }}>4
                         </option>
-                        <option value="5" {{ $setting_time->noJadwal == '5' ? 'selected' : '' }}>5
+                        <option value="5" {{ $schedule->noJadwal == '5' ? 'selected' : '' }}>5
                         </option>
-                        <option value="6" {{ $setting_time->noJadwal == '6' ? 'selected' : '' }}>6
+                        <option value="6" {{ $schedule->noJadwal == '6' ? 'selected' : '' }}>6
                         </option>
-                        <option value="7" {{ $setting_time->noJadwal == '7' ? 'selected' : '' }}>7
+                        <option value="7" {{ $schedule->noJadwal == '7' ? 'selected' : '' }}>7
                         </option>
                     </select>
                 </div>
@@ -102,16 +105,16 @@
                     <label for="checkSolTimUp1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTimUp1" class="ds-toggle ds-toggle-success"
-                            onclick="checkClick3()" {{ $setting_time->sol_1 == 1 ? 'checked' : '' }}>
-                        <input type="hidden" name="sol_1" id="timSolUp1" value="{{ $setting_time->sol_1 }}">
+                            onclick="checkClick3()" {{ $schedule->sol_1 == 1 ? 'checked' : '' }}>
+                        <input type="hidden" name="sol_1" id="timSolUp1" value="{{ $schedule->sol_1 }}">
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
                     <label for="checkSolTimUp2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTimUp2" class="ds-toggle ds-toggle-success"
-                            onclick="checkClick3()" {{ $setting_time->sol_2 == 1 ? 'checked' : '' }} />
-                        <input type="hidden" name="sol_2" id="timSolUp2" value="{{ $setting_time->sol_2 }}">
+                            onclick="checkClick3()" {{ $schedule->sol_2 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_2" id="timSolUp2" value="{{ $schedule->sol_2 }}">
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
@@ -119,8 +122,8 @@
                         3</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTimUp3" class="ds-toggle ds-toggle-success"
-                            onclick="checkClick3()" {{ $setting_time->sol_3 == 1 ? 'checked' : '' }} />
-                        <input type="hidden" name="sol_3" id="timSolUp3"value="{{ $setting_time->sol_3 }}">
+                            onclick="checkClick3()" {{ $schedule->sol_3 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_3" id="timSolUp3"value="{{ $schedule->sol_3 }}">
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
@@ -128,8 +131,8 @@
                         4</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTimUp4" class="ds-toggle ds-toggle-success"
-                            onclick="checkClick3()" {{ $setting_time->sol_4 == 1 ? 'checked' : '' }} />
-                        <input type="hidden" name="sol_4" id="timSolUp4" value="{{ $setting_time->sol_4 }}">
+                            onclick="checkClick3()" {{ $schedule->sol_4 == 1 ? 'checked' : '' }} />
+                        <input type="hidden" name="sol_4" id="timSolUp4" value="{{ $schedule->sol_4 }}">
                     </label>
                 </div>
             </div>
@@ -137,7 +140,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="jam" class="text-[#353535] font-semibold">Jam</label>
                     <input type="number" placeholder="Type jam" name="jam" id="jam"
-                        value="{{ old('jam', $setting_time->jam) }}" required
+                        value="{{ old('jam', $schedule->jam) }}" required
                         class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
                 @error('jam')
@@ -148,7 +151,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="menit" class="text-[#353535] font-semibold">Menit</label>
                     <input type="number" placeholder="Type menit" name="menit" id="menit"
-                        value="{{ old('menit', $setting_time->menit) }}" required
+                        value="{{ old('menit', $schedule->menit) }}" required
                         class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
                 @error('menit')
@@ -159,7 +162,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="detik" class="text-[#353535] font-semibold">Detik</label>
                     <input type="number" placeholder="Type detik" name="detik" id="detik"
-                        value="{{ old('detik', $setting_time->detik) }}" required
+                        value="{{ old('detik', $schedule->detik) }}" required
                         class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
                 @error('detik')
@@ -170,7 +173,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="durasi" class="text-[#353535] font-semibold">Durasi</label>
                     <input type="number" placeholder="Type durasi" name="durasi" id="durasi"
-                        value="{{ old('durasi', $setting_time->durasi) }}" required
+                        value="{{ old('durasi', $schedule->durasi) }}" required
                         class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
                 @error('durasi')
@@ -181,8 +184,8 @@
                 <label for="status" class="text-[#353535] font-semibold">Status</label>
                 <label class="mt-2">
                     <input type="checkbox" id="checkStatusUp" onclick="checkClick3()"
-                        class="ds-toggle ds-toggle-success" {{ $setting_time->status == 1 ? 'checked' : '' }} />
-                    <input type="hidden" name="status" id="statusUp" value="{{ $setting_time->status }}">
+                        class="ds-toggle ds-toggle-success" {{ $schedule->status == 1 ? 'checked' : '' }} />
+                    <input type="hidden" name="status" id="statusUp" value="{{ $schedule->status }}">
                 </label>
             </div>
 

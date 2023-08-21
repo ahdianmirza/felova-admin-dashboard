@@ -214,7 +214,7 @@
                                         {{-- Update --}}
                                         <div
                                             class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] mr-2">
-                                            <a href="/timer/{{ $schedule->id }}/edit"
+                                            <a href="/update-timer/{{ $schedule->device->id }}/{{ $schedule->id }}"
                                                 class="stroke-current text-[#01875d]">
                                                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round"
