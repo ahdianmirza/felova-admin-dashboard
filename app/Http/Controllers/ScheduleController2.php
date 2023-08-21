@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Timer;
 use App\Models\Schedule;
+use App\Models\Device;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TimerController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Timer $timer, Schedule $schedule)
+    public function index()
     {
         return view('timer.index', [
             'title' => 'Timer',
-            'timers' => $timer->orderBy('created_at', 'desc')->limit(7)->get(),
-            'schedules' => $schedule->all()
+            'schedules' => Schedule::all()
         ]);
     }
 
@@ -58,7 +57,10 @@ class TimerController extends Controller
 
         $validatedData = $request->validate([
             'device' => 'required|max:255',
-            'slug' => 'required|max:255',
+            'slug' => 'required|max:255'
+        ]);
+
+        $validatedData2 = $request->validate([
             'hari' => 'required|max:255',
             'noJadwal' => 'required|numeric',
             'sol_1' => 'nullable',
@@ -72,14 +74,15 @@ class TimerController extends Controller
             'status' => 'nullable'
         ]);
 
-        Timer::create($validatedData);
+        Device::create($validatedData);
+        Schedule::create($validatedData2);
         return redirect('/timer')->with('success', 'New setting has been added!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Timer $timer)
+    public function show(Schedule $schedule)
     {
         //
     }
@@ -87,7 +90,7 @@ class TimerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Timer $timer, Schedule $schedule)
+    public function edit(Schedule $schedule)
     {
         return view('timer.edit', [
             'title' => 'Update Setting',
@@ -98,7 +101,7 @@ class TimerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Timer $timer)
+    public function update(Request $request, Schedule $schedule, Device $device)
     {
         if ($request['sol_1'] == null) {
             $request['sol_1'] = 0;
@@ -118,6 +121,11 @@ class TimerController extends Controller
 
         $validatedData = $request->validate([
             'device' => 'required|max:255',
+            'slug' => 'required|max:255'
+        ]);
+
+        $validatedData2 = $request->validate([
+            'device' => 'required|max:255',
             'slug' => 'required|max:255',
             'hari' => 'required|max:255',
             'noJadwal' => 'required|numeric',
@@ -132,18 +140,22 @@ class TimerController extends Controller
             'status' => 'nullable'
         ]);
 
-        Timer::where('id', $timer->id)
+        Device::where('id', $device->id)
                 ->update($validatedData);
+
+        Schedule::where('id', $schedule->id)
+                ->update($validatedData2);
         return redirect('/timer')->with('success', 'New setting has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Timer $timer, Schedule $schedule)
+    public function destroy(Schedule $schedule)
     {
-        Schedule::destroy($schedule->id);
+        // dd(Schedule::where('id', $schedule->id));
 
+        Schedule::destroy($schedule->id);
         return redirect('/timer')->with('success', 'Setting has been deleted!');
     }
 }

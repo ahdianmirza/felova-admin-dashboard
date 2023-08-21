@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
+    @dd($setting_timer->id)
+
     <div class="flex flex-col text-start">
         <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
             <div class="w-full flex justify-between items-center">

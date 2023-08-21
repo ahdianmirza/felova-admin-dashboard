@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="flex flex-col text-start">
-        <div class="w-full flex justify-center items-center mt-4 mb-5 md:mb-7">
+        <div class="w-full flex justify-center items-center mt-4 mb-4">
             <div class="w-full flex justify-between items-center">
                 <div class="flex justify-center items-center">
                     <!-- Toggler -->
@@ -24,18 +24,51 @@
                 </div>
             </div>
         </div>
+
+        @if (session()->has('success'))
+            <div class="ds-alert ds-alert-success mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
         <form action="/timer" method="post">
             @csrf
             <div class="mb-4">
-                <div class="flex flex-col justify-center items-start">
-                    <label for="device" class="text-[#353535] font-semibold">Device</label>
-                    <input type="text" placeholder="Type device name" name="device" id="device"
-                        oninput="myFunction2()" value="{{ old('device') }}" autofocus required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                    <input type="hidden" name="slug" id="slug" value="" class="border">
+                <div class="flex justify-start items-center">
+                    <div class="flex flex-col justify-center items-start">
+                        <label for="device" class="text-[#353535] font-semibold">Device</label>
+                        <div class="flex justify-center items-center w-full">
+                            <select name="device_id" id="device_id"
+                                class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                                <option disabled selected>Select the device</option>
+                                @foreach ($devices as $device)
+                                    <option value="{{ $device->id }}">{{ $device->name }}</option>
+                                @endforeach
+                            </select>
+
+                            <div class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] ml-4">
+                                <a href="/create-device" class="stroke-current text-[#01875d]">
+                                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M4.75 12C4.75 7.99594 7.99594 4.75 12 4.75V4.75C16.0041 4.75 19.25 7.99594 19.25 12V12C19.25 16.0041 16.0041 19.25 12 19.25V19.25C7.99594 19.25 4.75 16.0041 4.75 12V12Z">
+                                        </path>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5" d="M12 8.75003V15.25"></path>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5" d="M15.25 12L8.75 12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @error('device')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
@@ -83,21 +116,24 @@
                 <div class="flex flex-col justify-center">
                     <label for="timerSol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
-                        <input type="checkbox" id="checkSolTim1" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
+                        <input type="checkbox" id="checkSolTim1" onclick="checkTim()"
+                            class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_1" id="timerSol_1">
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
                     <label for="timerSol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
-                        <input type="checkbox" id="checkSolTim2" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
+                        <input type="checkbox" id="checkSolTim2" onclick="checkTim()"
+                            class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_2" id="timerSol_2">
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
                     <label for="timerSol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
                     <label class="mt-2">
-                        <input type="checkbox" id="checkSolTim3" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
+                        <input type="checkbox" id="checkSolTim3" onclick="checkTim()"
+                            class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_3" id="timerSol_3">
                     </label>
                 </div>
@@ -166,13 +202,6 @@
                 setting</button>
         </form>
     </div>
-
-    <script>
-        function myFunction2() {
-            let text = document.getElementById("device").value;
-            document.getElementById("slug").value = text.toLowerCase();
-        }
-    </script>
 
     <script>
         function checkTim() {

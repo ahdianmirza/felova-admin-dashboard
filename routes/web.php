@@ -3,7 +3,9 @@
 use App\Models\Manual;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimerController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ManualController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -27,4 +29,7 @@ Route::get('/graphics', function () {
 });
 
 Route::resource('/manual', ManualController::class);
-Route::resource('/timer', TimerController::class);
+Route::resource('/timer', ScheduleController::class);
+Route::get('/create-device', [DeviceController::class, 'createDevice']);
+Route::post('/create-device/device', [DeviceController::class, 'storeDevice']);
+// Route::delete('/timer/{id}/{device_id}/schedule', [ScheduleController::class, 'destroySchedule']);
