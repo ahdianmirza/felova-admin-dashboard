@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Manual;
 use App\Models\Timer;
+use App\Models\Schedule;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -36,9 +38,8 @@ class ApiController extends Controller
     }
 
     public function updateTimer(Request $request) {
-        $device = Timer::firstWhere('device', $request->device);
-        $device->device = $request->device;
-        $device->slug = $request->slug;
+        $device = Schedule::firstWhere('device_id', $request->device_id);
+        $device->device_id = $request->device_id;
         $device->hari = $request->hari;
         $device->noJadwal = $request->noJadwal;
         $device->sol_1 = $request->sol_1;
@@ -66,7 +67,10 @@ class ApiController extends Controller
 
     public function listTimer() {
         $data_post = request()->all();
-        $data = Timer::firstWhere('device', $data_post['device']);
+        $device = $data_post['device'];
+        $device_data = Device::firstWhere('name', $device);
+
+        $data = Schedule::firstWhere('device_id', $device_data->id);
         return response()->json($data);
     }
 }
