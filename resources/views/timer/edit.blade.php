@@ -31,7 +31,7 @@
             @csrf
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
-                    <label for="device" class="text-[#353535] font-semibold">Device</label>
+                    <label for="device_id" class="text-[#353535] font-semibold">Device</label>
                     <div class="flex flex-col justify-center items-start">
                         <select name="device_id" id="device_id"
                             class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                 </div>
-                @error('device')
+                @error('device_id')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
             </div>
@@ -138,34 +138,12 @@
             </div>
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
-                    <label for="jam" class="text-[#353535] font-semibold">Jam</label>
-                    <input type="number" placeholder="Type jam" name="jam" id="jam"
-                        value="{{ old('jam', $schedule->jam) }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
+                    <label for="waktuMulai" class="text-[#353535] font-semibold">Waktu Mulai</label>
+                    <input type="time" name="waktuMulai" id="waktuMulai"
+                        class="ds-input ds-input-bordered w-full max-w-xs block text-[#353535] mt-1"
+                        value="{{ old('waktuMulai', "$schedule->jam:$schedule->menit") }}" required>
                 </div>
-                @error('jam')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-col justify-center items-start">
-                    <label for="menit" class="text-[#353535] font-semibold">Menit</label>
-                    <input type="number" placeholder="Type menit" name="menit" id="menit"
-                        value="{{ old('menit', $schedule->menit) }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                </div>
-                @error('menit')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-col justify-center items-start">
-                    <label for="detik" class="text-[#353535] font-semibold">Detik</label>
-                    <input type="number" placeholder="Type detik" name="detik" id="detik"
-                        value="{{ old('detik', $schedule->detik) }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                </div>
-                @error('detik')
+                @error('waktuMulai')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
             </div>
@@ -181,7 +159,7 @@
                 @enderror
             </div>
             <div class="flex flex-col justify-center items-start">
-                <label for="status" class="text-[#353535] font-semibold">Status</label>
+                <label for="checkStatusUp" class="text-[#353535] font-semibold">Status</label>
                 <label class="mt-2">
                     <input type="checkbox" id="checkStatusUp" onclick="checkClick3()"
                         class="ds-toggle ds-toggle-success" {{ $schedule->status == 1 ? 'checked' : '' }} />

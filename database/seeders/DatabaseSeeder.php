@@ -111,8 +111,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 0,
             'sol_4' => 0,
-            'jam' => 6,
-            'menit' => 10,
+            'jam' => '06',
+            'menit' => '10',
+            'detik' => 0,
             'durasi' => 1,
             'status' => 0
         ]);
@@ -125,8 +126,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 1,
             'sol_3' => 0,
             'sol_4' => 0,
-            'jam' => 7,
-            'menit' => 11,
+            'jam' => '07',
+            'menit' => '11',
+            'detik' => 0,
             'durasi' => 2,
             'status' => 1
         ]);
@@ -139,8 +141,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 1,
             'sol_4' => 0,
-            'jam' => 8,
-            'menit' => 12,
+            'jam' => '08',
+            'menit' => '12',
+            'detik' => 0,
             'durasi' => 3,
             'status' => 0
         ]);
@@ -153,8 +156,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 0,
             'sol_4' => 1,
-            'jam' => 9,
-            'menit' => 13,
+            'jam' => '09',
+            'menit' => '13',
+            'detik' => 0,
             'durasi' => 4,
             'status' => 1
         ]);
@@ -167,8 +171,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 1,
             'sol_3' => 0,
             'sol_4' => 0,
-            'jam' => 10,
-            'menit' => 14,
+            'jam' => '10',
+            'menit' => '14',
+            'detik' => 0,
             'durasi' => 5,
             'status' => 0
         ]);
@@ -181,8 +186,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 1,
             'sol_4' => 0,
-            'jam' => 11,
-            'menit' => 15,
+            'jam' => '11',
+            'menit' => '15',
+            'detik' => 0,
             'durasi' => 6,
             'status' => 1
         ]);
@@ -195,8 +201,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 0,
             'sol_4' => 1,
-            'jam' => 12,
-            'menit' => 16,
+            'jam' => '12',
+            'menit' => '16',
+            'detik' => 0,
             'durasi' => 7,
             'status' => 0
         ]);
@@ -209,8 +216,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 0,
             'sol_4' => 0,
-            'jam' => 8,
-            'menit' => 10,
+            'jam' => '08',
+            'menit' => '10',
+            'detik' => 0,
             'durasi' => 1,
             'status' => 1
         ]);
@@ -223,8 +231,9 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 1,
             'sol_3' => 0,
             'sol_4' => 0,
-            'jam' => 9,
-            'menit' => 11,
+            'jam' => '09',
+            'menit' => '11',
+            'detik' => 0,
             'durasi' => 2,
             'status' => 0
         ]);

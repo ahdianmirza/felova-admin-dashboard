@@ -31,7 +31,7 @@ class DeviceScheduleController extends Controller
         return redirect('/timer/create')->with('success', 'New device has been added!');
     }
 
-    public function editSchedule($device_id, $schedule_id) {
+    public function editSchedule(Request $request, $device_id, $schedule_id) {
         return view('timer.edit', [
             'title' => 'Edit Setting',
             'schedule' => Schedule::find($schedule_id),
@@ -42,8 +42,57 @@ class DeviceScheduleController extends Controller
     }
 
     public function updateSchedule(Request $request, $device_id, $schedule_id) {
+        if ($request['sol_1'] == null) {
+            $request['sol_1'] = 0;
+        }
+
+        if ($request['sol_2'] == null) {
+            $request['sol_2'] = 0;
+        }
+
+        if ($request['sol_3'] == null) {
+            $request['sol_3'] = 0;
+        }
+
+        if ($request['sol_4'] == null) {
+            $request['sol_4'] = 0;
+        }
+
+        if ($request['status'] == null) {
+            $request['status'] = 0;
+        }
+
+        $request->validate([
+            'device_id' => 'required',
+            'hari' => 'required|max:255',
+            'noJadwal' => 'required|numeric',
+            'sol_1' => 'nullable',
+            'sol_2' => 'nullable',
+            'sol_3' => 'nullable',
+            'sol_4' => 'nullable',
+            'waktuMulai' => 'required',
+            'durasi' => 'required|numeric|between:1,60',
+            'status' => 'nullable'
+        ]);
+
+        $fields = ['jam', 'menit'];
+        $waktuMulai = array_combine($fields, explode(':', $request->waktuMulai));
+
         $model = Schedule::find($schedule_id);
-        $model->update($request->all());
+        $model->device_id = $request->device_id;
+        $model->hari = $request->hari;
+        $model->noJadwal = $request->noJadwal;
+        $model->sol_1 = $request->sol_1;
+        $model->sol_2 = $request->sol_2;
+        $model->sol_3 = $request->sol_3;
+        $model->sol_4 = $request->sol_4;
+        $model->jam = $waktuMulai['jam'];
+        $model->menit = $waktuMulai['menit'];
+        $model->detik = 0;
+        $model->durasi = $request->durasi;
+        $model->status = $request->status;
+        $model->save();
+        // $model->update($request->all());
 
         return redirect('/timer')->with('success', 'Setting has been updated !');
     }
