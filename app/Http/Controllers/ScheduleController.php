@@ -72,8 +72,6 @@ class ScheduleController extends Controller
         $fields = ['jam', 'menit'];
         $waktuMulai = array_combine($fields, explode(':', $request->waktuMulai));
 
-        dd($waktuMulai);
-
         $model = new Schedule;
         $model->device_id = $request->device_id;
         $model->hari = $request->hari;
