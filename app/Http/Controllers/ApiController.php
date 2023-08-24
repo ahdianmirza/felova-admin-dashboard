@@ -65,12 +65,16 @@ class ApiController extends Controller
         return Manual::latest()->get();
     }
 
-    public function listTimer() {
+    public function listTimer(Request $request) {
         $data_post = request()->all();
-        $device = $data_post['device'];
+        $device = $request->device;
+        $noJadwal = $request->noJadwal;
         $device_data = Device::firstWhere('name', $device);
 
-        $data = Schedule::firstWhere('device_id', $device_data->id);
+        $data = Schedule::where([
+            'device_id' => $device_data->id,
+            'noJadwal' => $noJadwal
+        ])->get();
         return response()->json($data);
     }
 }
