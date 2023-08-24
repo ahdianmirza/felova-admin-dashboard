@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('sol_4')->default(false);
             $table->integer('jam');
             $table->integer('menit');
-            $table->integer('detik');
+            $table->integer('detik')->default(0);
             $table->integer('durasi');
             $table->integer('status')->default(false);
             $table->timestamps();

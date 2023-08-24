@@ -43,7 +43,7 @@
             <div class="mb-4">
                 <div class="flex justify-start items-center">
                     <div class="flex flex-col justify-center items-start">
-                        <label for="device" class="text-[#353535] font-semibold">Device</label>
+                        <label for="device_id" class="text-[#353535] font-semibold">Device</label>
                         <div class="flex justify-center items-center w-full">
                             <select name="device_id" id="device_id"
                                 class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                @error('device')
+                @error('device_id')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
             </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="flex mb-4">
                 <div class="flex flex-col justify-center">
-                    <label for="timerSol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                    <label for="checkSolTim1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTim1" onclick="checkTim()"
                             class="ds-toggle ds-toggle-success" />
@@ -122,7 +122,7 @@
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
-                    <label for="timerSol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                    <label for="checkSolTim2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTim2" onclick="checkTim()"
                             class="ds-toggle ds-toggle-success" />
@@ -130,7 +130,7 @@
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
-                    <label for="timerSol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
+                    <label for="checkSolTim3" class="text-[#353535] font-semibold">Solenoid 3</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTim3" onclick="checkTim()"
                             class="ds-toggle ds-toggle-success" />
@@ -138,7 +138,7 @@
                     </label>
                 </div>
                 <div class="ml-6 flex flex-col justify-center">
-                    <label for="timerSol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
+                    <label for="checkSolTim4" class="text-[#353535] font-semibold">Solenoid 4</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSolTim4" onclick="checkTim()"
                             class="ds-toggle ds-toggle-success" />
@@ -148,41 +148,19 @@
             </div>
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
-                    <label for="jam" class="text-[#353535] font-semibold">Jam</label>
-                    <input type="number" placeholder="Type jam" name="jam" id="jam"
-                        value="{{ old('jam') }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
+                    <label for="waktuMulai" class="text-[#353535] font-semibold">Waktu Mulai</label>
+                    <input type="time" name="waktuMulai" id="waktuMulai"
+                        class="ds-input ds-input-bordered w-full max-w-xs block text-[#353535] mt-1"
+                        value="{{ old('waktuMulai') }}" required>
                 </div>
-                @error('jam')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-col justify-center items-start">
-                    <label for="menit" class="text-[#353535] font-semibold">Menit</label>
-                    <input type="number" placeholder="Type menit" name="menit" id="menit"
-                        value="{{ old('menit') }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                </div>
-                @error('menit')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-col justify-center items-start">
-                    <label for="detik" class="text-[#353535] font-semibold">Detik</label>
-                    <input type="number" placeholder="Type detik" name="detik" id="detik"
-                        value="{{ old('detik') }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
-                </div>
-                @error('detik')
+                @error('waktuMulai')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
                     <label for="durasi" class="text-[#353535] font-semibold">Durasi</label>
-                    <input type="number" placeholder="Type durasi" name="durasi" id="durasi"
+                    <input type="number" placeholder="Tulis durasi (menit)" name="durasi" id="durasi"
                         value="{{ old('durasi') }}" required
                         class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
                 </div>
@@ -191,7 +169,7 @@
                 @enderror
             </div>
             <div class="flex flex-col justify-center items-start">
-                <label for="status" class="text-[#353535] font-semibold">Status</label>
+                <label for="checkStatus" class="text-[#353535] font-semibold">Status</label>
                 <label class="mt-2">
                     <input type="checkbox" id="checkStatus" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
                     <input type="hidden" name="status" id="status">

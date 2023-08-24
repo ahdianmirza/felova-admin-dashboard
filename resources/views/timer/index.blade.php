@@ -83,7 +83,7 @@
                             <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->noJadwal }}
                             </td>
                             <td class="text-center text-[#353535] font-semibold py-2">
-                                {{ $schedule->jam < 10 ? "0$schedule->jam" : "$schedule->jam" }}:{{ $schedule->menit < 10 ? "0$schedule->menit" : "$schedule->menit" }}:{{ $schedule->detik < 10 ? "0$schedule->detik" : "$schedule->detik" }}
+                                {{ $schedule->jam < 10 ? "0$schedule->jam" : "$schedule->jam" }}:{{ $schedule->menit < 10 ? "0$schedule->menit" : "$schedule->menit" }}
                             </td>
                             <td class="text-center text-[#353535] font-semibold py-2">
                                 <div class="flex justify-center items-center gap-2">
