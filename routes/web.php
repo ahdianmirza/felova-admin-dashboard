@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Manual;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TimerController;
-use App\Http\Controllers\DeviceScheduleController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ManualController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceScheduleController;
 
 
 /*
@@ -34,4 +34,7 @@ Route::get('/create-device', [DeviceScheduleController::class, 'createDevice']);
 Route::post('/create-device/device', [DeviceScheduleController::class, 'storeDevice']);
 Route::get('/update-timer/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'editSchedule']);
 Route::post('/update-timer/{device_id}/{schedule_id}/edit', [DeviceScheduleController::class, 'updateSchedule']);
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 // Route::delete('/timer/{id}/{device_id}/schedule', [ScheduleController::class, 'destroySchedule']);

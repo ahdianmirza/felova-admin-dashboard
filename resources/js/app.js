@@ -1,8 +1,8 @@
 import "./bootstrap";
 
-import { Sidenav, Dropdown, Ripple, initTE } from "tw-elements";
+import { Sidenav, Dropdown, Ripple, initTE, Input } from "tw-elements";
 
-initTE({ Sidenav, Dropdown, Ripple });
+initTE({ Sidenav, Dropdown, Ripple, Input });
 
 const sidenav2 = document.getElementById("sidenav-1");
 const sidenavInstance2 = Sidenav.getInstance(sidenav2);

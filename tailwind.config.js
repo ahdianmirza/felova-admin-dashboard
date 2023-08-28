@@ -15,6 +15,11 @@ export default {
             screens: {
                 "2xl": "1366px",
             },
+            backgroundImage: {
+                "login-balitro": "url('/public/img/login/5.png')",
+                "login-vanili": "url('/public/img/login/12.png')",
+                "login-vanili-2": "url('/public/img/login/13.png')",
+            },
         },
     },
     plugins: [require("daisyui"), require("tw-elements/dist/plugin.cjs")],
