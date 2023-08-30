@@ -27,7 +27,8 @@
                 @csrf
                 <!--Username input-->
                 <div class="relative" data-te-input-wrapper-init>
-                    <input type="text" name="name" id="name" autocomplete="off"
+                    <input type="text" name="name" id="name" autocomplete="off" required
+                        value="{{ old('name') }}"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.42rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         placeholder="Enter name" />
                     <label for="name"
@@ -41,7 +42,8 @@
 
                 <!--Username input-->
                 <div class="relative mt-6" data-te-input-wrapper-init>
-                    <input type="text" name="username" id="username" autocomplete="off"
+                    <input type="text" name="username" id="username" autocomplete="off" required
+                        value="{{ old('username') }}"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.42rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         placeholder="Enter username" />
                     <label for="username"
@@ -55,7 +57,8 @@
 
                 <!--Password input-->
                 <div class="relative mt-6" data-te-input-wrapper-init>
-                    <input type="password" name="password" id="password" autocomplete="off"
+                    <input type="password" name="password" id="password" autocomplete="off" required
+                        value="{{ old('password') }}"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.42rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         placeholder="Enter password" />
                     <label for="password"

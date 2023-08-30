@@ -71,9 +71,13 @@ class ApiController extends Controller
         $noJadwal = $request->noJadwal;
         $device_data = Device::firstWhere('name', $device);
 
-        $data = Schedule::firstWhere('device_id', $device_data->id);
+        $data = Schedule::where([
+            'device_id' => $device_data->id,
+            'noJadwal' => $noJadwal
+        ])->get();
 
-        return response()->json($data);
-        // return response()->json($data);
+        $data_responses = response()->json($data);
+        
+        return $data_responses;
     }
 }
