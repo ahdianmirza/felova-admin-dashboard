@@ -73,6 +73,29 @@
                         class="font-medium {{ Request::is('timer*') || Request::is('update-timer*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Timer</span>
                 </a>
             </li>
+            <li class="relative py-2">
+                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] text-[#B4B990] outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    href="/timer" data-te-sidenav-link-ref>
+                    <span
+                        class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
+                        <svg width="24" height="24" class="stroke-current" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M15.75 8.75L19.25 12L15.75 15.25"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M19 12H10.75"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M15.25 4.75H6.75C5.64543 4.75 4.75 5.64543 4.75 6.75V17.25C4.75 18.3546 5.64543 19.25 6.75 19.25H15.25">
+                            </path>
+                        </svg>
+                    </span>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit"
+                            class="font-medium group-hover:text-white text-[14px] 2xl:text-base">Logout</button>
+                    </form>
+                </a>
+            </li>
         </ul>
     </nav>
     <!-- Sidenav -->

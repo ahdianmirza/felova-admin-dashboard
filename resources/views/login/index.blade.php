@@ -15,32 +15,66 @@
 
 <body
     class="bg-login-vanili-2 bg-cover bg-no-repeat relative font-sans before:absolute before:top-0 before:w-full before:h-full before:bg-black before:bg-opacity-40">
-    <main class="text-center flex justify-center items-center w-full h-screen">
+    <main class="text-center flex flex-col justify-center items-center w-full h-screen">
         <!-- card -->
         <div
             class="bg-white p-6 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-100 border-opacity-20 block w-2/5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            @if (session()->has('success'))
+                <div class="ds-alert ds-alert-success mb-4 w-full text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-white">{{ session('success') }}</span>
+                </div>
+            @endif
+
+            @if (session()->has('loginError'))
+                <div class="ds-alert ds-alert-error mb-4 w-full text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-white">{{ session('loginError') }}</span>
+                </div>
+            @endif
+
             <div>
                 <h1 class="font-semibold text-3xl text-white">Login</h1>
             </div>
 
-            <form class="mt-4">
+            <form class="mt-4" action="/login" method="post">
+                @csrf
                 <!--E-mail input-->
                 <div class="relative mb-6" data-te-input-wrapper-init>
-                    <input type="email"
-                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.42rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <label for="exampleInputEmail2"
+                    <input type="text" name="username" id="username" autocomplete="off" required
+                        value="{{ old('username') }}"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.42rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 text-white focus:text-white data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        placeholder="Enter username" />
+                    <label for="username"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-white text-opacity-60 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-white peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-white">Username</label>
                 </div>
+                @error('username')
+                    <div class="flex">
+                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    </div>
+                @enderror
 
                 <!--Password input-->
                 <div class="relative mb-6" data-te-input-wrapper-init>
-                    <input type="password"
-                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="exampleInputPassword2" placeholder="Password" />
-                    <label for="exampleInputPassword2"
+                    <input type="password" name="password" id="password" autocomplete="off" required
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-20 text-white focus:text-white data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        placeholder="Password" />
+                    <label for="password"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-white text-opacity-60 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-white peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-white">Password</label>
                 </div>
+                @error('password')
+                    <div class="flex">
+                        <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    </div>
+                @enderror
 
                 <!--Sign in button-->
                 <button type="submit"
