@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Manual;
-use App\Models\Timer;
+use App\Models\User;
 use App\Models\Device;
 use App\Models\Schedule;
 
@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+
+        User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'password' => 'admin123'
+        ]);
 
         Manual::create([
             'device' => 'HC001',
