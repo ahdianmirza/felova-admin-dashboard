@@ -77,14 +77,14 @@
                             <tr class="border-b-2">
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->device->name }}
+                                <td class="text-center text-[#353535] py-2">{{ $schedule->device->name }}
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->hari }}
+                                <td class="text-center text-[#353535] py-2">{{ $schedule->hari }}
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->noJadwal }}
+                                <td class="text-center text-[#353535] py-2">{{ $schedule->noJadwal }}
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">
-                                    {{ "$schedule->jam : $schedule->menit" }}
+                                <td class="text-center text-[#353535] py-2">
+                                    {{ "$schedule->jam : $schedule->menit WIB" }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
                                     <div class="flex justify-center items-center gap-2">
@@ -169,7 +169,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">
+                                <td class="text-center text-[#353535] py-2">
                                     {{ "$schedule->durasiMenit min $schedule->durasiDetik sec" }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">

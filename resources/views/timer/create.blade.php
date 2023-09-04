@@ -160,9 +160,6 @@
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
                     <label for="durasi" class="text-[#353535] font-semibold">Durasi</label>
-                    {{-- <input type="number" placeholder="Tulis durasi (menit)" name="durasi" id="durasi"
-                        value="{{ old('durasi') }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-1" /> --}}
                     <input type="time" name="durasi" id="durasi"
                         class="ds-input ds-input-bordered w-full max-w-full block text-[#353535] mt-1"
                         value="{{ old('durasi') }}" required>

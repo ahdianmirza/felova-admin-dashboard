@@ -31,7 +31,7 @@ class DeviceScheduleController extends Controller
         return redirect('/timer/create')->with('success', 'New device has been added!');
     }
 
-    public function editSchedule(Request $request, $device_id, $schedule_id) {
+    public function editSchedule($device_id, $schedule_id) {
         return view('timer.edit', [
             'title' => 'Edit Setting',
             'schedule' => Schedule::find($schedule_id),
@@ -71,12 +71,15 @@ class DeviceScheduleController extends Controller
             'sol_3' => 'nullable',
             'sol_4' => 'nullable',
             'waktuMulai' => 'required',
-            'durasi' => 'required|numeric|between:1,60',
+            'durasi' => 'required',
             'status' => 'nullable'
         ]);
 
         $fields = ['jam', 'menit'];
         $waktuMulai = array_combine($fields, explode(':', $request->waktuMulai));
+
+        $fieldsDurasi = ['durasiMenit', 'durasiDetik'];
+        $durasi = array_combine($fieldsDurasi, explode(':', $request->durasi));
 
         $model = Schedule::find($schedule_id);
         $model->device_id = $request->device_id;
@@ -89,7 +92,8 @@ class DeviceScheduleController extends Controller
         $model->jam = $waktuMulai['jam'];
         $model->menit = $waktuMulai['menit'];
         $model->detik = 0;
-        $model->durasi = $request->durasi;
+        $model->durasiMenit = $durasi['durasiMenit'];
+        $model->durasiDetik = $durasi['durasiDetik'];
         $model->status = $request->status;
         $model->save();
         // $model->update($request->all());
