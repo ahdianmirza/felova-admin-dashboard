@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'username' => 'admin',
-            'password' => 'admin123'
+            'password' => bcrypt('admin123')
         ]);
 
         Manual::create([
@@ -121,7 +121,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '06',
             'menit' => '10',
             'detik' => 0,
-            'durasi' => 1,
+            'durasiMenit' => '01',
+            'durasiDetik' => '10',
             'status' => 0
         ]);
 
@@ -136,7 +137,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '07',
             'menit' => '11',
             'detik' => 0,
-            'durasi' => 2,
+            'durasiMenit' => '02',
+            'durasiDetik' => '12',
             'status' => 1
         ]);
 
@@ -151,7 +153,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '08',
             'menit' => '12',
             'detik' => 0,
-            'durasi' => 3,
+            'durasiMenit' => '03',
+            'durasiDetik' => '13',
             'status' => 0
         ]);
 
@@ -166,7 +169,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '09',
             'menit' => '13',
             'detik' => 0,
-            'durasi' => 4,
+            'durasiMenit' => '04',
+            'durasiDetik' => '14',
             'status' => 1
         ]);
 
@@ -181,7 +185,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '10',
             'menit' => '14',
             'detik' => 0,
-            'durasi' => 5,
+            'durasiMenit' => '05',
+            'durasiDetik' => '15',
             'status' => 0
         ]);
 
@@ -196,7 +201,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '11',
             'menit' => '15',
             'detik' => 0,
-            'durasi' => 6,
+            'durasiMenit' => '06',
+            'durasiDetik' => '16',
             'status' => 1
         ]);
 
@@ -211,7 +217,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '12',
             'menit' => '16',
             'detik' => 0,
-            'durasi' => 7,
+            'durasiMenit' => '07',
+            'durasiDetik' => '17',
             'status' => 0
         ]);
 
@@ -226,7 +233,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '08',
             'menit' => '10',
             'detik' => 0,
-            'durasi' => 1,
+            'durasiMenit' => '08',
+            'durasiDetik' => '18',
             'status' => 1
         ]);
 
@@ -241,7 +249,8 @@ class DatabaseSeeder extends Seeder
             'jam' => '09',
             'menit' => '11',
             'detik' => 0,
-            'durasi' => 2,
+            'durasiMenit' => '09',
+            'durasiDetik' => '19',
             'status' => 0
         ]);
     }

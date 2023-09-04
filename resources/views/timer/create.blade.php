@@ -42,11 +42,11 @@
             @csrf
             <div class="mb-4">
                 <div class="flex justify-start items-center">
-                    <div class="flex flex-col justify-center items-start">
+                    <div class="flex flex-col justify-center items-start w-full">
                         <label for="device_id" class="text-[#353535] font-semibold">Device</label>
-                        <div class="flex justify-center items-center w-full">
+                        <div class="flex justify-start items-center w-full">
                             <select name="device_id" id="device_id"
-                                class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                                class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-full block mt-1">
                                 <option disabled selected>Select the device</option>
                                 @foreach ($devices as $device)
                                     <option value="{{ $device->id }}">{{ $device->name }}</option>
@@ -78,7 +78,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="hari" class="text-[#353535] font-semibold">Hari</label>
                     <select name="hari" id="hari"
-                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-full block mt-1">
                         <option disabled selected>Select the day</option>
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
@@ -97,7 +97,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="noJadwal" class="text-[#353535] font-semibold">No. Jadwal</label>
                     <select name="noJadwal" id="noJadwal"
-                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-xs block mt-1">
+                        class="ds-select ds-select-bordered bg-white text-[#353535] w-full max-w-full block mt-1">
                         <option disabled selected>Select the number of schedule</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -150,7 +150,7 @@
                 <div class="flex flex-col justify-center items-start">
                     <label for="waktuMulai" class="text-[#353535] font-semibold">Waktu Mulai</label>
                     <input type="time" name="waktuMulai" id="waktuMulai"
-                        class="ds-input ds-input-bordered w-full max-w-xs block text-[#353535] mt-1"
+                        class="ds-input ds-input-bordered w-full max-w-full block text-[#353535] mt-1"
                         value="{{ old('waktuMulai') }}" required>
                 </div>
                 @error('waktuMulai')
@@ -160,9 +160,12 @@
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">
                     <label for="durasi" class="text-[#353535] font-semibold">Durasi</label>
-                    <input type="number" placeholder="Tulis durasi (menit)" name="durasi" id="durasi"
+                    {{-- <input type="number" placeholder="Tulis durasi (menit)" name="durasi" id="durasi"
                         value="{{ old('durasi') }}" required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
+                        class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-1" /> --}}
+                    <input type="time" name="durasi" id="durasi"
+                        class="ds-input ds-input-bordered w-full max-w-full block text-[#353535] mt-1"
+                        value="{{ old('durasi') }}" required>
                 </div>
                 @error('durasi')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>

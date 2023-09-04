@@ -65,12 +65,15 @@ class ScheduleController extends Controller
             'sol_3' => 'nullable',
             'sol_4' => 'nullable',
             'waktuMulai' => 'required',
-            'durasi' => 'required|numeric|between:1,60',
+            'durasi' => 'required',
             'status' => 'nullable'
         ]);
 
-        $fields = ['jam', 'menit'];
-        $waktuMulai = array_combine($fields, explode(':', $request->waktuMulai));
+        $fieldsWaktuMulai = ['jam', 'menit'];
+        $waktuMulai = array_combine($fieldsWaktuMulai, explode(':', $request->waktuMulai));
+
+        $fieldsDurasi = ['durasiMenit', 'durasiDetik'];
+        $durasi = array_combine($fieldsDurasi, explode(':', $request->durasi));
 
         $model = new Schedule;
         $model->device_id = $request->device_id;
@@ -83,7 +86,8 @@ class ScheduleController extends Controller
         $model->jam = $waktuMulai['jam'];
         $model->menit = $waktuMulai['menit'];
         $model->detik = 0;
-        $model->durasi = $request->durasi;
+        $model->durasiMenit = $durasi['durasiMenit'];
+        $model->durasiDetik = $durasi['durasiDetik'];
         $model->status = $request->status;
         $model->save();
 

@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('jam');
             $table->string('menit');
             $table->integer('detik')->default(0);
-            $table->integer('durasi');
+            $table->string('durasiMenit');
+            $table->string('durasiDetik');
             $table->integer('status')->default(false);
             $table->timestamps();
         });

@@ -33,7 +33,7 @@
                     <label for="name" class="text-[#353535] font-semibold">Device</label>
                     <input type="text" placeholder="Type device name" name="name" id="name"
                         oninput="myFunction2()" value="{{ old('name') }}" autofocus required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-1" />
+                        class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-1" />
                     <input type="hidden" name="slug" id="slug" value="" class="border">
                 </div>
                 @error('name')

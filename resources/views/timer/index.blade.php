@@ -40,7 +40,7 @@
     {{-- Table --}}
     <div class="w-full bg-white p-3 rounded-lg md:rounded-xl shadow-md md:shadow-md">
         <div class="flex items-center justify-between">
-            <div class="ml-2">
+            <div class="ml-2 flex flex-col justify-center items-start">
                 <h1 class="text-2xl font-extrabold text-[#353535]">Timer Setting Lists</h1>
                 <p><span class="font-bold text-[#353535]">{{ $schedules->count() }} total,</span> <small
                         class="text-[#A3A4A8]">proceed
@@ -84,7 +84,7 @@
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->noJadwal }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
-                                    {{ "$schedule->jam:$schedule->menit" }}
+                                    {{ "$schedule->jam : $schedule->menit" }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
                                     <div class="flex justify-center items-center gap-2">
@@ -169,8 +169,8 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $schedule->durasi }}
-                                    menit
+                                <td class="text-center text-[#353535] font-semibold py-2">
+                                    {{ "$schedule->durasiMenit min $schedule->durasiDetik sec" }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
                                     <div class="flex justify-center items-center">
