@@ -75,7 +75,7 @@
                             <tr class="border-b-2">
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}
                                 </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $manual->device }}
+                                <td class="text-center text-[#353535] py-2">{{ $manual->device }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
                                     <div class="flex justify-center items-center">

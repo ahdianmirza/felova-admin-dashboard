@@ -34,7 +34,7 @@
                     <label for="device" class="text-[#353535] font-semibold">Device</label>
                     <input type="text" placeholder="Type device name" name="device" id="device"
                         oninput="myFunction()" value="{{ old('device', $setting->device) }}" autofocus required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-xs block text-[#353535] mt-2" />
+                        class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-2" />
                     <input type="hidden" name="slug" id="slug" value="{{ old('slug', $setting->slug) }}"
                         class="border">
                 </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="flex">
                 <div class="mt-4 flex flex-col justify-center items-center">
-                    <label for="pompa" class="text-[#353535] font-semibold">Pompa</label>
+                    <label for="checkPompa" class="text-[#353535] font-semibold">Pompa</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkPompa" onclick="checkClick()"
                             {{ $setting->pompa == 1 ? 'checked' : '' }} class="ds-toggle ds-toggle-success" />
@@ -52,7 +52,7 @@
                     </label>
                 </div>
                 <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                    <label for="sol_1" class="text-[#353535] font-semibold">Solenoid 1</label>
+                    <label for="checkSol1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol1" onclick="checkClick()"
                             {{ $setting->sol_1 == 1 ? 'checked' : '' }} class="ds-toggle ds-toggle-success" />
@@ -60,7 +60,7 @@
                     </label>
                 </div>
                 <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                    <label for="sol_2" class="text-[#353535] font-semibold">Solenoid 2</label>
+                    <label for="checkSol2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol2" onclick="checkClick()"
                             {{ $setting->sol_2 == 1 ? 'checked' : '' }} class="ds-toggle ds-toggle-success" />
@@ -68,7 +68,7 @@
                     </label>
                 </div>
                 <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                    <label for="sol_3" class="text-[#353535] font-semibold">Solenoid 3</label>
+                    <label for="checkSol3" class="text-[#353535] font-semibold">Solenoid 3</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol3" onclick="checkClick()"
                             {{ $setting->sol_3 == 1 ? 'checked' : '' }} class="ds-toggle ds-toggle-success" />
@@ -76,7 +76,7 @@
                     </label>
                 </div>
                 <div class="mt-4 ml-6 flex flex-col justify-center items-center">
-                    <label for="sol_4" class="text-[#353535] font-semibold">Solenoid 4</label>
+                    <label for="checkSol4" class="text-[#353535] font-semibold">Solenoid 4</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol4" onclick="checkClick()"
                             {{ $setting->sol_4 == 1 ? 'checked' : '' }} class="ds-toggle ds-toggle-success" />
