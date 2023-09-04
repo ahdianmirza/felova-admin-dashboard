@@ -25,16 +25,7 @@
             </div>
         </div>
 
-        @if (session()->has('success'))
-            <div class="ds-alert ds-alert-success mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
+        @include('partials.alert')
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
@@ -71,7 +62,7 @@
                     </div>
                 </div>
                 @error('device_id')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-4">
@@ -90,7 +81,7 @@
                     </select>
                 </div>
                 @error('hari')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-4">
@@ -109,15 +100,14 @@
                     </select>
                 </div>
                 @error('noJadwal')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <div class="flex mb-4">
                 <div class="flex flex-col justify-center">
                     <label for="checkSolTim1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
-                        <input type="checkbox" id="checkSolTim1" onclick="checkTim()"
-                            class="ds-toggle ds-toggle-success" />
+                        <input type="checkbox" id="checkSolTim1" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_1" id="timerSol_1">
                     </label>
                 </div>
@@ -154,7 +144,7 @@
                         value="{{ old('waktuMulai') }}" required>
                 </div>
                 @error('waktuMulai')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-4">
@@ -165,7 +155,7 @@
                         value="{{ old('durasi') }}" required>
                 </div>
                 @error('durasi')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <div class="flex flex-col justify-center items-start">

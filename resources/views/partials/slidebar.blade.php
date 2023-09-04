@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('timer*') || Request::is('update-timer*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('timer*') || Request::is('update-timer*') || Request::is('create-device*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/timer" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -70,7 +70,7 @@
                         </svg>
                     </span>
                     <span
-                        class="font-medium {{ Request::is('timer*') || Request::is('update-timer*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Timer</span>
+                        class="font-medium {{ Request::is('timer*') || Request::is('update-timer*') || Request::is('create-device*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Timer</span>
                 </a>
             </li>
             <li class="relative py-2">

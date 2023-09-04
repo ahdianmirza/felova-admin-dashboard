@@ -37,7 +37,7 @@
                     <input type="hidden" name="slug" id="slug" value="" class="border">
                 </div>
                 @error('name')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                    <small class="text-[#FF5789] mt-2 flex">{{ $message }}</small>
                 @enderror
             </div>
             <button type="submit"

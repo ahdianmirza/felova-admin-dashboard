@@ -22,8 +22,8 @@ class DeviceScheduleController extends Controller
     public function storeDevice(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255'
+            'name' => 'required|max:255|unique:devices',
+            'slug' => 'required|max:255|unique:devices'
         ]);
 
         Device::create($validatedData);

@@ -25,16 +25,7 @@
         </div>
         {{-- Top Part End --}}
 
-        @if (session()->has('success'))
-            <div class="ds-alert ds-alert-success mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
+        @include('partials.alert')
     </div>
 
     {{-- Table --}}
@@ -220,8 +211,7 @@
                                                 class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] mr-2">
                                                 <a href="/update-timer/{{ $schedule->device->id }}/{{ $schedule->id }}"
                                                     class="stroke-current text-[#01875d]">
-                                                    <svg width="24" height="24" fill="none"
-                                                        viewBox="0 0 24 24">
+                                                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                         <path stroke="currentColor" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-width="1.5"
                                                             d="M4.75 19.25L9 18.25L18.2929 8.95711C18.6834 8.56658 18.6834 7.93342 18.2929 7.54289L16.4571 5.70711C16.0666 5.31658 15.4334 5.31658 15.0429 5.70711L5.75 15L4.75 19.25Z">
