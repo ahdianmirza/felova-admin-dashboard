@@ -20,6 +20,12 @@ export default {
                 "login-vanili": "url('/public/img/login/12.png')",
                 "login-vanili-2": "url('/public/img/login/13.png')",
             },
+            colors: {
+                "main-bg": "#F7F7F7",
+                "secondary": "#CCCCCC",
+                "on-button": "#b3d086",
+                "off-button": "#fda4a6",
+            },
         },
     },
     plugins: [require("daisyui"), require("tw-elements/dist/plugin.cjs")],

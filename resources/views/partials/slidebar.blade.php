@@ -74,6 +74,57 @@
                 </a>
             </li>
             <li class="relative py-2">
+                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('soil*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    href="/soil" data-te-sidenav-link-ref>
+                    <span
+                        class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
+                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg width="800px" height="800px" class="fill-current" viewBox="0 0 32 32" id="Layer_1"
+                            data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: none;
+                                    }
+                                </style>
+                            </defs>
+                            <path
+                                d="M24.5,28A5.385,5.385,0,0,1,19,22.751a5.3837,5.3837,0,0,1,.874-2.8308L23.49,14.5383a1.217,1.217,0,0,1,2.02,0L29.06,19.8154A5.4923,5.4923,0,0,1,30,22.751,5.385,5.385,0,0,1,24.5,28Zm0-11.38-2.9356,4.3672A3.3586,3.3586,0,0,0,21,22.751a3.51,3.51,0,0,0,7,0,3.4356,3.4356,0,0,0-.63-1.867Z"
+                                transform="translate(0 0)" />
+                            <circle cx="5" cy="13" r="1" />
+                            <circle cx="11" cy="19" r="1" />
+                            <circle cx="15" cy="25" r="1" />
+                            <circle cx="17" cy="15" r="1" />
+                            <circle cx="13" cy="11" r="1" />
+                            <circle cx="27" cy="11" r="1" />
+                            <circle cx="9" cy="27" r="1" />
+                            <circle cx="3" cy="21" r="1" />
+                            <rect x="2" y="6" width="28" height="2" />
+                            <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;"
+                                class="cls-1" width="32" height="32" />
+                        </svg>
+                    </span>
+                    <span
+                        class="font-medium {{ Request::is('soil*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Soil</span>
+                </a>
+            </li>
+            <li class="relative py-2">
+                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('weather*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    href="/weather" data-te-sidenav-link-ref>
+                    <span
+                        class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" class="stroke-current" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="1.5"
+                                d="M4.75 14C4.75 15.7949 6.20507 17.25 8 17.25H16C17.7949 17.25 19.25 15.7949 19.25 14C19.25 12.2869 17.9246 10.8834 16.2433 10.759C16.1183 8.5239 14.2663 6.75 12 6.75C9.73368 6.75 7.88168 8.5239 7.75672 10.759C6.07542 10.8834 4.75 12.2869 4.75 14Z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span
+                        class="font-medium {{ Request::is('weather*') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Weather</span>
+                </a>
+            </li>
+            <li class="relative py-2">
                 <form action="/logout" method="post" href="/logout">
                     @csrf
                     <button type="submit"

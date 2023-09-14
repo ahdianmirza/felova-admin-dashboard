@@ -46,7 +46,6 @@
             </div>
         </div>
 
-
         <div class="mt-5">
             <table class="table-auto border-none text-xs md:text-[14px] w-full">
                 <thead>

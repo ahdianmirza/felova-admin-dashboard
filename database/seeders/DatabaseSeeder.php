@@ -8,6 +8,7 @@ use App\Models\Manual;
 use App\Models\User;
 use App\Models\Device;
 use App\Models\Schedule;
+use App\Models\StatusManual;
 
 class DatabaseSeeder extends Seeder
 {
@@ -40,64 +41,14 @@ class DatabaseSeeder extends Seeder
             'sol_4' => 1,
         ]);
 
-        Manual::create([
-            'device' => 'HC002',
-            'slug' => 'hc002',
-            'pompa' => 1,
-            'sol_1' => 0,
-            'sol_2' => 1,
-            'sol_3' => 1,
-            'sol_4' => 1,
+        StatusManual::create([
+            'manual_id' => 1,
+            'status' => 'nyala'
         ]);
 
-        Manual::create([
-            'device' => 'HC003',
-            'slug' => 'hc003',
-            'pompa' => 1,
-            'sol_1' => 0,
-            'sol_2' => 0,
-            'sol_3' => 1,
-            'sol_4' => 1,
-        ]);
-
-        Manual::create([
-            'device' => 'HC004',
-            'slug' => 'hc004',
-            'pompa' => 1,
-            'sol_1' => 0,
-            'sol_2' => 0,
-            'sol_3' => 1,
-            'sol_4' => 1,
-        ]);
-
-        Manual::create([
-            'device' => 'HC005',
-            'slug' => 'hc005',
-            'pompa' => 1,
-            'sol_1' => 0,
-            'sol_2' => 0,
-            'sol_3' => 1,
-            'sol_4' => 1,
-        ]);
-
-        Manual::create([
-            'device' => 'HC006',
-            'slug' => 'hc006',
-            'pompa' => 0,
-            'sol_1' => 0,
-            'sol_2' => 1,
-            'sol_3' => 0,
-            'sol_4' => 0,
-        ]);
-
-        Manual::create([
-            'device' => 'HC007',
-            'slug' => 'hc007',
-            'pompa' => 0,
-            'sol_1' => 0,
-            'sol_2' => 0,
-            'sol_3' => 0,
-            'sol_4' => 0,
+        StatusManual::create([
+            'manual_id' => 1,
+            'status' => 'mati'
         ]);
 
         Device::create([

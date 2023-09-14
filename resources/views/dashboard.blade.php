@@ -21,7 +21,7 @@
                 <!-- Judul Section -->
                 <div class="flex flex-col justify-center items-start">
                     <h1 class="font-extrabold text-[#353535] text-lg lg:text-[32px]">Dashboard</h1>
-                    <p class="text-[#CCCCCC] text-xs lg:text-base">Good to see you, Vincent !</p>
+                    <p class="text-secondary text-xs lg:text-base">Good to see you, Vincent !</p>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                         </div>
                     </label>
                     <input type="text" name="search" id="search" placeholder="Track data"
-                        class="w-full block py-[13px] pl-2 pr-[48px] text-[#353535] bg-white rounded-2xl placeholder:text-[#CCCCCC] focus:outline-none">
+                        class="w-full block py-[13px] pl-2 pr-[48px] text-[#353535] bg-white rounded-2xl placeholder:text-secondary focus:outline-none">
                 </form>
             </div>
 
@@ -106,7 +106,7 @@
                                     <div class="flex justify-center items-center">
                                         @if ($manual->pompa == 1)
                                             <div
-                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-on-button hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                                 <span class="hidden lg:block text-[#f5f8ed] stroke-current">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
                                             </div>
                                         @else
                                             <div
-                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                                class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-off-button hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                                 <span class="hidden lg:block text-[#fef2f2] stroke-current">
                                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +144,7 @@
                                     class="text-center flex justify-center gap-2 items-center py-2 text-[#353535] font-semibold">
                                     @if ($manual->sol_1 == 1)
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-on-button hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                 1
@@ -153,7 +153,7 @@
                                         </div>
                                     @else
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-off-button hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                 1
@@ -164,7 +164,7 @@
 
                                     @if ($manual->sol_2 == 1)
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-on-button hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                 2
@@ -173,7 +173,7 @@
                                         </div>
                                     @else
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-off-button hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                 2
@@ -184,7 +184,7 @@
 
                                     @if ($manual->sol_3 == 1)
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-on-button hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                 3
@@ -193,7 +193,7 @@
                                         </div>
                                     @else
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-off-button hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                 3
@@ -204,7 +204,7 @@
 
                                     @if ($manual->sol_4 == 1)
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#b3d086] hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-on-button hover:bg-[#97bc5f] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full px-2 hidden lg:block text-[#f5f8ed] bg-[#97bc5f]">
                                                 4
@@ -213,7 +213,7 @@
                                         </div>
                                     @else
                                         <div
-                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-[#fda4a6] hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
+                                            class="ds-btn ds-btn-xs lg:ds-btn-sm ds-btn-success rounded-full text-xs lg:text-[14px] bg-off-button hover:bg-[#fa6f72] cursor-default hover:shadow-md border-none">
                                             <span
                                                 class="text-xs rounded-full hidden lg:block px-2 text-[#fef2f2] bg-[#fa6f72]">
                                                 4

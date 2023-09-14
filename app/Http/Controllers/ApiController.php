@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manual;
-use App\Models\Timer;
 use App\Models\Schedule;
 use App\Models\Device;
 use Illuminate\Http\Request;
@@ -35,6 +34,10 @@ class ApiController extends Controller
         } else {
             return ["result" => "Update operastion has been failed"];
         }
+    }
+
+    public function statusManual() {
+        
     }
 
     public function updateTimer(Request $request) {

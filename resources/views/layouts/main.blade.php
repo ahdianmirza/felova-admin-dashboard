@@ -10,10 +10,13 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 
+    {{-- favicon --}}
+    <link rel="website icon" type="png" href="{{ asset('img/morf-vanili.png') }}">
+
     <title>Felova | {{ $title }}</title>
 </head>
 
-<body class="bg-[#F7F7F7] font-sans">
+<body class="bg-main-bg font-sans">
     @include('partials.slidebar')
 
     <main class="p-2 lg:p-4 !pl-[260px] text-center" id="content">
