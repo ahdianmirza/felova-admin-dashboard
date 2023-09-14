@@ -8,6 +8,7 @@ use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManualDataController;
 use App\Http\Controllers\DeviceScheduleController;
 
 /*
@@ -45,4 +46,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/soil', [SoilController::class, 'index'])->middleware('auth');
 Route::get('/weather', [WeatherController::class, 'index'])->middleware('auth');
+
+Route::get('/data-manual', [ManualDataController::class, 'index'])->middleware('auth');
+
 // Route::delete('/timer/{id}/{device_id}/schedule', [ScheduleController::class, 'destroySchedule']);
