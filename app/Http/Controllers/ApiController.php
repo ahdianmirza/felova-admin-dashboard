@@ -7,6 +7,7 @@ use App\Models\Schedule;
 use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DataSoil;
 
 class ApiController extends Controller
 {
@@ -82,5 +83,9 @@ class ApiController extends Controller
         $data_responses = response()->json($data);
         
         return $data_responses;
+    }
+
+    public function dataSoil(Request $request) {
+        DataSoil::create($request->all());
     }
 }

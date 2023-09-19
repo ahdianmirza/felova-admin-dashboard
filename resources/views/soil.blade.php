@@ -30,38 +30,46 @@
         <div class="flex items-center justify-between">
             <div class="ml-2 flex flex-col justify-center items-start">
                 <h1 class="text-2xl font-extrabold text-[#353535]">Soil Data</h1>
-                <p><span class="font-bold text-[#353535]">0 total,</span> <small class="text-[#A3A4A8]">incoming
+                <p><span class="font-bold text-[#353535]">{{ count($allSoilDatas) }} total,</span> <small
+                        class="text-[#A3A4A8]">incoming
                         data.</small>
                 </p>
             </div>
         </div>
 
         <div class="mt-5">
-            <table class="table-auto border-none text-xs md:text-[14px] w-full">
+            <table class="table-auto border-none text-xs md:text-[14px] w-full mb-5">
                 <thead>
                     <tr class="border-t-2">
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">No</th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Device</th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Pompa
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Suhu 1</th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Suhu 2
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Selenoid
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kelembapan 1
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Action</th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kelembapan 2</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>test</td>
-                    </tr>
-                    {{-- @if ($manuals->count())
-                        
+                    @if ($soilDatas->count())
+                        @foreach ($soilDatas as $soilData)
+                            <tr class="border-b-2">
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->temp_1 }}°C</td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->temp_2 }}°C</td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->hum_1 }}%</td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->hum_2 }}%</td>
+                            </tr>
+                        @endforeach
                     @else
                         <td colspan="5" class="text-center p-2 border-b-2">
                             <p class="text-center text-lg">No data found.</p>
                         </td>
-                    @endif --}}
+                    @endif
                 </tbody>
             </table>
         </div>
     </div>
+
+    {{ $soilDatas->links() }}
 @endsection
