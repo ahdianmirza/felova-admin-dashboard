@@ -18,7 +18,7 @@
     <main class="text-center flex flex-col justify-center items-center w-full h-screen">
         <!-- card -->
         <div
-            class="bg-white p-6 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-100 border-opacity-20 block w-2/5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            class="bg-white p-6 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-100 border-opacity-20 block w-11/12 xl:w-2/5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
             @if (session()->has('success'))
                 <div class="ds-alert ds-alert-success mb-4 w-full text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"

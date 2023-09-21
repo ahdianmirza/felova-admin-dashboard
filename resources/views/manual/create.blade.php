@@ -30,7 +30,7 @@
         <form action="/manual" method="post">
             @csrf
             <div>
-                <div class="flex flex-col justify-center text-start">
+                <div class="flex flex-col justify-center text-start mb-4">
                     <label for="device" class="text-[#353535] font-semibold">Device</label>
                     <input type="text" placeholder="Type device name" name="device" id="device"
                         oninput="myFunction()" value="{{ old('device') }}" autofocus required
@@ -41,36 +41,36 @@
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="flex">
-                <div class="mt-4 flex flex-col justify-center">
+            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                <div class="flex flex-col justify-center items-start">
                     <label for="checkPompa" class="text-[#353535] font-semibold">Pompa</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkPompa" onclick="check()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="pompa" id="pompa">
                     </label>
                 </div>
-                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                <div class="flex flex-col justify-center items-start">
                     <label for="checkSol1" class="text-[#353535] font-semibold">Solenoid 1</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol1" onclick="check2()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_1" id="sol_1">
                     </label>
                 </div>
-                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                <div class="flex flex-col justify-center items-start">
                     <label for="checkSol2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol2" onclick="check3()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_2" id="sol_2">
                     </label>
                 </div>
-                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                <div class="flex flex-col justify-center items-start">
                     <label for="checkSol3" class="text-[#353535] font-semibold">Solenoid 3</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol3" onclick="check4()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_3" id="sol_3">
                     </label>
                 </div>
-                <div class="mt-4 ml-6 flex flex-col justify-center items-center">
+                <div class="flex flex-col justify-center items-start">
                     <label for="checkSol4" class="text-[#353535] font-semibold">Solenoid 4</label>
                     <label class="mt-2">
                         <input type="checkbox" id="checkSol4" onclick="check5()" class="ds-toggle ds-toggle-success" />
