@@ -37,23 +37,23 @@ class ApiController extends Controller
         }
     }
 
-    public function statusManual() {
-        
-    }
-
     public function updateTimer(Request $request) {
-        $device = Schedule::firstWhere('device_id', $request->device_id);
-        $device->device_id = $request->device_id;
-        $device->hari = $request->hari;
+        $device = $request->device;
+        $device_data = Device::firstWhere('name', $device);
+
+        $device = Schedule::firstWhere('device_id', $device_data->id);
+        $device->device_id = $device->id;
         $device->noJadwal = $request->noJadwal;
+        $device->hari = $request->hari;
         $device->sol_1 = $request->sol_1;
         $device->sol_2 = $request->sol_2;
         $device->sol_3 = $request->sol_3;
         $device->sol_4 = $request->sol_4;
         $device->jam = $request->jam;
         $device->menit = $request->menit;
-        $device->detik = $request->detik;
-        $device->durasi = $request->durasi;
+        $device->detik = 0;
+        $device->durasiMenit = $request->durasiMenit;
+        $device->durasiDetik = $request->durasiDetik;
         $device->status = $request->status;
         
         $result = $device->save();
@@ -70,7 +70,6 @@ class ApiController extends Controller
     }
 
     public function listTimer(Request $request) {
-        $data_post = request()->all();
         $device = $request->device;
         $noJadwal = $request->noJadwal;
         $device_data = Device::firstWhere('name', $device);
