@@ -58,23 +58,59 @@
                         @foreach ($dataWeathers as $dataWeather)
                             <tr class="border-b-2">
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $dataWeather->suhuUdara }}°C
-                                </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">
-                                    {{ $dataWeather->kelembapanUdara }}%
-                                </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">
-                                    {{ $dataWeather->intensitasCahaya }}%
-                                </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $dataWeather->curahHujan }} mm
-                                </td>
-                                <td class="text-center text-[#353535] font-semibold py-2">
-                                    {{ $dataWeather->kecepatanAngin }} m/s
-                                </td>
+                                @if ($dataWeather->suhuUdara == null || $dataWeather->suhuUdara == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $dataWeather->suhuUdara }}°C
+                                    </td>
+                                @endif
+
+                                @if ($dataWeather->kelembapanUdara == null || $dataWeather->kelembapanUdara == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $dataWeather->kelembapanUdara }}%
+                                    </td>
+                                @endif
+
+                                @if ($dataWeather->intensitasCahaya == null || $dataWeather->intensitasCahaya == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $dataWeather->intensitasCahaya }}%
+                                    </td>
+                                @endif
+
+                                @if ($dataWeather->curahHujan == null || $dataWeather->curahHujan == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $dataWeather->curahHujan }} mm
+                                    </td>
+                                @endif
+
+                                @if ($dataWeather->kecepatanAngin == null || $dataWeather->kecepatanAngin == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $dataWeather->kecepatanAngin }} m/s
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     @else
-                        <td colspan="5" class="text-center p-2 border-b-2">
+                        <td colspan="6" class="text-center p-2 border-b-2">
                             <p class="text-center text-lg">No data found.</p>
                         </td>
                     @endif

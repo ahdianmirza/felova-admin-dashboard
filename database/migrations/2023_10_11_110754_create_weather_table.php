@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('weather', function (Blueprint $table) {
             $table->id();
-            $table->string('suhuUdara');
-            $table->string('kelembapanUdara');
-            $table->string('intensitasCahaya');
-            $table->string('curahHujan');
-            $table->string('kecepatanAngin');
+            $table->string('suhuUdara')->nullable();
+            $table->string('kelembapanUdara')->nullable();
+            $table->string('intensitasCahaya')->nullable();
+            $table->string('curahHujan')->nullable();
+            $table->string('kecepatanAngin')->nullable();
             $table->timestamps();
         });
     }

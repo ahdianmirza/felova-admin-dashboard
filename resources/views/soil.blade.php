@@ -55,10 +55,46 @@
                         @foreach ($soilDatas as $soilData)
                             <tr class="border-b-2">
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->temp_1 }}°C</td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->temp_2 }}°C</td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->hum_1 }}%</td>
-                                <td class="text-center text-[#353535] font-semibold py-2">{{ $soilData->hum_2 }}%</td>
+
+                                @if ($soilData->temp_1 == null || $soilData->temp_1 == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $soilData->temp_1 }}°C
+                                    </td>
+                                @endif
+
+                                @if ($soilData->temp_2 == null || $soilData->temp_2 == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $soilData->temp_2 }}°C
+                                    </td>
+                                @endif
+
+                                @if ($soilData->hum_1 == null || $soilData->hum_1 == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $soilData->hum_1 }}%
+                                    </td>
+                                @endif
+
+                                @if ($soilData->hum_2 == null || $soilData->hum_2 == 0)
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        -
+                                    </td>
+                                @else
+                                    <td class="text-center text-[#353535] font-semibold py-2">
+                                        {{ $soilData->hum_2 }}%
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     @else
