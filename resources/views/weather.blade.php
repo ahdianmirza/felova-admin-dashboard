@@ -38,7 +38,7 @@
         </div>
 
         <div class="mt-5">
-            <table class="table-auto border-none text-xs md:text-[14px] w-full">
+            <table class="table-auto border-none text-xs md:text-[14px] w-full mb-5">
                 <thead>
                     <tr class="border-t-2">
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">No</th>
@@ -47,7 +47,7 @@
                         </th>
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Intensitas Cahaya
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Curah Hujan
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Curah Hujan/Hari
                         </th>
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kecepatan Angin
                         </th>
@@ -88,13 +88,13 @@
                                     </td>
                                 @endif
 
-                                @if ($dataWeather->curahHujan == null || $dataWeather->curahHujan == 0)
+                                @if ($dataWeather->curahHujanHari == null || $dataWeather->curahHujanHari == 0)
                                     <td class="text-center text-[#353535] font-semibold py-2">
                                         -
                                     </td>
                                 @else
                                     <td class="text-center text-[#353535] font-semibold py-2">
-                                        {{ $dataWeather->curahHujan }} mm
+                                        {{ $dataWeather->curahHujanHari }} mm
                                     </td>
                                 @endif
 

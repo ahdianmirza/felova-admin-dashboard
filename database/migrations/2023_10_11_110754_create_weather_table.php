@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('suhuUdara')->nullable();
             $table->string('kelembapanUdara')->nullable();
             $table->string('intensitasCahaya')->nullable();
-            $table->string('curahHujan')->nullable();
+            $table->string('curahHujanHari')->nullable();
+            $table->string('curahHujanMenit')->nullable();
             $table->string('kecepatanAngin')->nullable();
             $table->timestamps();
         });
