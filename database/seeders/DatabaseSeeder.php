@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Admin',
-            'username' => 'admin',
-            'password' => bcrypt('admin123')
+            'username' => 'adminjahe',
+            'password' => bcrypt('akucintabalittro')
         ]);
 
         Manual::create([
@@ -39,16 +39,6 @@ class DatabaseSeeder extends Seeder
             'sol_2' => 0,
             'sol_3' => 1,
             'sol_4' => 1,
-        ]);
-
-        StatusManual::create([
-            'manual_id' => 1,
-            'status' => 'nyala'
-        ]);
-
-        StatusManual::create([
-            'manual_id' => 1,
-            'status' => 'mati'
         ]);
 
         Device::create([

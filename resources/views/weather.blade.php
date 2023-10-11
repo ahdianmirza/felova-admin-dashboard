@@ -41,12 +41,15 @@
                 <thead>
                     <tr class="border-t-2">
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">No</th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Device</th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Pompa
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Suhu Udara</th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kelembapan Udara
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Selenoid
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Intensitas Cahaya
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Action</th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Curah Hujan
+                        </th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kecepatan Angin
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
