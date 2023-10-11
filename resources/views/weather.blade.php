@@ -30,7 +30,8 @@
         <div class="flex items-center justify-between">
             <div class="ml-2 flex flex-col justify-center items-start">
                 <h1 class="text-2xl font-extrabold text-[#353535]">Weather Data</h1>
-                <p><span class="font-bold text-[#353535]">0 total,</span> <small class="text-[#A3A4A8]">incoming
+                <p><span class="font-bold text-[#353535]">{{ $allDataWeathers->count() }} total,</span> <small
+                        class="text-[#A3A4A8]">incoming
                         data.</small>
                 </p>
             </div>
@@ -53,16 +54,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>test</td>
-                    </tr>
-                    {{-- @if ($manuals->count())
-                        
+                    @if ($dataWeathers->count())
+                        @foreach ($dataWeathers as $dataWeather)
+                            <tr class="border-b-2">
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}</td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $dataWeather->suhuUdara }}°C
+                                </td>
+                                <td class="text-center text-[#353535] font-semibold py-2">
+                                    {{ $dataWeather->kelembapanUdara }}%
+                                </td>
+                                <td class="text-center text-[#353535] font-semibold py-2">
+                                    {{ $dataWeather->intensitasCahaya }}%
+                                </td>
+                                <td class="text-center text-[#353535] font-semibold py-2">{{ $dataWeather->curahHujan }} mm
+                                </td>
+                                <td class="text-center text-[#353535] font-semibold py-2">
+                                    {{ $dataWeather->kecepatanAngin }} m/s
+                                </td>
+                            </tr>
+                        @endforeach
                     @else
                         <td colspan="5" class="text-center p-2 border-b-2">
                             <p class="text-center text-lg">No data found.</p>
                         </td>
-                    @endif --}}
+                    @endif
                 </tbody>
             </table>
         </div>

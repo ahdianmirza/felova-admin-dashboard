@@ -27,3 +27,5 @@ Route::put("/update-timer", [ApiController::class, 'updateTimer']);
 Route::post("/list-timer", [ApiController::class, 'listTimer']);
 
 Route::post("/data-soil", [ApiController::class, 'dataSoil']);
+
+Route::post("/data-weather", [ApiController::class, 'dataWeather']);
