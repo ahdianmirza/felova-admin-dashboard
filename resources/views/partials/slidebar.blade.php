@@ -17,7 +17,8 @@
 
         <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('/') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a wire:navigate
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('/') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -35,8 +36,10 @@
                         class="font-medium {{ Request::is('/') ? 'text-white' : 'text-[#B4B990]' }} group-hover:text-white text-[14px] 2xl:text-base">Dashboard</span>
                 </a>
             </li>
+
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('data*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <span
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('data*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -66,21 +69,26 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </span>
-                </a>
+                </span>
                 <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                     data-te-sidenav-collapse-ref>
                     <li class="relative">
-                        <a class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] {{ Request::is('data-manual*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                        <a wire:navigate
+                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] {{ Request::is('data-manual*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             href="/data-manual" data-te-sidenav-link-ref>Data Manual</a>
                     </li>
+
                     <li class="relative">
-                        <a class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-[#B4B990] outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                            href="/" data-te-sidenav-link-ref>Data Weather</a>
+                        <a wire:navigate
+                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-[#B4B990] outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                            href="/data-weather" data-te-sidenav-link-ref>Data Weather</a>
                     </li>
                 </ul>
             </li>
+
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('manual*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a wire:navigate
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('manual*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/manual" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -101,7 +109,8 @@
                 </a>
             </li>
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('timer*') || Request::is('update-timer*') || Request::is('create-device*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a wire:navigate
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('timer*') || Request::is('update-timer*') || Request::is('create-device*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/timer" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -118,7 +127,8 @@
                 </a>
             </li>
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('soil*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a wire:navigate
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('soil*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/soil" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
@@ -153,7 +163,8 @@
                 </a>
             </li>
             <li class="relative py-2">
-                <a class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('weather*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                <a wire:navigate
+                    class="group flex items-center cursor-pointer truncate py-4 pl-7 rounded-[5px] text-[0.875rem] {{ Request::is('weather*') ? 'text-white' : 'text-[#B4B990]' }} outline-none transition duration-300 ease-linear hover:bg-[#b2b79f] hover:text-white hover:outline-none focus:outline-none active:bg-primary-400/10 active:text-primary-600 active:outline-none data-[te-sidenav-state-active]:text-primary-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     href="/weather" data-te-sidenav-link-ref>
                     <span
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">

@@ -13,6 +13,9 @@
     {{-- favicon --}}
     <link rel="website icon" type="png" href="{{ asset('img/morf-vanili.png') }}">
 
+    {{-- Livewire Style --}}
+    @livewireStyles
+
     <title>Felova | {{ $title }}</title>
 </head>
 
@@ -24,6 +27,9 @@
     </main>
 
     <script src="{{ asset('../node_modules/tw-elements/dist/js/tw-elements.umd.min.js') }}"></script>
+
+    {{-- LiveWire Scripts --}}
+    @livewireScripts
 </body>
 
 </html>

@@ -1,12 +1,10 @@
 import "./bootstrap";
-
 import { Sidenav, Dropdown, Ripple, initTE, Input } from "tw-elements";
 
-initTE({ Sidenav, Dropdown, Ripple, Input });
+initTE({ Sidenav, Dropdown, Ripple, Input }, { allowReinits: true });
 
 const sidenav2 = document.getElementById("sidenav-1");
 const sidenavInstance2 = Sidenav.getInstance(sidenav2);
-
 let innerWidth2 = null;
 
 const setMode2 = (e) => {
@@ -32,3 +30,11 @@ if (window.innerWidth < sidenavInstance2.getBreakpoint("sm")) {
 
 // Event listeners
 window.addEventListener("resize", setMode2);
+
+document.addEventListener("livewire:navigated", () => {
+    console.log("Navigated");
+});
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     console.log("dom loaded");
+// });
