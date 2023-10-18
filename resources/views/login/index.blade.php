@@ -47,7 +47,7 @@
 
             <form class="mt-4" action="/login" method="post">
                 @csrf
-                <!--E-mail input-->
+                <!--Username input-->
                 <div class="relative mb-6" data-te-input-wrapper-init>
                     <input type="text" name="username" id="username" autocomplete="off" required
                         value="{{ old('username') }}"

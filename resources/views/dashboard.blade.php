@@ -21,7 +21,7 @@
                 <!-- Judul Section -->
                 <div class="flex flex-col justify-center items-start">
                     <h1 class="font-extrabold text-[#353535] text-lg lg:text-[32px]">Dashboard</h1>
-                    <p class="text-secondary text-xs lg:text-base">Good to see you, Vincent !</p>
+                    <p class="text-secondary text-xs lg:text-base">Good to see you, {{ auth()->user()->name }} !</p>
                 </div>
             </div>
 
