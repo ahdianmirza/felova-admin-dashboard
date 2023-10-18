@@ -137,7 +137,7 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         Schedule::destroy($id);
-        return redirect('/admin/timer')->with('success', 'Setting has been deleted !');
+        return redirect('/admin/timer')->with('success', 'Pengaturan baru berhasil dihapus!');
     }
 
     // public function destroySchedule($id, $device_id)
