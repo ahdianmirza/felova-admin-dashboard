@@ -26,7 +26,7 @@
     </div>
 
     <div class="w-full bg-white mb-4 p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/update-timer/{{ $device->id }}/{{ $schedule->id }}/edit" method="post">
+        <form action="/admin/timer/edit/{{ $device->id }}/{{ $schedule->id }}" method="post">
             {{-- @method('put') --}}
             @csrf
             <div class="mb-4">

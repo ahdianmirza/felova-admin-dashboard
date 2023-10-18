@@ -26,7 +26,7 @@
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/manual/{{ $setting->id }}" method="post">
+        <form action="/admin/manual/{{ $setting->id }}" method="post">
             @method('put')
             @csrf
             <div>

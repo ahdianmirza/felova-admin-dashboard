@@ -28,17 +28,20 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->middleware('userAkses:admin');
-    Route::get('/dashboard', [DashboardController::class, 'public'])->middleware('userAkses:public');
+    // Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->middleware('userAkses:admin');
+    Route::get('/dashboard', [DashboardController::class, 'publicDashboard'])->middleware('userAkses:public');
 
-    Route::resource('/manual', ManualController::class);
-    Route::resource('/timer', ScheduleController::class);
-    Route::get('/create-device', [DeviceScheduleController::class, 'createDevice']);
-    Route::post('/create-device/device', [DeviceScheduleController::class, 'storeDevice']);
-    Route::get('/update-timer/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'editSchedule']);
-    Route::post('/update-timer/{device_id}/{schedule_id}/edit', [DeviceScheduleController::class, 'updateSchedule']);
+    Route::resource('/admin/manual', ManualController::class)->middleware('userAkses:admin');
+    Route::get('/manual', [ManualController::class, 'indexPublic'])->middleware('userAkses:public');
 
+    Route::resource('/admin/timer', ScheduleController::class)->middleware('userAkses:admin');
+    Route::get('/admin/timer/create/create-device', [DeviceScheduleController::class, 'createDevice'])->middleware('userAkses:admin');
+    Route::post('/admin/timer/create/create-device', [DeviceScheduleController::class, 'storeDevice'])->middleware('userAkses:admin');
+    Route::get('/admin/timer/edit/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'editSchedule'])->middleware('userAkses:admin');
+    Route::post('/admin/timer/edit/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'updateSchedule'])->middleware('userAkses:admin');
+    Route::get('/timer', [ScheduleController::class, 'indexPublic'])->middleware('userAkses:public');
+    
     Route::get('/soil', [SoilController::class, 'index']);
     Route::get('/weather', [WeatherController::class, 'index']);
 
@@ -51,7 +54,6 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::post('/logout', [LoginController::class, 'logout']);
-    Route::get('/logoutsession', [LoginController::class, 'logoutSession']);
 });
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

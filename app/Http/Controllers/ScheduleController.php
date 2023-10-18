@@ -20,6 +20,14 @@ class ScheduleController extends Controller
         ]);
     }
 
+    public function indexPublic()
+    {
+        return view('timer.index', [
+            'title' => 'Timer',
+            'schedules' => Schedule::all()
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -92,7 +100,7 @@ class ScheduleController extends Controller
         $model->save();
 
         // Schedule::create($validatedData);
-        return redirect('/timer')->with('success', 'New setting has been added!');
+        return redirect('/admin/timer')->with('success', 'Pengaturan baru berhasil ditambahkan!');
     }
 
     /**
@@ -129,7 +137,7 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         Schedule::destroy($id);
-        return redirect('/timer')->with('success', 'Setting has been deleted !');
+        return redirect('/admin/timer')->with('success', 'Setting has been deleted !');
     }
 
     // public function destroySchedule($id, $device_id)

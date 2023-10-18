@@ -28,7 +28,7 @@ class DeviceScheduleController extends Controller
 
         Device::create($validatedData);
 
-        return redirect('/timer/create')->with('success', 'New device has been added!');
+        return redirect('/admin/timer/create')->with('success', 'Device baru berhasil ditambahkan!');
     }
 
     public function editSchedule($device_id, $schedule_id) {
@@ -98,6 +98,6 @@ class DeviceScheduleController extends Controller
         $model->save();
         // $model->update($request->all());
 
-        return redirect('/timer')->with('success', 'Setting has been updated !');
+        return redirect('/admin/timer')->with('success', 'Pengaturan berhasil diubah!');
     }
 }

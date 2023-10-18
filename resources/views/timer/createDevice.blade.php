@@ -26,7 +26,7 @@
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/create-device/device" method="post">
+        <form action="/admin/timer/create/create-device" method="post">
             @csrf
             <div class="mb-4">
                 <div class="flex flex-col justify-center items-start">

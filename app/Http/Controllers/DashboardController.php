@@ -17,15 +17,19 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function admin() {
-        echo "Halaman admin";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logoutsession'>Logout >></a>";
+    public function adminDashboard() {
+        return view('dashboard', [
+            'title' => 'Admin Dashboard',
+            'manuals' => Manual::orderBy('created_at', 'desc')->limit(5)->get(),
+            'manuals_all' => Manual::all()
+        ]);
     }
 
-    public function public() {
-        echo "Halaman public";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logoutsession'>Logout >></a>";
+    public function publicDashboard() {
+        return view('dashboard', [
+            'title' => 'Public Dashboard',
+            'manuals' => Manual::orderBy('created_at', 'desc')->limit(5)->get(),
+            'manuals_all' => Manual::all()
+        ]);
     }
 }

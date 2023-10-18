@@ -29,7 +29,7 @@
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/timer" method="post">
+        <form action="/admin/timer" method="post">
             @csrf
             <div class="mb-4">
                 <div class="flex justify-start items-center">
@@ -45,7 +45,7 @@
                             </select>
 
                             <div class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] ml-4">
-                                <a href="/create-device" class="stroke-current text-[#01875d]">
+                                <a href="/admin/timer/create/create-device" class="stroke-current text-[#01875d]">
                                     <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -114,8 +114,7 @@
                 <div class="ml-6 flex flex-col justify-center">
                     <label for="checkSolTim2" class="text-[#353535] font-semibold">Solenoid 2</label>
                     <label class="mt-2">
-                        <input type="checkbox" id="checkSolTim2" onclick="checkTim()"
-                            class="ds-toggle ds-toggle-success" />
+                        <input type="checkbox" id="checkSolTim2" onclick="checkTim()" class="ds-toggle ds-toggle-success" />
                         <input type="hidden" name="sol_2" id="timerSol_2">
                     </label>
                 </div>

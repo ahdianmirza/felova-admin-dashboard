@@ -27,7 +27,7 @@
     </div>
 
     <div class="w-full bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-md md:shadow-md">
-        <form action="/manual" method="post">
+        <form action="/admin/manual" method="post">
             @csrf
             <div>
                 <div class="flex flex-col justify-center text-start mb-4">

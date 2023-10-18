@@ -39,21 +39,22 @@
                 </p>
             </div>
 
-            <div class="mr-2">
-                <a href="/manual/create"
-                    class="ds-btn ds-btn-sm ds-btn-primary border-none font-bold hidden lg:flex bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
-                    setting</a>
-                <a href="/manual/create"
-                    class="ds-btn ds-btn-sm ds-btn-primary border-none font-bold flex lg:hidden bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">
-                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M12 5.75V18.25"></path>
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M18.25 12L5.75 12"></path>
-                    </svg>
-
-                </a>
-            </div>
+            @if (auth()->user()->role == 'admin')
+                <div class="mr-2">
+                    <a href="/admin/manual/create"
+                        class="ds-btn ds-btn-sm ds-btn-primary border-none font-bold hidden lg:flex bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">New
+                        setting</a>
+                    <a href="/admin/manual/create"
+                        class="ds-btn ds-btn-sm ds-btn-primary border-none font-bold flex lg:hidden bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 5.75V18.25"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M18.25 12L5.75 12"></path>
+                        </svg>
+                    </a>
+                </div>
+            @endif
         </div>
 
         <div class="mt-5">
@@ -66,7 +67,9 @@
                         </th>
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Selenoid
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Action</th>
+                        @if (auth()->user()->role == 'admin')
+                            <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -75,7 +78,7 @@
                             <tr class="border-b-2">
                                 <td class="text-center text-[#353535] font-semibold py-2">{{ $loop->iteration }}
                                 </td>
-                                <td class="text-center text-[#353535] py-2">{{ $manual->device }}
+                                <td class="text-center text-[#353535] py-2 font-semibold">{{ $manual->device }}
                                 </td>
                                 <td class="text-center text-[#353535] font-semibold py-2">
                                     <div class="flex justify-center items-center">
@@ -285,57 +288,59 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="text-center">
-                                    <div class="flex justify-center items-center">
-                                        <div class="flex">
-                                            {{-- Update --}}
-                                            <div
-                                                class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] mr-2">
-                                                <a href="/manual/{{ $manual->id }}/edit"
-                                                    class="stroke-current text-[#01875d]">
-                                                    <svg width="24" height="24" fill="none"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="1.5"
-                                                            d="M4.75 19.25L9 18.25L18.2929 8.95711C18.6834 8.56658 18.6834 7.93342 18.2929 7.54289L16.4571 5.70711C16.0666 5.31658 15.4334 5.31658 15.0429 5.70711L5.75 15L4.75 19.25Z">
-                                                        </path>
-                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="1.5"
-                                                            d="M19.25 19.25H13.75">
-                                                        </path>
-                                                    </svg>
-                                                </a>
-                                            </div>
-
-                                            {{-- Delete --}}
-                                            <div
-                                                class="flex justify-center items-center p-1 border-none rounded-md bg-[#ffd6ed]">
-                                                <form action="/manual/{{ $manual->id }}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="stroke-current text-[#bf3056]"
-                                                        onclick="return confirm('Are you sure ?')">
+                                @if (auth()->user()->role == 'admin')
+                                    <td class="text-center">
+                                        <div class="flex justify-center items-center">
+                                            <div class="flex">
+                                                {{-- Update --}}
+                                                <div
+                                                    class="flex justify-center items-center p-1 border-none rounded-md bg-[#b2ede5] mr-2">
+                                                    <a href="/admin/manual/{{ $manual->id }}/edit"
+                                                        class="stroke-current text-[#01875d]">
                                                         <svg width="24" height="24" fill="none"
                                                             viewBox="0 0 24 24">
                                                             <path stroke="currentColor" stroke-linecap="round"
                                                                 stroke-linejoin="round" stroke-width="1.5"
-                                                                d="M6.75 7.75L7.59115 17.4233C7.68102 18.4568 8.54622 19.25 9.58363 19.25H14.4164C15.4538 19.25 16.319 18.4568 16.4088 17.4233L17.25 7.75">
+                                                                d="M4.75 19.25L9 18.25L18.2929 8.95711C18.6834 8.56658 18.6834 7.93342 18.2929 7.54289L16.4571 5.70711C16.0666 5.31658 15.4334 5.31658 15.0429 5.70711L5.75 15L4.75 19.25Z">
                                                             </path>
                                                             <path stroke="currentColor" stroke-linecap="round"
                                                                 stroke-linejoin="round" stroke-width="1.5"
-                                                                d="M9.75 7.5V6.75C9.75 5.64543 10.6454 4.75 11.75 4.75H12.25C13.3546 4.75 14.25 5.64543 14.25 6.75V7.5">
-                                                            </path>
-                                                            <path stroke="currentColor" stroke-linecap="round"
-                                                                stroke-linejoin="round" stroke-width="1.5"
-                                                                d="M5 7.75H19">
+                                                                d="M19.25 19.25H13.75">
                                                             </path>
                                                         </svg>
-                                                    </button>
-                                                </form>
+                                                    </a>
+                                                </div>
+
+                                                {{-- Delete --}}
+                                                <div
+                                                    class="flex justify-center items-center p-1 border-none rounded-md bg-[#ffd6ed]">
+                                                    <form action="/admin/manual/{{ $manual->id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="stroke-current text-[#bf3056]"
+                                                            onclick="return confirm('Are you sure ?')">
+                                                            <svg width="24" height="24" fill="none"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="1.5"
+                                                                    d="M6.75 7.75L7.59115 17.4233C7.68102 18.4568 8.54622 19.25 9.58363 19.25H14.4164C15.4538 19.25 16.319 18.4568 16.4088 17.4233L17.25 7.75">
+                                                                </path>
+                                                                <path stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="1.5"
+                                                                    d="M9.75 7.5V6.75C9.75 5.64543 10.6454 4.75 11.75 4.75H12.25C13.3546 4.75 14.25 5.64543 14.25 6.75V7.5">
+                                                                </path>
+                                                                <path stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="1.5"
+                                                                    d="M5 7.75H19">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     @else

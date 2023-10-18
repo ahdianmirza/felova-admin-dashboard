@@ -14,7 +14,15 @@ class ManualController extends Controller
     public function index(Manual $manual)
     {
         return view('manual.index', [
-            'title' => 'Manual',
+            'title' => 'Admin Manual Menu',
+            'manuals' => Manual::latest()->get()
+        ]);
+    }
+
+    public function indexPublic(Manual $manual)
+    {
+        return view('manual.index', [
+            'title' => 'Public Manual Menu',
             'manuals' => Manual::latest()->get()
         ]);
     }
@@ -66,7 +74,7 @@ class ManualController extends Controller
 
         Manual::create($validatedData);
 
-        return redirect('/manual')->with('success', 'New setting has been added!');
+        return redirect('/admin/manual')->with('success', 'Pengaturan baru berhasil ditambahkan!');
     }
 
     /**
@@ -125,7 +133,7 @@ class ManualController extends Controller
 
         Manual::where('id', $manual->id)
                 ->update($validatedData);
-        return redirect('/manual')->with('success', 'New setting has been updated!');
+        return redirect('/admin/manual')->with('success', 'Pengaturan baru berhasil diubah!');
     }
 
     /**
@@ -135,7 +143,7 @@ class ManualController extends Controller
     {
         Manual::destroy($manual->id);
 
-        return redirect('/manual')->with('success', 'Setting has been deleted!');
+        return redirect('/admin/manual')->with('success', 'Pengaturan baru berhasil dihapus!');
     }
 
     public function list() {

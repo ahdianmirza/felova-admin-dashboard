@@ -19,6 +19,11 @@ class UserAkses
             return $next($request);
         }
 
-        return response()->json(['Anda tidak diperbolehkan mengakses halaman ini.']);
+        if (auth()->user()->role == 'admin') {
+            return redirect('/admin/dashboard');
+        } elseif (auth()->user()->role == 'public') {
+            return redirect('/dashboard');
+        }
+
     }
 }

@@ -73,7 +73,7 @@ class TimerController extends Controller
         ]);
 
         Timer::create($validatedData);
-        return redirect('/timer')->with('success', 'New setting has been added!');
+        return redirect('/admin/timer')->with('success', 'New setting has been added!');
     }
 
     /**
@@ -144,6 +144,6 @@ class TimerController extends Controller
     {
         Schedule::destroy($schedule->id);
 
-        return redirect('/timer')->with('success', 'Setting has been deleted!');
+        return redirect('/admin/timer')->with('success', 'Setting has been deleted!');
     }
 }

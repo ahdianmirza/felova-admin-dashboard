@@ -30,7 +30,8 @@
                 <p class="lg:mr-[34px] text-[#353535] text-xs lg:text-base">
                     {{ \Carbon\Carbon::now()->format('d F Y') }}
                 </p>
-                <img src="img/profile.png" class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full" alt="Profil">
+                <img src="{{ asset('img/profile.png') }}" class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full"
+                    alt="Profil">
             </div>
         </div>
     </div>
