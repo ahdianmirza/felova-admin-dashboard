@@ -8,6 +8,7 @@ use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DataSoil;
+use App\Models\Pesan;
 use App\Models\Weather;
 
 class ApiController extends Controller
@@ -92,5 +93,9 @@ class ApiController extends Controller
     public function dataWeather(Request $request) {
         $dataWeather = $request->all();
         Weather::create($dataWeather);
+    }
+
+    public function pesan(Request $request) {
+        Pesan::create($request->all());
     }
 }

@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        User::create([
-            'name' => 'Admin',
-            'username' => 'adminjahe',
-            'password' => bcrypt('akucintabalittro')
-        ]);
+        // User::create([
+        //     'name' => 'Admin',
+        //     'username' => 'adminjahe',
+        //     'password' => bcrypt('akucintabalittro')
+        // ]);
 
         Manual::create([
             'device' => 'HC001',
