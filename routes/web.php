@@ -42,7 +42,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/timer/edit/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'updateSchedule'])->middleware('userAkses:admin');
     Route::get('/timer', [ScheduleController::class, 'indexPublic'])->middleware('userAkses:public');
     
-    Route::get('/soil', [SoilController::class, 'index']);
+    Route::get('/admin/soil', [SoilController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/soil/create-block', [SoilController::class, 'createBlock'])->middleware('userAkses:admin');
+    Route::post('/admin/soil/create-block', [SoilController::class, 'storeBlock'])->middleware('userAkses:admin');
+    Route::get('/admin/data-soil', [SoilController::class, 'dataSoil'])->middleware('userAkses:admin');
+    Route::get('/soil', [SoilController::class, 'index'])->middleware('userAkses:public');
+
     Route::get('/weather', [WeatherController::class, 'index']);
 
     Route::get('/data-manual', [ManualDataController::class, 'index']);

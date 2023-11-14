@@ -24,6 +24,7 @@
     </main>
 
     <script src="{{ asset('../node_modules/tw-elements/dist/js/tw-elements.umd.min.js') }}"></script>
+    <script src="{{ asset('../node_modules/flowbite/dist/flowbite.min.js') }}"></script>
 </body>
 
 </html>

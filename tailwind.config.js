@@ -6,6 +6,7 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
         "./node_modules/tw-elements/dist/js/**/*.js",
+        "./node_modules/flowbite/**/*.js",
     ],
     theme: {
         extend: {
@@ -22,13 +23,17 @@ export default {
             },
             colors: {
                 "main-bg": "#F7F7F7",
-                "secondary": "#CCCCCC",
+                secondary: "#CCCCCC",
                 "on-button": "#b3d086",
                 "off-button": "#fda4a6",
             },
         },
     },
-    plugins: [require("daisyui"), require("tw-elements/dist/plugin.cjs")],
+    plugins: [
+        require("daisyui"),
+        require("tw-elements/dist/plugin.cjs"),
+        require("flowbite/plugin"),
+    ],
     darkMode: "class",
     daisyui: {
         themes: ["light"], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
