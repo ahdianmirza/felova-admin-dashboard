@@ -30,12 +30,11 @@
         <div class="flex items-center justify-between">
             <div class="ml-2 flex flex-col justify-center items-start">
                 <h1 class="text-2xl font-extrabold text-[#353535]">Soil Menu</h1>
-                <p><small class="text-[#A3A4A8]">Block tanaman yang
-                        akan dipantau.</small>
+                <p><small class="text-[#A3A4A8]">Sensor yang akan digunakan.</small>
                 </p>
             </div>
 
-            @if (auth()->user()->role == 'admin')
+            {{-- @if (auth()->user()->role == 'admin')
                 <div class="mr-2">
                     <a href="/admin/soil/create-block"
                         class="ds-btn ds-btn-sm ds-btn-primary border-none font-bold hidden lg:flex bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE]">Tambah
@@ -58,31 +57,16 @@
                         </svg>
                     </a>
                 </div>
-            @endif
+            @endif --}}
         </div>
 
-        <div class="mt-5 flex flex-col justify-center">
-            <a href="#"
-                class="flex flex-col items-start justify-between text-start bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-3">
-                <div class="flex flex-col justify-between items-start p-4 leading-normal">
-                    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">Block A</h5>
-                    <div class="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            1</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            2</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            3</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Cimanggu
-                            1</span>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-between text-slate-700 items-start p-4 leading-normal">
-                    <span
+        <div class="mt-5">
+            <a href="/admin/soil/sensor-1"
+                class="flex flex-col justify-center text-start bg-white border border-gray-200 rounded-lg shadow max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-3">
+                <div class="flex justify-between items-center p-4 leading-normal">
+                    <h5 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Sensor 1</h5>
+
+                    <div
                         class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
                         <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                         <svg width="800px" height="800px" class="fill-current" viewBox="0 0 32 32" id="Layer_1"
@@ -109,69 +93,67 @@
                             <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
                                 width="32" height="32" />
                         </svg>
+                    </div>
+                </div>
+
+                <div class="flex justify-start items-center pl-4 pb-4">
+                    <span
+                        class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Suhu 1
                     </span>
-                </div>
-            </a>
-            <a href="#"
-                class="flex flex-col items-start justify-between text-start bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-3">
-                <div class="flex flex-col justify-between items-start p-4 leading-normal">
-                    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">Block A</h5>
-                    <div class="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            1</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            2</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Jahira
-                            3</span>
-                        <span
-                            class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Cimanggu
-                            1</span>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-between text-slate-700 items-start p-4 leading-normal">
                     <span
-                        class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
-                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                        <svg width="800px" height="800px" class="fill-current" viewBox="0 0 32 32" id="Layer_1"
-                            data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <style>
-                                    .cls-1 {
-                                        fill: none;
-                                    }
-                                </style>
-                            </defs>
-                            <path
-                                d="M24.5,28A5.385,5.385,0,0,1,19,22.751a5.3837,5.3837,0,0,1,.874-2.8308L23.49,14.5383a1.217,1.217,0,0,1,2.02,0L29.06,19.8154A5.4923,5.4923,0,0,1,30,22.751,5.385,5.385,0,0,1,24.5,28Zm0-11.38-2.9356,4.3672A3.3586,3.3586,0,0,0,21,22.751a3.51,3.51,0,0,0,7,0,3.4356,3.4356,0,0,0-.63-1.867Z"
-                                transform="translate(0 0)" />
-                            <circle cx="5" cy="13" r="1" />
-                            <circle cx="11" cy="19" r="1" />
-                            <circle cx="15" cy="25" r="1" />
-                            <circle cx="17" cy="15" r="1" />
-                            <circle cx="13" cy="11" r="1" />
-                            <circle cx="27" cy="11" r="1" />
-                            <circle cx="9" cy="27" r="1" />
-                            <circle cx="3" cy="21" r="1" />
-                            <rect x="2" y="6" width="28" height="2" />
-                            <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                                width="32" height="32" />
-                        </svg>
+                        class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Kelembapan 1
                     </span>
                 </div>
             </a>
 
-            @foreach ($tanamans as $tanaman)
-                <div class="mb-2">
-                    <h1>Block {{ $tanaman->block->block }}</h1>
-                    <ul>
-                        <li>{{ $tanaman->kodeTanaman }}</li>
-                        <li>{{ $tanaman->tanaman }}</li>
-                    </ul>
+            <a href="/admin/soil/sensor-2"
+                class="flex flex-col justify-center text-start bg-white border border-gray-200 rounded-lg shadow max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-3">
+                <div class="flex justify-between items-center p-4 leading-normal">
+                    <h5 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Sensor 2</h5>
+
+                    <div
+                        class="mr-4 [&>svg]:h-[26px] [&>svg]:w-[26px] [&>svg]:transition [&>svg]:duration-300 [&>svg]:ease-linear group-[te-sidenav-state-active]:[&>svg]:fill-primary-600 motion-reduce:[&>svg]:transition-none dark:[&>svg]:fill-gray-300 dark:group-hover:[&>svg]:fill-gray-300 ">
+                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg width="800px" height="800px" class="fill-current" viewBox="0 0 32 32" id="Layer_1"
+                            data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: none;
+                                    }
+                                </style>
+                            </defs>
+                            <path
+                                d="M24.5,28A5.385,5.385,0,0,1,19,22.751a5.3837,5.3837,0,0,1,.874-2.8308L23.49,14.5383a1.217,1.217,0,0,1,2.02,0L29.06,19.8154A5.4923,5.4923,0,0,1,30,22.751,5.385,5.385,0,0,1,24.5,28Zm0-11.38-2.9356,4.3672A3.3586,3.3586,0,0,0,21,22.751a3.51,3.51,0,0,0,7,0,3.4356,3.4356,0,0,0-.63-1.867Z"
+                                transform="translate(0 0)" />
+                            <circle cx="5" cy="13" r="1" />
+                            <circle cx="11" cy="19" r="1" />
+                            <circle cx="15" cy="25" r="1" />
+                            <circle cx="17" cy="15" r="1" />
+                            <circle cx="13" cy="11" r="1" />
+                            <circle cx="27" cy="11" r="1" />
+                            <circle cx="9" cy="27" r="1" />
+                            <circle cx="3" cy="21" r="1" />
+                            <rect x="2" y="6" width="28" height="2" />
+                            <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
+                                width="32" height="32" />
+                        </svg>
+                    </div>
                 </div>
-            @endforeach
+
+                <div class="flex justify-start items-center pl-4 pb-4">
+                    <span
+                        class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Suhu 2
+                    </span>
+                    <span
+                        class="text-white text-xs bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full px-3 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Kelembapan 2
+                    </span>
+                </div>
+            </a>
         </div>
     </div>
 @endsection

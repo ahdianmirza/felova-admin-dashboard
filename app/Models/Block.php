@@ -12,6 +12,6 @@ class Block extends Model
     protected $guarded = ['id'];
 
     public function tanamans() {
-        return $this->hasMany(Tanaman::class);
+        return $this->hasMany(Tanaman::class)->orderBy('kodeTanaman');
     }
 }

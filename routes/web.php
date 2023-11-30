@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/soil', [SoilController::class, 'index'])->middleware('userAkses:admin');
     Route::get('/admin/soil/create-block', [SoilController::class, 'createBlock'])->middleware('userAkses:admin');
     Route::post('/admin/soil/create-block', [SoilController::class, 'storeBlock'])->middleware('userAkses:admin');
+    Route::get('/admin/soil/block-{block_id}', [SoilController::class, 'blockIndex'])->middleware('userAkses:admin');
+    Route::get('/admin/soil/sensor-1', [SoilController::class, 'sensorSatuIndex'])->middleware('userAkses:admin');
     Route::get('/admin/data-soil', [SoilController::class, 'dataSoil'])->middleware('userAkses:admin');
     Route::get('/soil', [SoilController::class, 'index'])->middleware('userAkses:public');
 
