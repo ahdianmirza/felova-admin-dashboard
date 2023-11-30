@@ -7,7 +7,7 @@
                 <div class="flex justify-center items-center">
                     <!-- Toggler -->
                     <button data-te-sidenav-toggle-ref data-te-target="#sidenav-1"
-                        class="block ds-btn ds-btn-sm ds-btn-accent border-none mr-4 px-2.5 text-gray-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 xl:hidden"
+                        class="block ds-btn ds-btn-sm ds-btn-accent bg-primary hover:bg-hover-primary border-none mr-4 px-2.5 text-gray-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 xl:hidden"
                         aria-controls="#sidenav-1" aria-haspopup="true">
                         <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
@@ -19,7 +19,7 @@
                     </button>
 
                     <!-- Judul Section -->
-                    <h1 class="font-extrabold text-[#353535] text-lg lg:text-[32px]">Create New Manual
+                    <h1 class="font-extrabold text-primary-text text-xl lg:text-[32px]">Create New Manual
                         Setting</h1>
                 </div>
             </div>
@@ -30,8 +30,19 @@
         <form action="/admin/manual" method="post">
             @csrf
             <div>
-                <div class="flex flex-col justify-center text-start mb-4">
-                    <label for="device" class="text-[#353535] font-semibold">Device</label>
+                <div class="mb-2 text-start">
+                    <label for="device" class="block mb-2 font-semibold text-primary-text">Nama Device</label>
+                    <input type="text" id="device" name="device"
+                        class="bg-gray-50 border border-gray-300 text-primary-text text-sm rounded-lg focus:ring-hover-primary focus:border-hover-primary block w-full p-2.5"
+                        placeholder="Masukkan nama device" oninput="myFunction()" value="{{ old('device') }}" autofocus
+                        required>
+                    <input type="hidden" name="slug" id="slug">
+                </div>
+                @error('device')
+                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
+                @enderror
+                {{-- <div class="flex flex-col justify-center text-start mb-4">
+                    <label for="device" class="text-primary-text font-semibold">Device</label>
                     <input type="text" placeholder="Type device name" name="device" id="device"
                         oninput="myFunction()" value="{{ old('device') }}" autofocus required
                         class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-2" />
@@ -39,9 +50,64 @@
                 </div>
                 @error('device')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror
+                @enderror --}}
             </div>
-            <div class="flex flex-wrap gap-x-6 gap-y-2">
+
+            <ul
+                class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <label>
+                            <input type="checkbox" id="checkPompa" onclick="check()" class="ds-toggle ds-toggle-success" />
+                            <input type="hidden" name="pompa" id="pompa">
+                        </label>
+                        <label for="checkPompa"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pompa</label>
+                    </div>
+                </li>
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <label>
+                            <input type="checkbox" id="checkSol1" onclick="check2()" class="ds-toggle ds-toggle-success" />
+                            <input type="hidden" name="sol_1" id="sol_1">
+                        </label>
+                        <label for="checkSol1"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solenoid 1</label>
+                    </div>
+                </li>
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <label>
+                            <input type="checkbox" id="checkSol2" onclick="check3()" class="ds-toggle ds-toggle-success" />
+                            <input type="hidden" name="sol_2" id="sol_2">
+                        </label>
+                        <label for="checkSol2"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solenoid 2</label>
+                    </div>
+                </li>
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <label>
+                            <input type="checkbox" id="checkSol3" onclick="check4()" class="ds-toggle ds-toggle-success" />
+                            <input type="hidden" name="sol_3" id="sol_3">
+                        </label>
+                        <label for="checkSol3"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solenoid 3</label>
+                    </div>
+                </li>
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <label>
+                            <input type="checkbox" id="checkSol4" onclick="check5()" class="ds-toggle ds-toggle-success" />
+                            <input type="hidden" name="sol_4" id="sol_4">
+                        </label>
+                        <label for="checkSol4"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solenoid 4</label>
+                    </div>
+                </li>
+            </ul>
+
+            {{-- <div class="flex flex-wrap gap-x-6 gap-y-2">
                 <div class="flex flex-col justify-center items-start">
                     <label for="checkPompa" class="text-[#353535] font-semibold">Pompa</label>
                     <label class="mt-2">
@@ -77,10 +143,10 @@
                         <input type="hidden" name="sol_4" id="sol_4">
                     </label>
                 </div>
-            </div>
+            </div> --}}
+
             <button type="submit"
-                class="ds-btn ds-btn-sm ds-btn-primary border-none bg-[#AACA77] hover:bg-[#97bb60] text-[#353535] hover:text-[#EEEEEE] mt-4 text-start flex">Create
-                setting</button>
+                class="w-full px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-hover-primary mt-2">Buat</button>
         </form>
     </div>
 

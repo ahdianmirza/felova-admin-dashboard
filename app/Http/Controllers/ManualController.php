@@ -15,7 +15,7 @@ class ManualController extends Controller
     {
         return view('manual.index', [
             'title' => 'Admin Manual Menu',
-            'manuals' => Manual::latest()->get()
+            'manuals' => Manual::all()
         ]);
     }
 
@@ -23,7 +23,7 @@ class ManualController extends Controller
     {
         return view('manual.index', [
             'title' => 'Public Manual Menu',
-            'manuals' => Manual::latest()->get()
+            'manuals' => Manual::all()
         ]);
     }
 
