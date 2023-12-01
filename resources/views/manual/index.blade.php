@@ -47,7 +47,7 @@
             @endif
         </div>
 
-        <div class="my-5">
+        <div id="manual-data-container" class="my-5">
             {{-- Manual Data Mobile Breakpoint --}}
             @foreach ($manuals as $manual)
                 <div class="flex flex-col items-start md:hidden p-6 bg-white border border-gray-200 rounded-lg shadow mb-5">
@@ -125,8 +125,6 @@
                     </div>
                 </div>
             @endforeach
-
-
 
             {{-- Table md Breakpoint --}}
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg hidden md:block">
