@@ -17,16 +17,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
 Route::get('/manual', [ManualController::class, 'index']);
+Route::post('/manual/data', [ManualController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

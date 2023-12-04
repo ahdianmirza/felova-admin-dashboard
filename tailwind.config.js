@@ -9,6 +9,7 @@ export default {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.jsx",
         "./node_modules/flowbite/**/*.js",
+        "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
     ],
 
     theme: {
@@ -19,6 +20,7 @@ export default {
             colors: {
                 primary: "#434738",
                 "primary-hover": "#5e654b",
+                "primary-focus": "#798161",
                 "nav-bg": "#f4f4f1",
                 "button-on": "#b3d086",
                 "button-on-hover": "#97bc5f",
