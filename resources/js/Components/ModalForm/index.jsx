@@ -33,7 +33,17 @@ const ModalForm = (props) => {
     }
 
     const handleDisabledButton = () => {
+        let sameDevice;
+
+        dataManual.map((manual) => {
+            if (manual.device == device) {
+                sameDevice = manual.device;
+            }
+        })
+
         if (device == "") {
+            return true;
+        } else if (device == sameDevice) {
             return true;
         } else {
             return false;
