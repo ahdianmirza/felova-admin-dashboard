@@ -17,8 +17,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/manual', [ManualController::class, 'index']);
-Route::post('/manual/data', [ManualController::class, 'store']);
+Route::resource('/manual', ManualController::class);
+// Route::post('/manual/data', [ManualController::class, 'store'])->name('manual.data');
+// Route::get('/manual/edit', [ManualController::class, 'edit'])->name('manual.edit');
+// Route::post('/manual/edit', [ManualController::class, 'update'])->name('manual.update');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

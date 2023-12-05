@@ -6,7 +6,7 @@ import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
 import { useState } from "react";
 
 const ModalForm = (props) => {
-    const {message} = props;
+    const {message, dataManual} = props;
 
     const [openModal, setOpenModal] = useState(false);
     const [device, setDevice] = useState("");
@@ -19,7 +19,7 @@ const ModalForm = (props) => {
 
     const handleSubmit = () => {
         const data = { device, pompa, sol_1, sol_2, sol_3, sol_4 };
-        router.post('/manual/data', data);
+        router.post(route('manual.store'), data);
         setIsNotif(true);
         setTimeout(() => {
             setIsNotif(false);
@@ -30,6 +30,14 @@ const ModalForm = (props) => {
         setSol2(false);
         setSol3(false);
         setSol4(false);
+    }
+
+    const handleDisabledButton = () => {
+        if (device == "") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     return (
@@ -50,7 +58,7 @@ const ModalForm = (props) => {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="space-y-6">
-                        <h1>{isNotif && <ToastNotif message={message} />}</h1>
+                        {isNotif && <ToastNotif message={message} />}
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                             Tambah Pengaturan Manual
                         </h3>
@@ -98,6 +106,7 @@ const ModalForm = (props) => {
                         <div className="w-full">
                             <Button
                                 onClick={() => handleSubmit()}
+                                disabled={handleDisabledButton()}
                                 className="w-full bg-primary hover:bg-primary-hover focus:ring-primary-hover enabled:hover:bg-primary-focus focus:bg-primary-focus"
                             >
                                 Tambah

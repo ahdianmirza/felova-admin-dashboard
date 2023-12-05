@@ -1,4 +1,4 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, router } from "@inertiajs/react";
 import "/node_modules/flowbite/dist/flowbite.min.js";
 import DataCard from "@/Components/Manual/DataCard";
 import IndicatorOn from "@/Components/Manual/IndicatorOn";
@@ -6,12 +6,16 @@ import IndicatorOff from "@/Components/Manual/IndicatorOff";
 import TableData from "@/Components/Manual/TableData";
 import Sidebar from "@/Components/Sidebar";
 import ModalForm from "@/Components/ModalForm";
-import ToastNotif from "./ToastNotif";
+import { useEffect } from "react";
 
 export default function index(props) {
-    console.info("props : ", props)
-
     const {title, dataManual} = props;
+    useEffect(() => {
+        if (!dataManual) {
+            router.get('/manual');
+        }
+        return;
+    }, []);
 
     return (
         <div>
@@ -41,63 +45,76 @@ export default function index(props) {
                             </div>
 
                             <div className="mr-2">
-                                {/* <a
-                                    href="/admin/manual/create"
-                                    className="text-white bg-primary hover:bg-primary-hover font-medium rounded-xl text-sm md:text-base px-3 py-2 md:px-5 md:py-2.5"
-                                >
-                                    Tambah
-                                </a> */}
-                                <ModalForm message={props.flash.message} />
+                                <ModalForm dataManual={dataManual} message={props.flash.message} />
                             </div>
                         </div>
 
                         <div className="my-5">
                             {/* Data Manual Mobile */}
-                            {dataManual.map((manual, id) => (
-                                <DataCard key={id}>
-                                    <DataCard.Header>
-                                        {manual.device}
-                                    </DataCard.Header>
-                                    <DataCard.PompaBody pompaText="Pompa :">
-                                        {manual.pompa == 1 && (
-                                            <IndicatorOn>ON</IndicatorOn>
-                                        )}
-                                        {manual.pompa == 0 && (
-                                            <IndicatorOff>OFF</IndicatorOff>
-                                        )}
-                                    </DataCard.PompaBody>
-                                    <DataCard.SolenoidBody solenoidText="Solenoid">
-                                        {manual.sol_1 == 1 && (
-                                            <IndicatorOn>1. ON</IndicatorOn>
-                                        )}
-                                        {manual.sol_1 == 0 && (
-                                            <IndicatorOff>1. OFF</IndicatorOff>
-                                        )}
-                                        {manual.sol_2 == 1 && (
-                                            <IndicatorOn>2. ON</IndicatorOn>
-                                        )}
-                                        {manual.sol_2 == 0 && (
-                                            <IndicatorOff>2. OFF</IndicatorOff>
-                                        )}
-                                        {manual.sol_3 == 1 && (
-                                            <IndicatorOn>3. ON</IndicatorOn>
-                                        )}
-                                        {manual.sol_3 == 0 && (
-                                            <IndicatorOff>3. OFF</IndicatorOff>
-                                        )}
-                                        {manual.sol_4 == 1 && (
-                                            <IndicatorOn>4. ON</IndicatorOn>
-                                        )}
-                                        {manual.sol_4 == 0 && (
-                                            <IndicatorOff>4. OFF</IndicatorOff>
-                                        )}
-                                    </DataCard.SolenoidBody>
-                                    <DataCard.ActionManual
-                                        editLink="#"
-                                        deleteAction="#"
-                                    />
-                                </DataCard>
-                            ))}
+                            {dataManual && dataManual.length > 0 ? (
+                                dataManual.map((manual, id) => (
+                                    <DataCard key={id}>
+                                        <DataCard.Header>
+                                            {manual.device}
+                                        </DataCard.Header>
+                                        <DataCard.PompaBody pompaText="Pompa :">
+                                            {manual.pompa == 1 && (
+                                                <IndicatorOn>ON</IndicatorOn>
+                                            )}
+                                            {manual.pompa == 0 && (
+                                                <IndicatorOff>OFF</IndicatorOff>
+                                            )}
+                                        </DataCard.PompaBody>
+                                        <DataCard.SolenoidBody solenoidText="Solenoid">
+                                            {manual.sol_1 == 1 && (
+                                                <IndicatorOn>1. ON</IndicatorOn>
+                                            )}
+                                            {manual.sol_1 == 0 && (
+                                                <IndicatorOff>
+                                                    1. OFF
+                                                </IndicatorOff>
+                                            )}
+                                            {manual.sol_2 == 1 && (
+                                                <IndicatorOn>2. ON</IndicatorOn>
+                                            )}
+                                            {manual.sol_2 == 0 && (
+                                                <IndicatorOff>
+                                                    2. OFF
+                                                </IndicatorOff>
+                                            )}
+                                            {manual.sol_3 == 1 && (
+                                                <IndicatorOn>3. ON</IndicatorOn>
+                                            )}
+                                            {manual.sol_3 == 0 && (
+                                                <IndicatorOff>
+                                                    3. OFF
+                                                </IndicatorOff>
+                                            )}
+                                            {manual.sol_4 == 1 && (
+                                                <IndicatorOn>4. ON</IndicatorOn>
+                                            )}
+                                            {manual.sol_4 == 0 && (
+                                                <IndicatorOff>
+                                                    4. OFF
+                                                </IndicatorOff>
+                                            )}
+                                        </DataCard.SolenoidBody>
+                                        <DataCard.ActionManual
+                                            editLink={route("manual.edit", {
+                                                id: manual.id,
+                                            })}
+                                            as="button"
+                                            method="get"
+                                            data={{ id: manual.id }}
+                                            deleteAction="#"
+                                        />
+                                    </DataCard>
+                                ))
+                            ) : (
+                                <p className="text-red-primary md:hidden">
+                                    Data tidak ditemukan
+                                </p>
+                            )}
                             {/* Data Manual Mobile */}
 
                             {/* Table md Breakpoint */}
@@ -120,7 +137,7 @@ export default function index(props) {
                                 </TableData.TableHead>
 
                                 <TableData.TableBody>
-                                    {dataManual &&
+                                    {dataManual && dataManual.length > 0 ? (
                                         dataManual.map((manual, id) => (
                                             <TableData.TableBodyRow key={id}>
                                                 <TableData.TableBodyData>
@@ -185,10 +202,29 @@ export default function index(props) {
                                                 </TableData.TableBodyData>
 
                                                 <TableData.TableBodyData>
-                                                    <TableData.ActionManual />
+                                                    <TableData.ActionManual
+                                                        editLink={route(
+                                                            "manual.edit",
+                                                            {
+                                                                id: manual.id,
+                                                            }
+                                                        )}
+                                                        as="button"
+                                                        method="get"
+                                                        data={{ id: manual.id }}
+                                                    />
                                                 </TableData.TableBodyData>
                                             </TableData.TableBodyRow>
-                                        ))}
+                                        ))
+                                    ) : (
+                                        <TableData.TableBodyRow>
+                                            <TableData.TableBodyData>
+                                                <p className="text-red-primary">
+                                                    Data tidak ditemukan
+                                                </p>
+                                            </TableData.TableBodyData>
+                                        </TableData.TableBodyRow>
+                                    )}
                                 </TableData.TableBody>
                             </TableData>
                         </div>

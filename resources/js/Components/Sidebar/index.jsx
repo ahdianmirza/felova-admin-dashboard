@@ -31,7 +31,7 @@ const Sidebar = () => {
                             </button>
                             <a href="/" className="flex ms-2 md:me-24">
                                 <img
-                                    src="img/logo-felova.png"
+                                    src="/img/logo-felova.png"
                                     alt="Logo Vanili"
                                     className="h-10 mr-2"
                                 ></img>
