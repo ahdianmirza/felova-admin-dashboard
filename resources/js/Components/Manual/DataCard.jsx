@@ -46,14 +46,33 @@ const SolenoidBody = ({solenoidText, children}) => {
 };
 
 const ActionManual = (props) => {
-    const {editLink, deleteAction, as, method, data} = props;
+    const {
+        editLink,
+        deleteLink,
+        as,
+        methodEdit,
+        methodDelete,
+        data,
+        handleDeleteNotif,
+    } = props;
     return (
         <div className="w-full flex justify-end items-center gap-x-2 mt-5">
             {/* Update Button */}
-            <ButtonEdit editLink={editLink} as={as} method={method} data={data} />
+            <ButtonEdit
+                editLink={editLink}
+                as={as}
+                method={methodEdit}
+                data={data}
+            />
 
             {/* Delete Button */}
-            <ButtonDelete deleteAction={deleteAction} />
+            <ButtonDelete
+                deleteLink={deleteLink}
+                as={as}
+                method={methodDelete}
+                data={data}
+                handleClick={handleDeleteNotif}
+            />
         </div>
     );
 };

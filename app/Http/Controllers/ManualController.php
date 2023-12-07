@@ -55,7 +55,7 @@ class ManualController extends Controller
         $manual->sol_3 = $sol_3;
         $manual->sol_4 = $sol_4;
         $manual->save();
-        return redirect()->back()->with('message', 'Pengaturan berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Pengaturan berhasil ditambahkan');
     }
 
     /**
@@ -104,14 +104,16 @@ class ManualController extends Controller
             'sol_3' => $sol_3,
             'sol_4' => $sol_4
         ]);
-        return redirect('/manual')->with('message', 'Update pengaturan berhasil');
+        return redirect('/manual')->with('success', 'Pengaturan berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Manual $manual)
+    public function destroy(Request $request, Manual $manual)
     {
-        //
+        $manual = $manual->find($request->id);
+        $manual->delete();
+        return redirect('/manual')->with('success', 'Pengaturan berhasil dihapus');
     }
 }

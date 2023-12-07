@@ -6,20 +6,60 @@ import IndicatorOff from "@/Components/Manual/IndicatorOff";
 import TableData from "@/Components/Manual/TableData";
 import Sidebar from "@/Components/Sidebar";
 import ModalForm from "@/Components/ModalForm";
-import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect, useState } from "react";
 
-export default function index(props) {
+export default function Manual(props) {
     const {title, dataManual} = props;
+
+    const toastNotifDelete = new Promise((resolve) =>
+        setTimeout(() => resolve("Pengaturan berhasil dihapus"), 1000)
+    );
+
     useEffect(() => {
         if (!dataManual) {
             router.get('/manual');
         }
-        return;
     }, []);
+
+    const handleDeleteNotif = () => {
+        toast.promise(toastNotifDelete, {
+            pending: {
+                render() {
+                    return "Loading";
+                },
+                icon: "🚀"
+            },
+            success: {
+                render({ data }) {
+                    return data;
+                },
+                icon: "🟢"
+            },
+            error: {
+                render({ data }) {
+                    return <MyErrorComponent message={data.message} />;
+                },
+            },
+        });
+    };
 
     return (
         <div>
             <Head title={title} />
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                closeOnClick
+                hideProgressBar={false}
+                newestOnTop={false}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="light"
+            />
 
             {/* Sidebar Start */}
             <Sidebar />
@@ -28,7 +68,7 @@ export default function index(props) {
             {/* Manual Content Start */}
             <div className="p-2 sm:ml-64">
                 <div className="p-1 mt-14">
-                    <div className="w-full bg-white p-3 rounded-lg md:rounded-xl shadow-md md:shadow-md">
+                    <div className="w-full bg-white p-3">
                         <div className="flex items-center justify-between">
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
@@ -44,8 +84,12 @@ export default function index(props) {
                                 </p>
                             </div>
 
+                            {/* Tambah Data */}
                             <div className="mr-2">
-                                <ModalForm dataManual={dataManual} message={props.flash.message} />
+                                <ModalForm
+                                    dataManual={dataManual}
+                                    success={props.flash.success}
+                                />
                             </div>
                         </div>
 
@@ -104,9 +148,18 @@ export default function index(props) {
                                                 id: manual.id,
                                             })}
                                             as="button"
-                                            method="get"
+                                            methodEdit="get"
                                             data={{ id: manual.id }}
-                                            deleteAction="#"
+                                            deleteLink={route(
+                                                "manual.destroy",
+                                                {
+                                                    id: manual.id,
+                                                }
+                                            )}
+                                            methodDelete="delete"
+                                            handleDeleteNotif={() =>
+                                                handleDeleteNotif()
+                                            }
                                         />
                                     </DataCard>
                                 ))

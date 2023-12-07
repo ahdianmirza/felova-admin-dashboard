@@ -5,8 +5,7 @@ import EditForm from "@/Components/Manual/EditForm";
 
 export default function EditManual(props) {
     const {manual, title} = props;
-
-    console.info('props', props);
+    
     return (
         <div>
             <Head title={title} />

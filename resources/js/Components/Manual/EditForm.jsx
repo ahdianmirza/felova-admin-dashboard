@@ -12,7 +12,6 @@ const EditForm = (props) => {
     const [sol_2, setSol2] = useState(manual.sol_2);
     const [sol_3, setSol3] = useState(manual.sol_3);
     const [sol_4, setSol4] = useState(manual.sol_4);
-    const [isNotif, setIsNotif] = useState(false);
 
     const handleSubmit = () => {
         const data = { id: manual.id, device, pompa, sol_1, sol_2, sol_3, sol_4 };

@@ -1,12 +1,19 @@
 "use client";
 
-import ToastNotif from "@/Pages/Manual/ToastNotif";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { router } from "@inertiajs/react";
 import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ModalForm = (props) => {
-    const {message, dataManual} = props;
+    const {
+        dataManual
+    } = props;
+
+    const toastNotifCreate = new Promise((resolve) =>
+        setTimeout(() => resolve("Pengaturan berhasil ditambahkan"), 1000)
+    );
 
     const [openModal, setOpenModal] = useState(false);
     const [device, setDevice] = useState("");
@@ -15,22 +22,36 @@ const ModalForm = (props) => {
     const [sol_2, setSol2] = useState(false);
     const [sol_3, setSol3] = useState(false);
     const [sol_4, setSol4] = useState(false);
-    const [isNotif, setIsNotif] = useState(false);
 
     const handleSubmit = () => {
         const data = { device, pompa, sol_1, sol_2, sol_3, sol_4 };
-        router.post(route('manual.store'), data);
-        setIsNotif(true);
-        setTimeout(() => {
-            setIsNotif(false);
-        }, 3000)
+        router.post(route("manual.store"), data);
+        toast.promise(toastNotifCreate, {
+            pending: {
+                render() {
+                    return "Loading";
+                },
+                icon: "🚀",
+            },
+            success: {
+                render({ data }) {
+                    return data;
+                },
+                icon: "🟢",
+            },
+            error: {
+                render({ data }) {
+                    return <MyErrorComponent message={data.message} />;
+                },
+            },
+        });
         setDevice("");
         setPompa(false);
         setSol1(false);
         setSol2(false);
         setSol3(false);
         setSol4(false);
-    }
+    };
 
     const handleDisabledButton = () => {
         let sameDevice;
@@ -68,7 +89,6 @@ const ModalForm = (props) => {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="space-y-6">
-                        {isNotif && <ToastNotif message={message} />}
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                             Tambah Pengaturan Manual
                         </h3>
