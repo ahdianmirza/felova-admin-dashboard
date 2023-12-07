@@ -1,10 +1,10 @@
 "use client";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { router } from "@inertiajs/react";
 import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ModalForm = (props) => {
     const {

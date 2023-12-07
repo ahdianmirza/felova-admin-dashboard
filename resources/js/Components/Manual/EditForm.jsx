@@ -5,7 +5,7 @@ import { Button, Label, TextInput, ToggleSwitch } from "flowbite-react";
 import { useState } from "react";
 
 const EditForm = (props) => {
-    const {manual} = props;
+    const { manual, handleNotifUpdate } = props;
     const [device, setDevice] = useState(manual.device);
     const [pompa, setPompa] = useState(manual.pompa);
     const [sol_1, setSol1] = useState(manual.sol_1);
@@ -69,7 +69,10 @@ const EditForm = (props) => {
                 />
             </div>
             <Button
-                onClick={() => handleSubmit()}
+                onClick={() => {
+                    handleSubmit()
+                    handleNotifUpdate()
+                }}
                 disabled={handleDisabledButton()}
                 className="w-full bg-primary hover:bg-primary-hover focus:ring-primary-hover enabled:hover:bg-primary-focus focus:bg-primary-focus"
             >

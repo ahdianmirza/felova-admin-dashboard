@@ -116,4 +116,9 @@ class ManualController extends Controller
         $manual->delete();
         return redirect('/manual')->with('success', 'Pengaturan berhasil dihapus');
     }
+
+    public function data() {
+        $dataManual = Manual::all();
+        return response()->json($dataManual);
+    }
 }

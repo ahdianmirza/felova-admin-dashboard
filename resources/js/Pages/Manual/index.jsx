@@ -1,4 +1,4 @@
-import { Link, Head, router } from "@inertiajs/react";
+import { Head, router } from "@inertiajs/react";
 import "/node_modules/flowbite/dist/flowbite.min.js";
 import DataCard from "@/Components/Manual/DataCard";
 import IndicatorOn from "@/Components/Manual/IndicatorOn";
@@ -8,14 +8,11 @@ import Sidebar from "@/Components/Sidebar";
 import ModalForm from "@/Components/ModalForm";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Manual(props) {
     const {title, dataManual} = props;
-
-    const toastNotifDelete = new Promise((resolve) =>
-        setTimeout(() => resolve("Pengaturan berhasil dihapus"), 1000)
-    );
+    const toastNotifDelete = new Promise((resolve) => setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000));
 
     useEffect(() => {
         if (!dataManual) {
@@ -88,7 +85,6 @@ export default function Manual(props) {
                             <div className="mr-2">
                                 <ModalForm
                                     dataManual={dataManual}
-                                    success={props.flash.success}
                                 />
                             </div>
                         </div>

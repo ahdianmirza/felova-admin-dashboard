@@ -2,9 +2,12 @@ import { Head } from "@inertiajs/react";
 import "/node_modules/flowbite/dist/flowbite.min.js";
 import Sidebar from "@/Components/Sidebar";
 import EditForm from "@/Components/Manual/EditForm";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditManual(props) {
     const {manual, title} = props;
+    const handleNotifUpdate = () => toast.success("Data berhasil diupdate");
     
     return (
         <div>
@@ -33,7 +36,10 @@ export default function EditManual(props) {
 
                         <div className="my-4">
                             {manual && (
-                                <EditForm manual={manual} />
+                                <EditForm
+                                    manual={manual}
+                                    handleNotifUpdate={handleNotifUpdate}
+                                />
                             )}
                         </div>
                     </div>
