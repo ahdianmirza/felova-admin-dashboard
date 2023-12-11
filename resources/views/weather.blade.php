@@ -47,9 +47,11 @@
                         </th>
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Intensitas Cahaya
                         </th>
-                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Curah Hujan/Hari
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Curah Hujan/hari
                         </th>
                         <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Kecepatan Angin
+                        </th>
+                        <th class="p-2 border-b-2 border-[#EEEEEE] text-slate-700">Waktu
                         </th>
                     </tr>
                 </thead>
@@ -88,13 +90,13 @@
                                     </td>
                                 @endif
 
-                                @if ($dataWeather->curahHujanHari == null || $dataWeather->curahHujanHari == 0)
+                                @if ($dataWeather->curahHujan == null || $dataWeather->curahHujan == 0)
                                     <td class="text-center text-[#353535] font-semibold py-2">
                                         -
                                     </td>
                                 @else
                                     <td class="text-center text-[#353535] font-semibold py-2">
-                                        {{ $dataWeather->curahHujanHari }} mm
+                                        {{ $dataWeather->curahHujan }} mm
                                     </td>
                                 @endif
 
@@ -107,6 +109,10 @@
                                         {{ $dataWeather->kecepatanAngin }} m/s
                                     </td>
                                 @endif
+
+                                <td class="text-center text-[#353535] font-semibold py-2">
+                                    {{ date('d/m/Y H:i:s', strtotime($dataWeather->created_at)) }}
+                                </td>
                             </tr>
                         @endforeach
                     @else

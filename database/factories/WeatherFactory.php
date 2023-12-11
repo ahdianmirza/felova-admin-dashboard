@@ -17,7 +17,11 @@ class WeatherFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'suhuUdara' => fake()->randomFloat(2, 20, 40),
+            'kelembapanUdara' => fake()->numberBetween(1, 100),
+            'intensitasCahaya' => fake()->randomFloat(2, 10, 30000),
+            'curahHujan' => fake()->randomFloat(2, 10, 30000),
+            'kecepatanAngin' => fake()->randomFloat(2, 10, 100),
         ];
     }
 }

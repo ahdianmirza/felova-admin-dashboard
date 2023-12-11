@@ -11,7 +11,7 @@ class WeatherController extends Controller
     public function index() {
         return view('weather', [
             'title' => 'Weather',
-            'dataWeathers' => Weather::orderBy('created_at', 'asc')->paginate(10),
+            'dataWeathers' => Weather::orderBy('created_at', 'asc')->paginate(25),
             'allDataWeathers' => Weather::all()
         ]);
     }
