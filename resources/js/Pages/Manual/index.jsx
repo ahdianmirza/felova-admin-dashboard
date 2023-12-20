@@ -83,14 +83,12 @@ export default function Manual(props) {
 
                             {/* Tambah Data */}
                             <div className="mr-2">
-                                <ModalForm
-                                    dataManual={dataManual}
-                                />
+                                <ModalForm dataManual={dataManual} />
                             </div>
                         </div>
 
                         <div className="my-5">
-                            {/* Data Manual Mobile */}
+                            {/* Data Manual Mobile Start */}
                             {dataManual && dataManual.length > 0 ? (
                                 dataManual.map((manual, id) => (
                                     <DataCard key={id}>
@@ -164,7 +162,7 @@ export default function Manual(props) {
                                     Data tidak ditemukan
                                 </p>
                             )}
-                            {/* Data Manual Mobile */}
+                            {/* Data Manual Mobile End */}
 
                             {/* Table md Breakpoint */}
                             <TableData>
@@ -261,6 +259,16 @@ export default function Manual(props) {
                                                         as="button"
                                                         method="get"
                                                         data={{ id: manual.id }}
+                                                        deleteLink={route(
+                                                            "manual.destroy",
+                                                            {
+                                                                id: manual.id,
+                                                            }
+                                                        )}
+                                                        methodDelete="delete"
+                                                        handleDeleteNotif={() =>
+                                                            handleDeleteNotif()
+                                                        }
                                                     />
                                                 </TableData.TableBodyData>
                                             </TableData.TableBodyRow>

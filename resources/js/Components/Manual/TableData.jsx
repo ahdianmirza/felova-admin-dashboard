@@ -59,14 +59,33 @@ const TableBodyData = ({children}) => {
 };
 
 
-const ActionManual = ({ editLink, deleteAction, as, method, data }) => {
+const ActionManual = ({
+    editLink,
+    as,
+    method,
+    data,
+    deleteLink,
+    methodDelete,
+    handleDeleteNotif,
+}) => {
     return (
         <div className="flex items-center gap-x-2">
             {/* Update Button */}
-            <ButtonEdit editLink={editLink} as={as} method={method} data={data} />
+            <ButtonEdit
+                editLink={editLink}
+                as={as}
+                method={method}
+                data={data}
+            />
 
             {/* Delete Button */}
-            <ButtonDelete deleteAction={deleteAction} />
+            <ButtonDelete
+                deleteLink={deleteLink}
+                as={as}
+                method={methodDelete}
+                data={data}
+                handleClick={handleDeleteNotif}
+            />
         </div>
     );
 };
