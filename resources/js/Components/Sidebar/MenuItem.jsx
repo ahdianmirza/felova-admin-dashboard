@@ -1,16 +1,18 @@
 import React from 'react'
+import { Link } from "@inertiajs/react";
 import 'flowbite';
 
 export default function MenuItem({ children, menuLink }) {
     return (
         <div>
             <li>
-                <a
+                <Link
                     href={menuLink}
-                    className="flex items-center p-2 text-white rounded-lg hover:bg-primary-hover dark:hover:bg-gray-700 group"
+                    as="button"
+                    className="w-full flex items-center p-2 text-white rounded-lg hover:bg-primary-hover dark:hover:bg-gray-700 group"
                 >
                     {children}
-                </a>
+                </Link>
             </li>
         </div>
     );

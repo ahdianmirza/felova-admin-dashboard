@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TimerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,8 +19,11 @@ use Inertia\Inertia;
 */
 
 Route::resource('/manual', ManualController::class);
+
+Route::get('/timer', [TimerController::class, 'index']);
+Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
 // Route::post('/manual/data', [ManualController::class, 'store'])->name('manual.data');
-// Route::get('/manual/edit', [ManualController::class, 'edit'])->name('manual.edit');
+// Route::get('/manual/data', [ManualController::class, 'data'])->name('manual.data');
 // Route::post('/manual/edit', [ManualController::class, 'update'])->name('manual.update');
 
 Route::get('/dashboard', function () {
