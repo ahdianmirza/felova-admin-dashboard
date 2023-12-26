@@ -36,9 +36,10 @@ const Action = ({ timer, handleDeleteNotif }) => {
         <div className="w-full flex justify-end items-center gap-x-2 mt-2">
             <ModalDetail timer={timer} />
             <Link
-                href="/"
+                href={route("edit.timer", { id: timer.id })}
                 as="button"
-                method="post"
+                method="get"
+                data={{ id: timer.id }}
                 className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
             >
                 Edit

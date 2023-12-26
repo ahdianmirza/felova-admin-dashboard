@@ -1,11 +1,11 @@
-import ModalForm from "@/Components/ModalForm";
 import Sidebar from "@/Components/Sidebar";
 import DataCard from "@/Components/Timer/DataCard";
+import ModalForm from "@/Components/Timer/ModalForm";
 import { Head, router } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Timer(props) {
-    const { title, dataTimer } = props;
+    const { title, dataTimer, dataDevice } = props;
     const toastNotifDelete = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
     );
@@ -73,7 +73,7 @@ export default function Timer(props) {
 
                             {/* Tambah Data */}
                             <div className="mr-2">
-                                <ModalForm dataManual={dataTimer} />
+                                <ModalForm dataDevice={dataDevice} />
                             </div>
                         </div>
 
@@ -97,7 +97,12 @@ export default function Timer(props) {
                                                 {`${timer.jam}:${timer.menit}`}
                                             </p>
                                         </DataCard.Body>
-                                        <DataCard.Action timer={timer} handleDeleteNotif={() => handleDeleteNotif()} />
+                                        <DataCard.Action
+                                            timer={timer}
+                                            handleDeleteNotif={() =>
+                                                handleDeleteNotif()
+                                            }
+                                        />
                                     </DataCard>
                                 ))
                             ) : (
