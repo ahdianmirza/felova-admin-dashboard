@@ -30,8 +30,8 @@ class TimerController extends Controller
         ]);
 
         $waktu = explode(":", $request->waktu);
-        $jam = intval($waktu[0]);
-        $menit = intval($waktu[1]);
+        $jam = $waktu[0];
+        $menit = $waktu[1];
 
 
         $schedule = new Schedule();
@@ -64,8 +64,8 @@ class TimerController extends Controller
     public function update(Request $request) {
         // dd($request->all());
         $waktu = explode(":", $request->waktu);
-        $jam = intval($waktu[0]);
-        $menit = intval($waktu[1]);
+        $jam = $waktu[0];
+        $menit = $waktu[1];
 
         $schedule = Schedule::find($request->id);
         $schedule->device_id = $request->device;

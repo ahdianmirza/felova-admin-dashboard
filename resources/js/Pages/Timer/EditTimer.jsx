@@ -1,4 +1,4 @@
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import "/node_modules/flowbite/dist/flowbite.min.js";
 import Sidebar from "@/Components/Sidebar";
 import EditForm from "@/Components/Timer/EditForm";
@@ -22,15 +22,47 @@ export default function EditTimer(props) {
                 <div className="p-1 mt-14">
                     <div className="w-full bg-white p-3 rounded-lg md:rounded-xl">
                         <div className="flex items-center justify-between">
-                            <div className="flex flex-col justify-center items-start">
-                                <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Update Timer Setting
-                                </h1>
-                                <p className="text-start">
-                                    <small className="text-[#A3A4A8]">
-                                        Edit pengaturan yang diinginkan
-                                    </small>
-                                </p>
+                            <div className="w-full flex justify-start items-center space-x-3">
+                                <Link
+                                    href={route("index.timer")}
+                                    as="button"
+                                    method="get"
+                                    className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
+                                >
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22Z"
+                                            stroke="white"
+                                            strokeWidth="1.5"
+                                            strokeMiterlimit="10"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M13.26 15.53L9.74001 12L13.26 8.46997"
+                                            stroke="white"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </Link>
+                                <div>
+                                    <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
+                                        Update Timer Setting
+                                    </h1>
+                                    <p className="text-start">
+                                        <small className="text-[#A3A4A8]">
+                                            Edit pengaturan yang diinginkan
+                                        </small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
 

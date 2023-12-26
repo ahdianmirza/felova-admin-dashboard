@@ -14,9 +14,9 @@ const ModalForm = (props) => {
     );
 
     const [openModal, setOpenModal] = useState(false);
-    const [device, setDevice] = useState(dataDevice[0].id);
-    const [hari, setHari] = useState("Senin");
-    const [noJadwal, setNoJadwal] = useState("1");
+    const [device, setDevice] = useState("");
+    const [hari, setHari] = useState("");
+    const [noJadwal, setNoJadwal] = useState("");
     const [waktu, setWaktu] = useState("");
     const [durasiMenit, setDurasiMenit] = useState("");
     const [durasiDetik, setDurasiDetik] = useState("");
@@ -61,23 +61,11 @@ const ModalForm = (props) => {
         setStatus(false);
     };
 
-    // const handleDisabledButton = () => {
-    //     let sameDevice;
-
-    //     dataManual.map((manual) => {
-    //         if (manual.device == device) {
-    //             sameDevice = manual.device;
-    //         }
-    //     });
-
-    //     if (device == "") {
-    //         return true;
-    //     } else if (device == sameDevice) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // };
+    const handleDisabledButton = () => {
+        if (device === "" || hari === "" || noJadwal === "" || durasiMenit === "" || durasiDetik === "" || waktu === "") {
+            return true;
+        }
+    };
 
     return (
         <>
@@ -110,7 +98,9 @@ const ModalForm = (props) => {
                                 onChange={(device) =>
                                     setDevice(device.target.value)
                                 }
+                                defaultValue="disabled"
                             >
+                                <option value="disabled" disabled>Pilih device yang diinginkan</option>
                                 {dataDevice && dataDevice.length > 0 ? (
                                     dataDevice.map((device, id) => (
                                         <option key={id} value={device.id}>
@@ -118,7 +108,7 @@ const ModalForm = (props) => {
                                         </option>
                                     ))
                                 ) : (
-                                    <option value="null">
+                                    <option value="">
                                         Device tidak ditemukan
                                     </option>
                                 )}
@@ -132,7 +122,9 @@ const ModalForm = (props) => {
                                 id="hari"
                                 required
                                 onChange={(hari) => setHari(hari.target.value)}
+                                defaultValue="disabled"
                             >
+                                <option value="disabled" disabled>Pilih hari yang diinginkan</option>
                                 <option value="Senin">Senin</option>
                                 <option value="Selasa">Selasa</option>
                                 <option value="Rabu">Rabu</option>
@@ -152,7 +144,9 @@ const ModalForm = (props) => {
                                 onChange={(noJadwal) =>
                                     setNoJadwal(noJadwal.target.value)
                                 }
+                                defaultValue="disabled"
                             >
+                                <option value="disabled" disabled>Pilih no jadwal yang diinginkan</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -243,6 +237,7 @@ const ModalForm = (props) => {
                         <div className="w-full">
                             <Button
                                 onClick={() => handleSubmit()}
+                                disabled={handleDisabledButton()}
                                 className="w-full bg-primary hover:bg-primary-hover focus:ring-primary-hover enabled:hover:bg-primary-focus focus:bg-primary-focus"
                             >
                                 Tambah

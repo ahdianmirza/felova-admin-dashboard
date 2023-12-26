@@ -3,6 +3,8 @@
 import { router } from "@inertiajs/react";
 import { Button, Label, Select, TextInput, ToggleSwitch } from "flowbite-react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditForm = (props) => {
     const { timer, dataDevice } = props;
@@ -18,7 +20,8 @@ const EditForm = (props) => {
     const [sol_3, setSol3] = useState(timer.sol_3 == 1 ? true : false);
     const [sol_4, setSol4] = useState(timer.sol_4 == 1 ? true : false);
     const [status, setStatus] = useState(timer.status == 1 ? true : false);
-    console.info(durasiMenit);
+
+    const handleNotifUpdateTimer = () => toast.success("Data berhasil diupdate");
 
     const handleSubmit = () => {
         const data = {
@@ -37,13 +40,15 @@ const EditForm = (props) => {
         router.put(route("update.timer", {id: timer.id}), data);
     };
 
-    // const handleDisabledButton = () => {
-    //     if (device == "") {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // };
+    const handleDisabledButton = () => {
+        if (
+            durasiMenit === "" ||
+            durasiDetik === "" ||
+            waktu === ""
+        ) {
+            return true;
+        }
+    };
 
     return (
         <form className="flex flex-col space-y-3">
@@ -57,6 +62,9 @@ const EditForm = (props) => {
                     onChange={(device) => setDevice(device.target.value)}
                     defaultValue={timer.device.name}
                 >
+                    <option value="disabled" disabled>
+                        Pilih device yang diinginkan
+                    </option>
                     {dataDevice && dataDevice.length > 0 ? (
                         dataDevice.map((device, id) => (
                             <option key={id} value={device.id}>
@@ -78,6 +86,9 @@ const EditForm = (props) => {
                     onChange={(hari) => setHari(hari.target.value)}
                     defaultValue={timer.hari}
                 >
+                    <option value="disabled" disabled>
+                        Pilih hari yang diinginkan
+                    </option>
                     <option value="Senin">Senin</option>
                     <option value="Selasa">Selasa</option>
                     <option value="Rabu">Rabu</option>
@@ -97,6 +108,9 @@ const EditForm = (props) => {
                     onChange={(noJadwal) => setNoJadwal(noJadwal.target.value)}
                     defaultValue={timer.noJadwal}
                 >
+                    <option value="disabled" disabled>
+                        Pilih no jadwal yang diinginkan
+                    </option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -113,7 +127,7 @@ const EditForm = (props) => {
                 <TextInput
                     id="waktu"
                     type="time"
-                    value={waktu}
+                    value={`${timer.jam}:${timer.menit}`}
                     onChange={(waktu) => setWaktu(waktu.target.value)}
                     placeholder="Masukkan waktu mulai"
                     required
@@ -179,7 +193,9 @@ const EditForm = (props) => {
             <Button
                 onClick={() => {
                     handleSubmit();
+                    handleNotifUpdateTimer();
                 }}
+                disabled={handleDisabledButton()}
                 className="w-full bg-primary hover:bg-primary-hover focus:ring-primary-hover enabled:hover:bg-primary-focus focus:bg-primary-focus"
             >
                 Edit

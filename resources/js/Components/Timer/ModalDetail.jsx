@@ -55,7 +55,9 @@ function ModalDetail(props) {
                                 <p className="font-semibold w-2/5 mr-4">
                                     Waktu Mulai :
                                 </p>
-                                <span className="font-normal">{`${timer.jam}:${timer.menit}`}</span>
+                                <span className="font-normal">
+                                    {`${timer.jam}:${timer.menit}`}
+                                </span>
                             </div>
                             <div className="flex items-center">
                                 <p className="font-semibold w-2/5 mr-4">

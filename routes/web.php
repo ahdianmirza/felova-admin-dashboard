@@ -20,7 +20,7 @@ use Inertia\Inertia;
 
 Route::resource('/manual', ManualController::class);
 
-Route::get('/timer', [TimerController::class, 'index']);
+Route::get('/timer', [TimerController::class, 'index'])->name('index.timer');
 Route::post('/timer/store', [TimerController::class, 'store'])->name('store.timer');
 Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
 Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
