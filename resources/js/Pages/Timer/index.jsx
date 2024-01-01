@@ -1,6 +1,7 @@
 import Sidebar from "@/Components/Sidebar";
 import DataCard from "@/Components/Timer/DataCard";
 import ModalForm from "@/Components/Timer/ModalForm";
+import TableData from "@/Components/Timer/TableData";
 import { Head, router } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -9,6 +10,7 @@ export default function Timer(props) {
     const toastNotifDelete = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
     );
+    console.info(dataTimer);
 
     const handleDeleteNotif = () => {
         toast.promise(toastNotifDelete, {
@@ -111,6 +113,73 @@ export default function Timer(props) {
                                 </p>
                             )}
                             {/* Data Timer Mobile End */}
+
+                            {/* Table md Breakpoint Start */}
+                            <TableData>
+                                <TableData.TableHead>
+                                    <TableData.TableHeadTitle>
+                                        <TableData.SortedTitle>
+                                            Device
+                                        </TableData.SortedTitle>
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        <TableData.SortedTitle>
+                                            Hari
+                                        </TableData.SortedTitle>
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        <TableData.SortedTitle>
+                                            No. Jadwal
+                                        </TableData.SortedTitle>
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        <TableData.SortedTitle>
+                                            Waktu Mulai
+                                        </TableData.SortedTitle>
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        Aksi
+                                    </TableData.TableHeadTitle>
+                                </TableData.TableHead>
+
+                                <TableData.TableBody>
+                                    {dataTimer && dataTimer.length > 0 ? (
+                                        dataTimer.map((timer, id) => (
+                                            <TableData.TableBodyRow key={id}>
+                                                <TableData.TableBodyData>
+                                                    {timer.device.name}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    {timer.hari}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    {timer.noJadwal}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    {`${timer.jam}:${timer.menit}`}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    <TableData.ActionTimer
+                                                        timer={timer}
+                                                        handleDeleteNotif={() =>
+                                                            handleDeleteNotif()
+                                                        }
+                                                    />
+                                                </TableData.TableBodyData>
+                                            </TableData.TableBodyRow>
+                                        ))
+                                    ) : (
+                                        <TableData.TableBodyRow>
+                                            <TableData.TableBodyData>
+                                                <p className="text-red-primary">
+                                                    Data tidak ditemukan
+                                                </p>
+                                            </TableData.TableBodyData>
+                                        </TableData.TableBodyRow>
+                                    )}
+                                </TableData.TableBody>
+                            </TableData>
+                            {/* Table md Breakpoint End */}
                         </div>
                     </div>
                 </div>
