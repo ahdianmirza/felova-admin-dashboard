@@ -10,7 +10,6 @@ export default function Timer(props) {
     const toastNotifDelete = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
     );
-    console.info(dataTimer);
 
     const handleDeleteNotif = () => {
         toast.promise(toastNotifDelete, {

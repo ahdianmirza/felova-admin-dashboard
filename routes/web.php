@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TimerController;
@@ -18,6 +19,7 @@ use Inertia\Inertia;
 |
 */
 
+Route::resource('/device', DeviceController::class);
 Route::resource('/manual', ManualController::class);
 
 Route::get('/timer', [TimerController::class, 'index'])->name('index.timer');
