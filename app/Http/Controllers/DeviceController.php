@@ -74,8 +74,10 @@ class DeviceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Device $device)
+    public function destroy(Device $device, Request $request)
     {
-        //
+        $device = $device->find($request->id);
+        $device->delete();
+        return redirect('/device')->with('success', 'Device berhasil dihapus');
     }
 }

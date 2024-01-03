@@ -1,4 +1,5 @@
 import ModalForm from "@/Components/Device/ModalForm";
+import TableData from "@/Components/Device/TableData";
 import Sidebar from "@/Components/Sidebar";
 import { Head, router } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,6 +7,32 @@ import { ToastContainer, toast } from "react-toastify";
 export default function Device(props) {
     const { title, dataDevice } = props;
     console.info("props: ", dataDevice);
+
+    const toastNotifDelete = new Promise((resolve) =>
+        setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
+    );
+
+    const handleDeleteNotif = () => {
+        toast.promise(toastNotifDelete, {
+            pending: {
+                render() {
+                    return "Loading";
+                },
+                icon: "🚀",
+            },
+            success: {
+                render({ data }) {
+                    return data;
+                },
+                icon: "🟢",
+            },
+            error: {
+                render({ data }) {
+                    return <MyErrorComponent message={data.message} />;
+                },
+            },
+        });
+    };
 
     return (
         <div>
@@ -38,7 +65,10 @@ export default function Device(props) {
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataDevice && dataDevice.length > 0 ? `${dataDevice.length} total` : "No data found"},
+                                        {dataDevice && dataDevice.length > 0
+                                            ? `${dataDevice.length} total`
+                                            : "No data found"}
+                                        ,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
                                         proceed to resolve them
@@ -54,11 +84,50 @@ export default function Device(props) {
 
                         <div className="my-5">
                             {/* Data Device Mobile Start */}
-                            
+
                             {/* Data Device Mobile End */}
 
                             {/* Table md Breakpoint Start */}
-                            
+                            <TableData>
+                                <TableData.TableHead>
+                                    <TableData.TableHeadTitle>
+                                        <TableData.SortedTitle>
+                                            Nama Device
+                                        </TableData.SortedTitle>
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        Aksi
+                                    </TableData.TableHeadTitle>
+                                </TableData.TableHead>
+
+                                <TableData.TableBody>
+                                    {dataDevice && dataDevice.length > 0 ? (
+                                        dataDevice.map((device, id) => (
+                                            <TableData.TableBodyRow key={id}>
+                                                <TableData.TableBodyData>
+                                                    {device.name}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    <TableData.ActionDevice
+                                                        device={device}
+                                                        handleDeleteNotif={() =>
+                                                            handleDeleteNotif()
+                                                        }
+                                                    />
+                                                </TableData.TableBodyData>
+                                            </TableData.TableBodyRow>
+                                        ))
+                                    ) : (
+                                        <TableData.TableBodyRow>
+                                            <TableData.TableBodyData>
+                                                <p className="text-red-primary">
+                                                    Data tidak ditemukan
+                                                </p>
+                                            </TableData.TableBodyData>
+                                        </TableData.TableBodyRow>
+                                    )}
+                                </TableData.TableBody>
+                            </TableData>
                             {/* Table md Breakpoint End */}
                         </div>
                     </div>
