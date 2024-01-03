@@ -61,17 +61,14 @@ export default function Device(props) {
                         <div className="flex items-center justify-between">
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Device Setting Lists
+                                    Daftar Pengaturan Device
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataDevice && dataDevice.length > 0
-                                            ? `${dataDevice.length} total`
-                                            : "No data found"}
-                                        ,
+                                        {dataDevice.length} unit,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
-                                        proceed to resolve them
+                                        device aktif yang sedang digunakan
                                     </small>
                                 </p>
                             </div>

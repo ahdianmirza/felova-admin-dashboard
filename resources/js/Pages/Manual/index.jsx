@@ -69,14 +69,14 @@ export default function Manual(props) {
                         <div className="flex items-center justify-between">
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Manual Setting Lists
+                                    Daftar Pengaturan Manual
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataManual.length} total,
+                                        {dataManual.length} data,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
-                                        proceed to resolve them
+                                        pengaturan manual yang digunakan
                                     </small>
                                 </p>
                             </div>

@@ -11,7 +11,7 @@ const ButtonDelete = ({ deleteLink, as, method, data, handleClick }) => {
                 onClick={handleClick}
                 className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
             >
-                Delete
+                Hapus
             </Link>
         </div>
     );

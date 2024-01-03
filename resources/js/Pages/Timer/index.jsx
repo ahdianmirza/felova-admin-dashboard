@@ -60,14 +60,14 @@ export default function Timer(props) {
                         <div className="flex items-center justify-between">
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Timer Setting Lists
+                                    Daftar Pengaturan Timer
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataTimer.length} total,
+                                        {dataTimer.length} data,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
-                                        proceed to resolve them
+                                        pengaturan timer yang digunakan
                                     </small>
                                 </p>
                             </div>
