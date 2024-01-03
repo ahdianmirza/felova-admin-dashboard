@@ -11,7 +11,8 @@ import {
 } from "flowbite-react";
 import { useState } from "react";
 
-const ModalForm = () => {
+const ModalForm = (props) => {
+    const {dataDevice} = props;
     const [openModal, setOpenModal] = useState(false);
     const [device, setDevice] = useState("");
 
@@ -45,10 +46,20 @@ const ModalForm = () => {
     };
 
     const handleDisabledButton = () => {
-        if (
-            device === ""
-        ) {
+        let sameDevice;
+
+        dataDevice.map((data) => {
+            if (data.name == device) {
+                sameDevice = data.name;
+            }
+        });
+
+        if (device === "") {
             return true;
+        } else if (device === sameDevice) {
+            return true;
+        } else {
+            return false;
         }
     };
 
