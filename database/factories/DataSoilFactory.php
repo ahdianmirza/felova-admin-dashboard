@@ -17,7 +17,10 @@ class DataSoilFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'temp_1' => fake()->randomFloat(2, 20, 40),
+            'temp_2' => fake()->randomFloat(2, 20, 40),
+            'hum_1' => fake()->numberBetween(1, 100),
+            'hum_2' => fake()->numberBetween(1, 100),
         ];
     }
 }

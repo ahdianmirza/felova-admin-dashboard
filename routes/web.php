@@ -3,6 +3,7 @@
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SoilController;
 use App\Http\Controllers\TimerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::post('/timer/store', [TimerController::class, 'store'])->name('store.time
 Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
 Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
 Route::put('/timer/update', [TimerController::class, 'update'])->name('update.timer');
+
+Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
