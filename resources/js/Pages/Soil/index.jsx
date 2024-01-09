@@ -1,5 +1,7 @@
 import Sidebar from "@/Components/Sidebar";
 import Paginator from "@/Components/Soil/Paginator";
+import SearchBar from "@/Components/Soil/SearchBar";
+import Sorted from "@/Components/Soil/Sorted";
 import TableData from "@/Components/Soil/TableData";
 import { Head } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
@@ -59,6 +61,9 @@ export default function Timer(props) {
                             {/* Data Timer Mobile Start */}
 
                             {/* Data Timer Mobile End */}
+
+                            <SearchBar />
+                            <Sorted />
 
                             {/* Table md Breakpoint Start */}
                             <TableData>

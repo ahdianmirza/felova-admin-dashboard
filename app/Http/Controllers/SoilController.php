@@ -11,7 +11,7 @@ use Inertia\Inertia;
 class SoilController extends Controller
 {
     public function index() {
-        $dataSoil = new DataSoilCollection(DataSoil::paginate(25));
+        $dataSoil = new DataSoilCollection(DataSoil::filter(request(['search', 'sort']))->paginate(25)->withQueryString());
         return Inertia::render('Soil/index', [
             'title' => 'Soil',
             'dataSoil' => $dataSoil
