@@ -14,7 +14,7 @@ const Sorted = () => {
     }
 
     return (
-        <div className="mb-4 flex items-center gap-x-2">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
             <h2 className="font-semibold">Sortir : </h2>
             <button
                 onClick={() => handleSort()}
