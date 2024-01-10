@@ -1,20 +1,20 @@
 import Sidebar from "@/Components/Sidebar";
-import Paginator from "@/Components/Soil/Paginator";
-import SearchBar from "@/Components/Soil/SearchBar";
-import Sorted from "@/Components/Soil/Sorted";
-import TableData from "@/Components/Soil/TableData";
+import Paginator from "@/Components/Weather/Paginator";
+import SearchBar from "@/Components/Weather/SearchBar";
+import Sorted from "@/Components/Weather/Sorted";
+import TableData from "@/Components/Weather/TableData";
 import { Head } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
-export default function Timer(props) {
-    const { title, dataSoil } = props;
+export default function Weather(props) {
+    const { title, dataWeather } = props;
     const myDate = (date) => {
         return new Date(date);
-    }
+    };
     const formatterTime = new Intl.DateTimeFormat("en-US", {
         hour: "2-digit",
         minute: "2-digit",
-        hour12: false
+        hour12: false,
     });
 
     return (
@@ -37,21 +37,21 @@ export default function Timer(props) {
             <Sidebar />
             {/* Sidebar End */}
 
-            {/* Soil Content Start */}
+            {/* weather Content Start */}
             <div className="p-2 sm:ml-64">
                 <div className="p-1 mt-14">
                     <div className="w-full bg-white p-3">
                         <div className="flex items-center justify-between">
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Menu Soil Station
+                                    Menu Weather Station
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataSoil.meta.total} data,
+                                        {dataWeather.meta.total} data,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
-                                        hasil monitoring kualitas tanah
+                                        hasil monitoring cuaca
                                     </small>
                                 </p>
                             </div>
@@ -72,63 +72,77 @@ export default function Timer(props) {
                                         Waktu
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Suhu 1
+                                        Curah Hujan
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Suhu 2
+                                        Probabilitas
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Kelembapan 1
+                                        Kecepatan Angin
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Kelembapan 2
+                                        Suhu
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        Kelembapan
+                                    </TableData.TableHeadTitle>
+                                    <TableData.TableHeadTitle>
+                                        Intensitas Cahaya
                                     </TableData.TableHeadTitle>
                                 </TableData.TableHead>
+
                                 <TableData.TableBody>
-                                    {dataSoil.data && dataSoil.data.length > 0 ? (
-                                        dataSoil.data.map((soil, id) => (
+                                    {dataWeather.data &&
+                                    dataWeather.data.length > 0 ? (
+                                        dataWeather.data.map((weather, id) => (
                                             <TableData.TableBodyRow key={id}>
                                                 <TableData.TableBodyData>
                                                     {myDate(
-                                                        soil.created_at
+                                                        weather.created_at
                                                     ).getDate() < 10
                                                         ? `0${myDate(
-                                                              soil.created_at
+                                                              weather.created_at
                                                           ).getDate()}-`
                                                         : `${myDate(
-                                                              soil.created_at
+                                                              weather.created_at
                                                           ).getDate()}-`}
                                                     {myDate(
-                                                        soil.created_at
+                                                        weather.created_at
                                                     ).getMonth() < 10
                                                         ? `0${
                                                               myDate(
-                                                                  soil.created_at
+                                                                  weather.created_at
                                                               ).getMonth() + 1
                                                           }-`
                                                         : `${
                                                               myDate(
-                                                                  soil.created_at
+                                                                  weather.created_at
                                                               ).getMonth() + 1
                                                           }`}
                                                     {myDate(
-                                                        soil.created_at
+                                                        weather.created_at
                                                     ).getFullYear()}{" "}
                                                     {formatterTime.format(
-                                                        myDate(soil.created_at)
+                                                        myDate(weather.created_at)
                                                     )}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${soil.temp_1}°C`}
+                                                    {`${weather.curahHujan} mm`}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${soil.temp_2}°C`}
+                                                    {weather.probabilitas}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${soil.hum_1} %`}
+                                                    {`${weather.kecepatanAngin} m/s`}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${soil.hum_2} %`}
+                                                    {`${weather.suhuUdara}°C`}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    {`${weather.kelembapanUdara}%`}
+                                                </TableData.TableBodyData>
+                                                <TableData.TableBodyData>
+                                                    {`${weather.intensitasCahaya} lux`}
                                                 </TableData.TableBodyData>
                                             </TableData.TableBodyRow>
                                         ))
@@ -145,14 +159,14 @@ export default function Timer(props) {
                             </TableData>
 
                             <div className="flex justify-center items-center my-4">
-                                <Paginator meta={dataSoil.meta} />
+                                <Paginator meta={dataWeather.meta} />
                             </div>
                             {/* Table md Breakpoint End */}
                         </div>
                     </div>
                 </div>
             </div>
-            {/* Soil Content End */}
+            {/* weather Content End */}
         </div>
     );
 }

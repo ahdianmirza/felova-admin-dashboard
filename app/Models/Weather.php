@@ -10,4 +10,16 @@ class Weather extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function scopeFilter($query, array $filters) {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('created_at', 'like', '%' . $search . '%');
+        })
+        ->when($filters['sort'] ?? false, function ($query, $sort) {
+            return $query->orderBy('created_at', $sort);
+        })
+        ->when($filters['probabilitas'] ?? false, function ($query, $probabilitas) {
+            return $query->where('probabilitas', 'like', '%' . $probabilitas . '%');
+        });
+    }
 }

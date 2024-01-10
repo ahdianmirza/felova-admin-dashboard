@@ -15,6 +15,7 @@ const Sorted = () => {
 
     return (
         <div className="mb-4 flex items-center gap-x-2">
+            <h2 className="font-semibold">Sortir : </h2>
             <button
                 onClick={() => handleSort()}
                 onMouseDown={() => setSort("asc")}

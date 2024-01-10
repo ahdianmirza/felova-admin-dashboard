@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function Device(props) {
     const { title, dataDevice } = props;
-    console.info("props: ", dataDevice);
 
     const toastNotifDelete = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
