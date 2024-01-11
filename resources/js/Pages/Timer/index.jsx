@@ -117,24 +117,16 @@ export default function Timer(props) {
                             <TableData>
                                 <TableData.TableHead>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            Device
-                                        </TableData.SortedTitle>
+                                        Device
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            Hari
-                                        </TableData.SortedTitle>
+                                        Hari
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            No. Jadwal
-                                        </TableData.SortedTitle>
+                                        No. Jadwal
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            Waktu Mulai
-                                        </TableData.SortedTitle>
+                                        Waktu Mulai
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
                                         Aksi

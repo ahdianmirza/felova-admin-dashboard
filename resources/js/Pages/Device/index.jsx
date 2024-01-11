@@ -87,9 +87,7 @@ export default function Device(props) {
                             <TableData>
                                 <TableData.TableHead>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            Nama Device
-                                        </TableData.SortedTitle>
+                                        Nama Device
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
                                         Aksi

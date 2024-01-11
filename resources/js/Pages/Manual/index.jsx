@@ -168,9 +168,7 @@ export default function Manual(props) {
                             <TableData>
                                 <TableData.TableHead>
                                     <TableData.TableHeadTitle>
-                                        <TableData.SortedTitle>
-                                            Device
-                                        </TableData.SortedTitle>
+                                        Device
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
                                         Pompa
