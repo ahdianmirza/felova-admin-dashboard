@@ -43,7 +43,7 @@ const Sorted = () => {
                 onMouseDown={() => setProbabilitas("Cerah")}
                 name="probabilitas"
                 value={probabilitas}
-                class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded"
+                className="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Cerah
             </button>
