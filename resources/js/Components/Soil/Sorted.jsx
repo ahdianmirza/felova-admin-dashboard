@@ -21,7 +21,7 @@ const Sorted = () => {
                 onMouseDown={() => setSort("asc")}
                 name="sort"
                 value={sort}
-                className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
+                className="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Terlama
             </button>
@@ -31,7 +31,7 @@ const Sorted = () => {
                 onMouseDown={() => setSort("desc")}
                 name="sort"
                 value={sort}
-                className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
+                className="bg-green-100 hover:bg-green-200 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Terbaru
             </button>
