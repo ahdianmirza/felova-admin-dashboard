@@ -99,15 +99,6 @@ export default function Weather(props) {
                                                 <TableData.TableBodyData>
                                                     {myDate(
                                                         weather.created_at
-                                                    ).getDate() < 10
-                                                        ? `0${myDate(
-                                                              weather.created_at
-                                                          ).getDate()}-`
-                                                        : `${myDate(
-                                                              weather.created_at
-                                                          ).getDate()}-`}
-                                                    {myDate(
-                                                        weather.created_at
                                                     ).getMonth() < 10
                                                         ? `0${
                                                               myDate(
@@ -121,9 +112,20 @@ export default function Weather(props) {
                                                           }`}
                                                     {myDate(
                                                         weather.created_at
+                                                    ).getDate() < 10
+                                                        ? `0${myDate(
+                                                              weather.created_at
+                                                          ).getDate()}-`
+                                                        : `${myDate(
+                                                              weather.created_at
+                                                          ).getDate()}-`}
+                                                    {myDate(
+                                                        weather.created_at
                                                     ).getFullYear()}{" "}
                                                     {formatterTime.format(
-                                                        myDate(weather.created_at)
+                                                        myDate(
+                                                            weather.created_at
+                                                        )
                                                     )}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>

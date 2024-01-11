@@ -85,19 +85,11 @@ export default function Timer(props) {
                                     </TableData.TableHeadTitle>
                                 </TableData.TableHead>
                                 <TableData.TableBody>
-                                    {dataSoil.data && dataSoil.data.length > 0 ? (
+                                    {dataSoil.data &&
+                                    dataSoil.data.length > 0 ? (
                                         dataSoil.data.map((soil, id) => (
                                             <TableData.TableBodyRow key={id}>
                                                 <TableData.TableBodyData>
-                                                    {myDate(
-                                                        soil.created_at
-                                                    ).getDate() < 10
-                                                        ? `0${myDate(
-                                                              soil.created_at
-                                                          ).getDate()}-`
-                                                        : `${myDate(
-                                                              soil.created_at
-                                                          ).getDate()}-`}
                                                     {myDate(
                                                         soil.created_at
                                                     ).getMonth() < 10
@@ -111,6 +103,15 @@ export default function Timer(props) {
                                                                   soil.created_at
                                                               ).getMonth() + 1
                                                           }`}
+                                                    {myDate(
+                                                        soil.created_at
+                                                    ).getDate() < 10
+                                                        ? `0${myDate(
+                                                              soil.created_at
+                                                          ).getDate()}-`
+                                                        : `${myDate(
+                                                              soil.created_at
+                                                          ).getDate()}-`}
                                                     {myDate(
                                                         soil.created_at
                                                     ).getFullYear()}{" "}
