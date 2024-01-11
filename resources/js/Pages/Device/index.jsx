@@ -5,7 +5,7 @@ import { Head, router } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Device(props) {
-    const { title, dataDevice } = props;
+    const { title, dataDevice, dataTimer } = props;
 
     const toastNotifDelete = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000)
@@ -109,6 +109,7 @@ export default function Device(props) {
                                                         handleDeleteNotif={() =>
                                                             handleDeleteNotif()
                                                         }
+                                                        dataTimer={dataTimer}
                                                     />
                                                 </TableData.TableBodyData>
                                             </TableData.TableBodyRow>

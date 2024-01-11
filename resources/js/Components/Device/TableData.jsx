@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import TooltipDevice from "./TooltipDevice";
 
 const TableData = ({ children }) => {
     return (
@@ -61,20 +62,37 @@ const TableBodyData = ({ children }) => {
     );
 };
 
-const ActionDevice = ({ device, handleDeleteNotif }) => {
+const ActionDevice = ({ device, handleDeleteNotif, dataTimer }) => {
+
     return (
         <div className="flex items-center gap-x-2">
+            {dataTimer.filter((timer) => timer.device_id === device.id).length >
+            0 ? (
+                <div className="flex items-center gap-x-2">
+                    <button
+                        type="button"
+                        className="px-3 py-2 text-sm font-medium text-center text-white bg-[#fda4a6] rounded-lg"
+                        disabled
+                    >
+                        Hapus
+                    </button>
+
+                    <TooltipDevice />
+                </div>
+            ) : (
+                <Link
+                    href={route("device.destroy", { id: device.id })}
+                    as="button"
+                    method="delete"
+                    data={{ id: device.id }}
+                    onClick={handleDeleteNotif}
+                    className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
+                >
+                    Hapus
+                </Link>
+            )}
+
             {/* Delete Button */}
-            <Link
-                href={route("device.destroy", { id: device.id })}
-                as="button"
-                method="delete"
-                data={{ id: device.id }}
-                onClick={handleDeleteNotif}
-                className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
-            >
-                Hapus
-            </Link>
         </div>
     );
 };
