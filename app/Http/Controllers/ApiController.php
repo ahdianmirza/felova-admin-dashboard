@@ -98,4 +98,9 @@ class ApiController extends Controller
     public function pesan(Request $request) {
         Pesan::create($request->all());
     }
+
+    public function data() {
+        $dataManual = Manual::all();
+        return response()->json($dataManual);
+    }
 }

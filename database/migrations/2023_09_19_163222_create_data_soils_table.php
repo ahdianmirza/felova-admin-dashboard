@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('data_soils', function (Blueprint $table) {
             $table->id();
-            $table->string('temp_1')->nullable();
-            $table->string('temp_2')->nullable();
-            $table->string('hum_1')->nullable();
-            $table->string('hum_2')->nullable();
+            $table->float('temp_1')->nullable();
+            $table->float('temp_2')->nullable();
+            $table->integer('hum_1')->nullable();
+            $table->integer('hum_2')->nullable();
             $table->timestamps();
         });
     }

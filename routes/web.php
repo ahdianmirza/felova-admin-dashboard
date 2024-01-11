@@ -1,15 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SoilController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ManualController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SoilController;
+use App\Http\Controllers\TimerController;
 use App\Http\Controllers\WeatherController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ManualDataController;
-use App\Http\Controllers\DeviceScheduleController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,53 +16,31 @@ use App\Http\Controllers\DeviceScheduleController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate']);
+Route::resource('/device', DeviceController::class);
+Route::resource('/manual', ManualController::class);
+
+Route::get('/timer', [TimerController::class, 'index'])->name('index.timer');
+Route::post('/timer/store', [TimerController::class, 'store'])->name('store.timer');
+Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
+Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
+Route::put('/timer/update', [TimerController::class, 'update'])->name('update.timer');
+
+Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
+Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth'])->group(function () {
-    // Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->middleware('userAkses:admin');
-    Route::get('/dashboard', [DashboardController::class, 'publicDashboard'])->middleware('userAkses:public');
-
-    Route::resource('/admin/manual', ManualController::class)->middleware('userAkses:admin');
-    Route::get('/manual', [ManualController::class, 'indexPublic'])->middleware('userAkses:public');
-
-    Route::resource('/admin/timer', ScheduleController::class)->middleware('userAkses:admin');
-    Route::get('/admin/timer/create/create-device', [DeviceScheduleController::class, 'createDevice'])->middleware('userAkses:admin');
-    Route::post('/admin/timer/create/create-device', [DeviceScheduleController::class, 'storeDevice'])->middleware('userAkses:admin');
-    Route::get('/admin/timer/edit/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'editSchedule'])->middleware('userAkses:admin');
-    Route::post('/admin/timer/edit/{device_id}/{schedule_id}', [DeviceScheduleController::class, 'updateSchedule'])->middleware('userAkses:admin');
-    Route::get('/timer', [ScheduleController::class, 'indexPublic'])->middleware('userAkses:public');
-    
-    Route::get('/admin/soil', [SoilController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/soil/create-block', [SoilController::class, 'createBlock'])->middleware('userAkses:admin');
-    Route::post('/admin/soil/create-block', [SoilController::class, 'storeBlock'])->middleware('userAkses:admin');
-    Route::get('/admin/soil/block-{block_id}', [SoilController::class, 'blockIndex'])->middleware('userAkses:admin');
-    Route::get('/admin/soil/sensor-1', [SoilController::class, 'sensorSatuIndex'])->middleware('userAkses:admin');
-    Route::get('/admin/data-soil', [SoilController::class, 'dataSoil'])->middleware('userAkses:admin');
-    Route::get('/soil', [SoilController::class, 'index'])->middleware('userAkses:public');
-
-    Route::get('/weather', [WeatherController::class, 'index']);
-
-    Route::get('/data-manual', [ManualDataController::class, 'index']);
-
-    Route::get('/graphics', function () {
-        return view('graphics', [
-            'title' => 'Graphics'
-        ]);
-    });
-
-    Route::post('/logout', [LoginController::class, 'logout']);
-});
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
-
-// Route::delete('/timer/{id}/{device_id}/schedule', [ScheduleController::class, 'destroySchedule']);
+require __DIR__.'/auth.php';

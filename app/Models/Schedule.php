@@ -13,7 +13,8 @@ class Schedule extends Model
         'device_id', 'noJadwal', 'hari', 'sol_1', 'sol_2', 'sol_3', 'sol_4', 'jam', 'menit', 'detik', 'status'
     ];
 
+    protected $with = ['device'];
     public function device() {
-        return $this->belongsTo(Device::class);
+        return $this->belongsTo(Device::class, 'device_id', 'id');
     }
 }

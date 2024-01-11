@@ -41,16 +41,6 @@
                 @error('device')
                     <small class="text-[#FF5789] mt-2">{{ $message }}</small>
                 @enderror
-                {{-- <div class="flex flex-col justify-center text-start mb-4">
-                    <label for="device" class="text-primary-text font-semibold">Device</label>
-                    <input type="text" placeholder="Type device name" name="device" id="device"
-                        oninput="myFunction()" value="{{ old('device') }}" autofocus required
-                        class="ds-input ds-input-bordered bg-white w-full max-w-full block text-[#353535] mt-2" />
-                    <input type="hidden" name="slug" id="slug" value="" class="border">
-                </div>
-                @error('device')
-                    <small class="text-[#FF5789] mt-2">{{ $message }}</small>
-                @enderror --}}
             </div>
 
             <ul

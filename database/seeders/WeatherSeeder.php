@@ -13,6 +13,6 @@ class WeatherSeeder extends Seeder
      */
     public function run(): void
     {
-        Weather::factory()->count(750)->create();
+        Weather::factory()->count(50)->create();
     }
 }

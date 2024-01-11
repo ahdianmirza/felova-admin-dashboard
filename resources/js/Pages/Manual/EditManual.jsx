@@ -1,0 +1,83 @@
+import { Head, Link } from "@inertiajs/react";
+import "/node_modules/flowbite/dist/flowbite.min.js";
+import Sidebar from "@/Components/Sidebar";
+import EditForm from "@/Components/Manual/EditForm";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+export default function EditManual(props) {
+    const {manual, title} = props;
+    const handleNotifUpdate = () => toast.success("Data berhasil diupdate");
+    
+    return (
+        <div>
+            <Head title={title} />
+
+            {/* Sidebar Start */}
+            <Sidebar />
+            {/* Sidebar End */}
+
+            {/* Manual Content Start */}
+            <div className="p-2 sm:ml-64">
+                <div className="p-1 mt-14">
+                    <div className="w-full bg-white p-3 rounded-lg md:rounded-xl">
+                        <div className="flex items-center justify-between">
+                            <div className="w-full flex justify-start items-center space-x-3">
+                                <Link
+                                    href={route("manual.index")}
+                                    as="button"
+                                    method="get"
+                                    className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
+                                >
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22Z"
+                                            stroke="white"
+                                            strokeWidth="1.5"
+                                            strokeMiterlimit="10"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M13.26 15.53L9.74001 12L13.26 8.46997"
+                                            stroke="white"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </Link>
+                                <div>
+                                    <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
+                                        Update Manual Setting
+                                    </h1>
+                                    <p className="text-start">
+                                        <small className="text-[#A3A4A8]">
+                                            Edit pengaturan yang diinginkan
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="my-4">
+                            {manual && (
+                                <EditForm
+                                    manual={manual}
+                                    handleNotifUpdate={handleNotifUpdate}
+                                />
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Manual Content End */}
+        </div>
+    );
+}

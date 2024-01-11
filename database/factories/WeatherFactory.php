@@ -18,6 +18,7 @@ class WeatherFactory extends Factory
     {
         return [
             'suhuUdara' => fake()->randomFloat(2, 20, 40),
+            'probabilitas' => fake()->randomElement(['Cerah', 'Berawan', 'Hujan']),
             'kelembapanUdara' => fake()->numberBetween(1, 100),
             'intensitasCahaya' => fake()->randomFloat(2, 10, 30000),
             'curahHujan' => fake()->randomFloat(2, 10, 30000),

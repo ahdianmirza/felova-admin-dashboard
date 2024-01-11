@@ -47,8 +47,8 @@
             @endif
         </div>
 
-        <div class="my-5">
-            {{-- Manual Data Mobile Breakpoint --}}
+        <div id="manual-data-container" class="my-5">
+            {{-- Manual Data Mobile Breakpoint Start --}}
             @foreach ($manuals as $manual)
                 <div class="flex flex-col items-start md:hidden p-6 bg-white border border-gray-200 rounded-lg shadow mb-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-text">{{ $manual->device }}</h5>
@@ -112,7 +112,7 @@
                             class="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-hover-primary">Edit</a>
 
                         {{-- Delete --}}
-                        <div href="/admin/manual/{{ $manual->id }}/edit"
+                        <div
                             class="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-hover">
                             <form action="/admin/manual/{{ $manual->id }}" method="post">
                                 @method('delete')
@@ -125,8 +125,7 @@
                     </div>
                 </div>
             @endforeach
-
-
+            {{-- Manual Data Mobile Breakpoint End --}}
 
             {{-- Table md Breakpoint --}}
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg hidden md:block">
