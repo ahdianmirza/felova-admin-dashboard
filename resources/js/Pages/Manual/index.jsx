@@ -4,11 +4,12 @@ import DataCard from "@/Components/Manual/DataCard";
 import IndicatorOn from "@/Components/Manual/IndicatorOn";
 import IndicatorOff from "@/Components/Manual/IndicatorOff";
 import TableData from "@/Components/Manual/TableData";
-import Sidebar from "@/Components/Sidebar";
 import ModalForm from "@/Components/ModalForm";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
+import MenuList from "@/Components/Sidebar/MenuList";
 
 export default function Manual(props) {
     const {title, dataManual} = props;
@@ -59,7 +60,11 @@ export default function Manual(props) {
             />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* Manual Content Start */}

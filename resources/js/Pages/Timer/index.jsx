@@ -1,8 +1,9 @@
-import Sidebar from "@/Components/Sidebar";
+import MenuList from "@/Components/Sidebar/MenuList";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import DataCard from "@/Components/Timer/DataCard";
 import ModalForm from "@/Components/Timer/ModalForm";
 import TableData from "@/Components/Timer/TableData";
-import { Head, router } from "@inertiajs/react";
+import { Head,  } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Timer(props) {
@@ -50,7 +51,11 @@ export default function Timer(props) {
             />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* Manual Content Start */}

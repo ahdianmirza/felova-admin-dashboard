@@ -5,7 +5,7 @@ import 'flowbite';
 export default function MenuList() {
     return (
         <div>
-            <div className="h-full px-3 pb-4 overflow-y-auto bg-primary">
+            <div className="h-full px-3 overflow-y-auto bg-primary">
                 <ul className="space-y-2 font-medium">
                     <MenuItem menuLink="/device">
                         <MenuItem.MenuIcon>
