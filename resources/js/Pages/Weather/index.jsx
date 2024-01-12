@@ -1,10 +1,11 @@
-import Sidebar from "@/Components/Sidebar";
+import MenuList from "@/Components/Sidebar/MenuList";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import Paginator from "@/Components/Weather/Paginator";
 import SearchBar from "@/Components/Weather/SearchBar";
 import Sorted from "@/Components/Weather/Sorted";
 import TableData from "@/Components/Weather/TableData";
 import { Head } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 export default function Weather(props) {
     const { title, dataWeather } = props;
@@ -34,7 +35,11 @@ export default function Weather(props) {
             />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* weather Content Start */}

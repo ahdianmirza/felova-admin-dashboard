@@ -1,10 +1,11 @@
-import Sidebar from "@/Components/Sidebar";
+import MenuList from "@/Components/Sidebar/MenuList";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import Paginator from "@/Components/Soil/Paginator";
 import SearchBar from "@/Components/Soil/SearchBar";
 import Sorted from "@/Components/Soil/Sorted";
 import TableData from "@/Components/Soil/TableData";
 import { Head } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 export default function Timer(props) {
     const { title, dataSoil } = props;
@@ -34,7 +35,11 @@ export default function Timer(props) {
             />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* Soil Content Start */}

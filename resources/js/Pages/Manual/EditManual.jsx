@@ -1,9 +1,10 @@
 import { Head, Link } from "@inertiajs/react";
 import "/node_modules/flowbite/dist/flowbite.min.js";
-import Sidebar from "@/Components/Sidebar";
 import EditForm from "@/Components/Manual/EditForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
+import MenuList from "@/Components/Sidebar/MenuList";
 
 export default function EditManual(props) {
     const {manual, title} = props;
@@ -14,7 +15,11 @@ export default function EditManual(props) {
             <Head title={title} />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* Manual Content Start */}

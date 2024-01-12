@@ -1,7 +1,8 @@
 import ModalForm from "@/Components/Device/ModalForm";
 import TableData from "@/Components/Device/TableData";
-import Sidebar from "@/Components/Sidebar";
-import { Head, router } from "@inertiajs/react";
+import MenuList from "@/Components/Sidebar/MenuList";
+import SidebarNew from "@/Components/Sidebar/SidebarNew";
+import { Head } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Device(props) {
@@ -50,7 +51,11 @@ export default function Device(props) {
             />
 
             {/* Sidebar Start */}
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SidebarNew />
+            <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
+                <MenuList />
+            </aside>
             {/* Sidebar End */}
 
             {/* Device Content Start */}
