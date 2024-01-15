@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DataSoil;
 use App\Models\Pesan;
+use App\Models\SoilAction;
 use App\Models\Weather;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class ApiController extends Controller
 {
@@ -87,7 +90,16 @@ class ApiController extends Controller
     }
 
     public function dataSoil(Request $request) {
-        DataSoil::create($request->all());
+        $storeDataSoil = DataSoil::create($request->all());
+        return response()->json($storeDataSoil);
+    }
+
+    public function indexDataSoil() {
+        return DataSoil::all();
+    }
+
+    public function indexActionSoil() {
+        return SoilAction::all();
     }
 
     public function dataWeather(Request $request) {

@@ -1,21 +1,50 @@
 import MenuList from "@/Components/Sidebar/MenuList";
 import SidebarNew from "@/Components/Sidebar/SidebarNew";
+import Action from "@/Components/Soil/Action";
 import Paginator from "@/Components/Soil/Paginator";
 import SearchBar from "@/Components/Soil/SearchBar";
 import Sorted from "@/Components/Soil/Sorted";
 import TableData from "@/Components/Soil/TableData";
 import { Head } from "@inertiajs/react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 export default function Timer(props) {
     const { title, dataSoil } = props;
+    const [soilRT, setSoilRT] = useState(null);
+    const [count, setCount] = useState(1);
+
+    async function fetchData() {
+        fetch(route("dataSoil"))
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                setSoilRT(data);
+            });
+    }
+
+    useEffect(() => {
+        let timerFetch = setTimeout(() => {
+            fetchData();
+            setCount(count+1);
+        }, [2000]);
+
+        return () => {
+            clearTimeout(timerFetch);
+        };
+    }, [count]);
+
+    console.info(count);
+
     const myDate = (date) => {
         return new Date(date);
-    }
+    };
     const formatterTime = new Intl.DateTimeFormat("en-US", {
         hour: "2-digit",
         minute: "2-digit",
-        hour12: false
+        hour12: false,
     });
 
     return (
@@ -53,7 +82,7 @@ export default function Timer(props) {
                                 </h1>
                                 <p className="text-start">
                                     <span className="text-sm font-bold text-primary-text">
-                                        {dataSoil.meta.total} data,
+                                        {soilRT ? soilRT.length : "0"} data,
                                     </span>{" "}
                                     <small className="text-[#A3A4A8]">
                                         hasil monitoring kualitas tanah
@@ -68,6 +97,7 @@ export default function Timer(props) {
                             {/* Data Timer Mobile End */}
 
                             <SearchBar />
+                            <Action />
                             <Sorted />
 
                             {/* Table md Breakpoint Start */}
@@ -80,69 +110,84 @@ export default function Timer(props) {
                                         Suhu 1
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Suhu 2
+                                        Kelembapan 1
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Kelembapan 1
+                                        Suhu 2
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
                                         Kelembapan 2
                                     </TableData.TableHeadTitle>
                                 </TableData.TableHead>
                                 <TableData.TableBody>
-                                    {dataSoil.data &&
-                                    dataSoil.data.length > 0 ? (
-                                        dataSoil.data.map((soil, id) => (
-                                            <TableData.TableBodyRow key={id}>
-                                                <TableData.TableBodyData>
-                                                    {myDate(
-                                                        soil.created_at
-                                                    ).getMonth() < 10
-                                                        ? `0${
-                                                              myDate(
+                                    {soilRT ? (
+                                        soilRT.length > 0 ? (
+                                            soilRT.map((soil, id) => (
+                                                <TableData.TableBodyRow
+                                                    key={id}
+                                                >
+                                                    <TableData.TableBodyData>
+                                                        {myDate(
+                                                            soil.created_at
+                                                        ).getMonth() < 10
+                                                            ? `0${
+                                                                  myDate(
+                                                                      soil.created_at
+                                                                  ).getMonth() +
+                                                                  1
+                                                              }-`
+                                                            : `${
+                                                                  myDate(
+                                                                      soil.created_at
+                                                                  ).getMonth() +
+                                                                  1
+                                                              }`}
+                                                        {myDate(
+                                                            soil.created_at
+                                                        ).getDate() < 10
+                                                            ? `0${myDate(
                                                                   soil.created_at
-                                                              ).getMonth() + 1
-                                                          }-`
-                                                        : `${
-                                                              myDate(
+                                                              ).getDate()}-`
+                                                            : `${myDate(
                                                                   soil.created_at
-                                                              ).getMonth() + 1
-                                                          }`}
-                                                    {myDate(
-                                                        soil.created_at
-                                                    ).getDate() < 10
-                                                        ? `0${myDate(
-                                                              soil.created_at
-                                                          ).getDate()}-`
-                                                        : `${myDate(
-                                                              soil.created_at
-                                                          ).getDate()}-`}
-                                                    {myDate(
-                                                        soil.created_at
-                                                    ).getFullYear()}{" "}
-                                                    {formatterTime.format(
-                                                        myDate(soil.created_at)
-                                                    )}
-                                                </TableData.TableBodyData>
+                                                              ).getDate()}-`}
+                                                        {myDate(
+                                                            soil.created_at
+                                                        ).getFullYear()}{" "}
+                                                        {formatterTime.format(
+                                                            myDate(
+                                                                soil.created_at
+                                                            )
+                                                        )}
+                                                    </TableData.TableBodyData>
+                                                    <TableData.TableBodyData>
+                                                        {`${soil.temp_1}°C`}
+                                                    </TableData.TableBodyData>
+                                                    <TableData.TableBodyData>
+                                                        {`${soil.hum_1} %`}
+                                                    </TableData.TableBodyData>
+                                                    <TableData.TableBodyData>
+                                                        {`${soil.temp_2}°C`}
+                                                    </TableData.TableBodyData>
+                                                    <TableData.TableBodyData>
+                                                        {`${soil.hum_2} %`}
+                                                    </TableData.TableBodyData>
+                                                </TableData.TableBodyRow>
+                                            ))
+                                        ) : (
+                                            <TableData.TableBodyRow>
                                                 <TableData.TableBodyData>
-                                                    {`${soil.temp_1}°C`}
-                                                </TableData.TableBodyData>
-                                                <TableData.TableBodyData>
-                                                    {`${soil.temp_2}°C`}
-                                                </TableData.TableBodyData>
-                                                <TableData.TableBodyData>
-                                                    {`${soil.hum_1} %`}
-                                                </TableData.TableBodyData>
-                                                <TableData.TableBodyData>
-                                                    {`${soil.hum_2} %`}
+                                                    <p className="text-red-primary">
+                                                        Data tidak ditemukan
+                                                    </p>
                                                 </TableData.TableBodyData>
                                             </TableData.TableBodyRow>
-                                        ))
+                                        )
                                     ) : (
                                         <TableData.TableBodyRow>
                                             <TableData.TableBodyData>
-                                                <p className="text-red-primary">
-                                                    Data tidak ditemukan
+                                                <p className="text-primary-text">
+                                                    Loading Data ...
                                                 </p>
                                             </TableData.TableBodyData>
                                         </TableData.TableBodyRow>
@@ -150,9 +195,9 @@ export default function Timer(props) {
                                 </TableData.TableBody>
                             </TableData>
 
-                            <div className="flex justify-center items-center my-4">
+                            {/* <div className="flex justify-center items-center my-4">
                                 <Paginator meta={dataSoil.meta} />
-                            </div>
+                            </div> */}
                             {/* Table md Breakpoint End */}
                         </div>
                     </div>
