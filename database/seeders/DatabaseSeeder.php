@@ -55,8 +55,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         SoilAction::create([
-            'sensor1' => false,
-            'sensor2' => false
+            'sensor1' => "off",
+            'sensor2' => "off"
         ]);
     }
 }

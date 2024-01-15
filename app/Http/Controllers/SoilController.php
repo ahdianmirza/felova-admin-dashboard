@@ -24,8 +24,8 @@ class SoilController extends Controller
         $sensor1 = $request->sensor1;
         $sensor2 = $request->sensor2;
 
-        $sensor1 ?? false;
-        $sensor2 ?? false; 
+        $sensor1 ?? "off";
+        $sensor2 ?? "off"; 
 
         $soilAction = SoilAction::find(1)->update([
             'sensor1' => $sensor1,

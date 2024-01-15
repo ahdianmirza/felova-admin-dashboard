@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('soil_actions', function (Blueprint $table) {
             $table->id();
-            $table->boolean('sensor1')->nullable();
-            $table->boolean('sensor2')->nullable();
+            $table->string('sensor1')->nullable();
+            $table->string('sensor2')->nullable();
             $table->timestamps();
         });
     }
