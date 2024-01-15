@@ -31,6 +31,8 @@ Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
 Route::put('/timer/update', [TimerController::class, 'update'])->name('update.timer');
 
 Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
+Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
+
 Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
 
 Route::get('/dashboard', function () {
