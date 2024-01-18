@@ -43,30 +43,32 @@ class ApiController extends Controller
     }
 
     public function updateTimer(Request $request) {
-        $device = $request->device;
-        $device_data = Device::firstWhere('name', $device);
-
-        $device = Schedule::firstWhere('device_id', $device_data->id);
-        $device->device_id = $device->id;
-        $device->noJadwal = $request->noJadwal;
-        $device->hari = $request->hari;
-        $device->sol_1 = $request->sol_1;
-        $device->sol_2 = $request->sol_2;
-        $device->sol_3 = $request->sol_3;
-        $device->sol_4 = $request->sol_4;
-        $device->jam = $request->jam;
-        $device->menit = $request->menit;
-        $device->detik = 0;
-        $device->durasiMenit = $request->durasiMenit;
-        $device->durasiDetik = $request->durasiDetik;
-        $device->status = $request->status;
+        $device_data = Device::firstWhere('name', $request->device);
         
-        $result = $device->save();
+        $device = Schedule::where([
+            'device_id' => $device_data->id,
+            'noJadwal' => $request->noJadwal
+        ])->get();
+
+        $device[0]->device_id = $device_data->id;
+        $device[0]->noJadwal = $request->noJadwal;
+        $device[0]->hari = $request->hari;
+        $device[0]->sol_1 = $request->sol_1;
+        $device[0]->sol_2 = $request->sol_2;
+        $device[0]->sol_3 = $request->sol_3;
+        $device[0]->sol_4 = $request->sol_4;
+        $device[0]->jam = $request->jam;
+        $device[0]->menit = $request->menit;
+        $device[0]->detik = 0;
+        $device[0]->durasiMenit = $request->durasiMenit;
+        $device[0]->durasiDetik = $request->durasiDetik;
+        $device[0]->status = $request->status;
+        $result = $device[0]->save();
 
         if($result) {
             return ["result" => "Data has been updated"];
         } else {
-            return ["result" => "Update operastion has been failed"];
+            return ["result" => "Update operation has been failed"];
         }
     }
 
