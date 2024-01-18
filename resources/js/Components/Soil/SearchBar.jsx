@@ -1,9 +1,7 @@
 import { router } from "@inertiajs/react";
 import { useState } from "react";
 
-const SearchBar = () => {
-    const [search, setSearch] = useState("");
-
+const SearchBar = ({search, setSearch}) => {
     const handleSearch = () => {
         const data = {
             search,
@@ -46,7 +44,7 @@ const SearchBar = () => {
                         setSearch(search.target.value)
                     }}
                     className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-focus focus:border-primary-focus"
-                    placeholder="Cari berdasarkan waktu"
+                    placeholder="Cari berdasarkan tanggal"
                 />
                 <button
                     onClick={() => handleSearch()}

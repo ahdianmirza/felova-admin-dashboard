@@ -10,10 +10,34 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
-export default function Timer(props) {
+export default function Soil(props) {
     const { title, dataSoil } = props;
-    const [soilRT, setSoilRT] = useState(null);
+    const [soilRT, setSoilRT] = useState([]);
     const [count, setCount] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordsPerPage = 25;
+    const lastIndex = currentPage * recordsPerPage;
+    const firstIndex = lastIndex - recordsPerPage;
+    const records = soilRT && soilRT.slice(firstIndex, lastIndex);
+    const npage = soilRT && Math.ceil(soilRT.length / recordsPerPage);
+    const numbers = [...Array(npage + 1).keys()].slice(1);
+    const [search, setSearch] = useState("");
+
+    const prePage = () => {
+        if (currentPage !== firstIndex) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const nextPage = () => {
+        if (currentPage !== lastIndex) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const changeCurrentPage = (index) => {
+        setCurrentPage(index)
+    };
 
     async function fetchData() {
         fetch(route("dataSoil"))
@@ -35,8 +59,6 @@ export default function Timer(props) {
             clearTimeout(timerFetch);
         };
     }, [count]);
-
-    console.info(count);
 
     const myDate = (date) => {
         return new Date(date);
@@ -96,7 +118,7 @@ export default function Timer(props) {
 
                             {/* Data Timer Mobile End */}
 
-                            <SearchBar />
+                            <SearchBar search={search} setSearch={setSearch} />
                             <Action />
                             <Sorted />
 
@@ -120,60 +142,74 @@ export default function Timer(props) {
                                     </TableData.TableHeadTitle>
                                 </TableData.TableHead>
                                 <TableData.TableBody>
-                                    {soilRT ? (
-                                        soilRT.length > 0 ? (
-                                            soilRT.map((soil, id) => (
-                                                <TableData.TableBodyRow
-                                                    key={id}
-                                                >
-                                                    <TableData.TableBodyData>
-                                                        {myDate(
-                                                            soil.created_at
-                                                        ).getMonth() < 10
-                                                            ? `0${
-                                                                  myDate(
-                                                                      soil.created_at
-                                                                  ).getMonth() +
-                                                                  1
-                                                              }-`
-                                                            : `${
-                                                                  myDate(
-                                                                      soil.created_at
-                                                                  ).getMonth() +
-                                                                  1
-                                                              }`}
-                                                        {myDate(
-                                                            soil.created_at
-                                                        ).getDate() < 10
-                                                            ? `0${myDate(
-                                                                  soil.created_at
-                                                              ).getDate()}-`
-                                                            : `${myDate(
-                                                                  soil.created_at
-                                                              ).getDate()}-`}
-                                                        {myDate(
-                                                            soil.created_at
-                                                        ).getFullYear()}{" "}
-                                                        {formatterTime.format(
-                                                            myDate(
+                                    {records ? (
+                                        records.length > 0 ? (
+                                            records
+                                                .filter((soil) => {
+                                                    return search.toLowerCase() ===
+                                                        ""
+                                                        ? soil
+                                                        : soil.created_at.includes(
+                                                              search
+                                                          );
+                                                })
+                                                .sort(
+                                                    (a, b) =>
+                                                        a.created_at <
+                                                        b.created_at
+                                                )
+                                                .map((soil, id) => (
+                                                    <TableData.TableBodyRow
+                                                        key={id}
+                                                    >
+                                                        <TableData.TableBodyData>
+                                                            {myDate(
                                                                 soil.created_at
-                                                            )
-                                                        )}
-                                                    </TableData.TableBodyData>
-                                                    <TableData.TableBodyData>
-                                                        {`${soil.temp_1}°C`}
-                                                    </TableData.TableBodyData>
-                                                    <TableData.TableBodyData>
-                                                        {`${soil.hum_1} %`}
-                                                    </TableData.TableBodyData>
-                                                    <TableData.TableBodyData>
-                                                        {`${soil.temp_2}°C`}
-                                                    </TableData.TableBodyData>
-                                                    <TableData.TableBodyData>
-                                                        {`${soil.hum_2} %`}
-                                                    </TableData.TableBodyData>
-                                                </TableData.TableBodyRow>
-                                            ))
+                                                            ).getMonth() < 10
+                                                                ? `0${
+                                                                      myDate(
+                                                                          soil.created_at
+                                                                      ).getMonth() +
+                                                                      1
+                                                                  }-`
+                                                                : `${
+                                                                      myDate(
+                                                                          soil.created_at
+                                                                      ).getMonth() +
+                                                                      1
+                                                                  }`}
+                                                            {myDate(
+                                                                soil.created_at
+                                                            ).getDate() < 10
+                                                                ? `0${myDate(
+                                                                      soil.created_at
+                                                                  ).getDate()}-`
+                                                                : `${myDate(
+                                                                      soil.created_at
+                                                                  ).getDate()}-`}
+                                                            {myDate(
+                                                                soil.created_at
+                                                            ).getFullYear()}{" "}
+                                                            {formatterTime.format(
+                                                                myDate(
+                                                                    soil.created_at
+                                                                )
+                                                            )}
+                                                        </TableData.TableBodyData>
+                                                        <TableData.TableBodyData>
+                                                            {`${soil.temp_1}°C`}
+                                                        </TableData.TableBodyData>
+                                                        <TableData.TableBodyData>
+                                                            {`${soil.hum_1} %`}
+                                                        </TableData.TableBodyData>
+                                                        <TableData.TableBodyData>
+                                                            {`${soil.temp_2}°C`}
+                                                        </TableData.TableBodyData>
+                                                        <TableData.TableBodyData>
+                                                            {`${soil.hum_2} %`}
+                                                        </TableData.TableBodyData>
+                                                    </TableData.TableBodyRow>
+                                                ))
                                         ) : (
                                             <TableData.TableBodyRow>
                                                 <TableData.TableBodyData>
@@ -194,6 +230,72 @@ export default function Timer(props) {
                                     )}
                                 </TableData.TableBody>
                             </TableData>
+
+                            <div
+                                className={`${
+                                    soilRT && soilRT.length > 0
+                                        ? "flex"
+                                        : "hidden"
+                                } flex-col items-center my-4`}
+                            >
+                                <span className="text-sm text-gray-700 dark:text-gray-400">
+                                    Showing{" "}
+                                    <span className="font-semibold text-gray-900 dark:text-white">
+                                        {currentPage}
+                                    </span>{" "}
+                                    to{" "}
+                                    <span className="font-semibold text-gray-900 dark:text-white">
+                                        {numbers.length}
+                                    </span>{" "}
+                                    of{" "}
+                                    <span className="font-semibold text-gray-900 dark:text-white">
+                                        {soilRT && soilRT.length}
+                                    </span>{" "}
+                                    Entries
+                                </span>
+                                <div
+                                    className={`${
+                                        soilRT && soilRT.length > 0
+                                            ? "inline-flex"
+                                            : "hidden"
+                                    } mt-2 xs:mt-0`}
+                                >
+                                    {currentPage === numbers[0] ? (
+                                        <button
+                                            type="button"
+                                            disabled
+                                            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-600 rounded-s"
+                                        >
+                                            Prev
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={prePage}
+                                            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 "
+                                        >
+                                            Prev
+                                        </button>
+                                    )}
+
+                                    {soilRT &&
+                                    currentPage === numbers.length ? (
+                                        <button
+                                            type="button"
+                                            disabled
+                                            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-600 border-0 border-s border-gray-700 rounded-e"
+                                        >
+                                            Next
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={nextPage}
+                                            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900"
+                                        >
+                                            Next
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
 
                             {/* <div className="flex justify-center items-center my-4">
                                 <Paginator meta={dataSoil.meta} />
