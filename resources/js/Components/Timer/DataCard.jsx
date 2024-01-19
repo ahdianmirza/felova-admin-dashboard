@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/react";
 import ModalDetail from "./ModalDetail";
 
 const DataCard = (props) => {
-    const {timer, children} = props;
+    const {children} = props;
     
     return (
         <div>
@@ -31,29 +31,34 @@ const Body = ({children}) => {
     );
 };
 
-const Action = ({ timer, handleDeleteNotif }) => {
+const Action = ({ timer, handleDeleteNotif, user }) => {
     return (
         <div className="w-full flex justify-end items-center gap-x-2 mt-2">
             <ModalDetail timer={timer} />
-            <Link
-                href={route("edit.timer", { id: timer.id })}
-                as="button"
-                method="get"
-                data={{ id: timer.id }}
-                className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
-            >
-                Edit
-            </Link>
-            <Link
-                href={route("delete.timer")}
-                as="button"
-                method="post"
-                data={{ id: timer.id }}
-                onClick={handleDeleteNotif}
-                className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
-            >
-                Hapus
-            </Link>
+
+            {user && (
+                <>
+                    <Link
+                        href={route("edit.timer", { id: timer.id })}
+                        as="button"
+                        method="get"
+                        data={{ id: timer.id }}
+                        className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
+                    >
+                        Edit
+                    </Link>
+                    <Link
+                        href={route("delete.timer")}
+                        as="button"
+                        method="post"
+                        data={{ id: timer.id }}
+                        onClick={handleDeleteNotif}
+                        className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
+                    >
+                        Hapus
+                    </Link>
+                </>
+            )}
         </div>
     );
 };

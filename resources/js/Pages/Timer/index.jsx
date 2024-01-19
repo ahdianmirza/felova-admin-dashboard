@@ -51,10 +51,15 @@ export default function Timer(props) {
             />
 
             {/* Sidebar Start */}
-            {/* <Sidebar /> */}
-            <SidebarNew />
+            <SidebarNew
+                user={props.auth.user}
+                location={props.ziggy.location}
+            />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList
+                    user={props.auth.user}
+                    location={props.ziggy.location}
+                />
             </aside>
             {/* Sidebar End */}
 
@@ -78,9 +83,11 @@ export default function Timer(props) {
                             </div>
 
                             {/* Tambah Data */}
-                            <div className="mr-2">
-                                <ModalForm dataDevice={dataDevice} />
-                            </div>
+                            {props.auth.user && (
+                                <div className="mr-2">
+                                    <ModalForm dataDevice={dataDevice} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="my-5">
@@ -105,6 +112,7 @@ export default function Timer(props) {
                                         </DataCard.Body>
                                         <DataCard.Action
                                             timer={timer}
+                                            user={props.auth.user}
                                             handleDeleteNotif={() =>
                                                 handleDeleteNotif()
                                             }
@@ -157,6 +165,7 @@ export default function Timer(props) {
                                                 <TableData.TableBodyData>
                                                     <TableData.ActionTimer
                                                         timer={timer}
+                                                        user={props.auth.user}
                                                         handleDeleteNotif={() =>
                                                             handleDeleteNotif()
                                                         }

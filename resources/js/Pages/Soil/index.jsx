@@ -87,9 +87,9 @@ export default function Soil(props) {
 
             {/* Sidebar Start */}
             {/* <Sidebar /> */}
-            <SidebarNew />
+            <SidebarNew user={props.auth.user} location={props.ziggy.location} />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList user={props.auth.user} location={props.ziggy.location} />
             </aside>
             {/* Sidebar End */}
 
@@ -114,12 +114,12 @@ export default function Soil(props) {
                         </div>
 
                         <div className="my-5">
-                            {/* Data Timer Mobile Start */}
-
-                            {/* Data Timer Mobile End */}
-
                             <SearchBar search={search} setSearch={setSearch} />
-                            <Action />
+                            {props.auth.user && (
+                                <>
+                                    <Action />
+                                </>
+                            )}
                             <Sorted />
 
                             {/* Table md Breakpoint Start */}
