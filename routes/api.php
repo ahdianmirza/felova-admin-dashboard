@@ -25,8 +25,8 @@ Route::post("/list-manual", [ApiController::class, 'listManual']);
 Route::put("/update-manual", [ApiController::class, 'updateManual']);
 Route::post("/status-manual", [ApiController::class, 'statusManual']);
 
-// Route::put("/update-timer", [ApiController::class, 'updateTimer']);
-Route::get("/update-timer", [ApiController::class, 'updateTimer']);
+Route::put("/update-timer", [ApiController::class, 'updateTimer']);
+// Route::get("/update-timer", [ApiController::class, 'updateTimer']);
 Route::post("/list-timer", [ApiController::class, 'listTimer']);
 
 Route::post("/data-soil", [ApiController::class, 'dataSoil']);

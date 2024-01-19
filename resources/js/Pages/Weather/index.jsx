@@ -134,7 +134,8 @@ export default function Weather(props) {
                                                     )}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${weather.curahHujan} mm`}
+                                                    {weather.curahHujan && weather.curahHujan > 0 ? (`${weather.curahHujan} mm`) : ("-")
+                                                    }
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
                                                     {weather.probabilitas}
