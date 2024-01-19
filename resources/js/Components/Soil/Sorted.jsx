@@ -4,7 +4,6 @@ import { router } from "@inertiajs/react";
 const Sorted = () => {
     const [sort, setSort] = useState();
 
-    
     const handleSort = () => {
         const data = {
             sort

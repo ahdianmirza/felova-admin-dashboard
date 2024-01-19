@@ -21,28 +21,34 @@ use Inertia\Inertia;
 |
 */
 
-Route::resource('/device', DeviceController::class);
-Route::resource('/manual', ManualController::class);
-
-Route::get('/timer', [TimerController::class, 'index'])->name('index.timer');
-Route::post('/timer/store', [TimerController::class, 'store'])->name('store.timer');
-Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
-Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
-Route::put('/timer/update', [TimerController::class, 'update'])->name('update.timer');
-
-Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
-Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
-
-Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+});
 
-Route::middleware('auth')->group(function () {
+Route::get('/device/guest', [DeviceController::class, 'index'])->name('index.device.guest');
+Route::get('/manual/guest', [ManualController::class, 'index'])->name('index.manual.guest');
+Route::get('/timer/guest', [TimerController::class, 'index'])->name('index.timer.guest');
+Route::get('/soil/guest', [SoilController::class, 'index'])->name('index.soil.guest');
+Route::get('/weather/guest', [WeatherController::class, 'index'])->name('index.weather.guest');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('/device', DeviceController::class);
+    Route::resource('/manual', ManualController::class);
+
+    Route::get('/timer', [TimerController::class, 'index'])->name('index.timer');
+    Route::post('/timer/store', [TimerController::class, 'store'])->name('store.timer');
+    Route::post('/timer/delete', [TimerController::class, 'destroy'])->name('delete.timer');
+    Route::get('/timer/edit', [TimerController::class, 'edit'])->name('edit.timer');
+    Route::put('/timer/update', [TimerController::class, 'update'])->name('update.timer');
+
+    Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
+    Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
+
+    Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
 });
 
 require __DIR__.'/auth.php';

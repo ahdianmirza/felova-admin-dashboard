@@ -36,9 +36,9 @@ export default function Weather(props) {
 
             {/* Sidebar Start */}
             {/* <Sidebar /> */}
-            <SidebarNew />
+            <SidebarNew user={props.auth.user} location={props.ziggy.location} />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList user={props.auth.user} location={props.ziggy.location} />
             </aside>
             {/* Sidebar End */}
 
@@ -63,12 +63,8 @@ export default function Weather(props) {
                         </div>
 
                         <div className="my-5">
-                            {/* Data Timer Mobile Start */}
-
-                            {/* Data Timer Mobile End */}
-
                             <SearchBar />
-                            <Sorted />
+                            <Sorted user={props.auth.user} />
 
                             {/* Table md Breakpoint Start */}
                             <TableData>
@@ -134,7 +130,10 @@ export default function Weather(props) {
                                                     )}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
-                                                    {`${weather.curahHujan} mm`}
+                                                    {weather.curahHujan &&
+                                                    weather.curahHujan > 0
+                                                        ? `${weather.curahHujan} mm`
+                                                        : "-"}
                                                 </TableData.TableBodyData>
                                                 <TableData.TableBodyData>
                                                     {weather.probabilitas}

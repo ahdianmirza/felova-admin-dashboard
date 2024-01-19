@@ -62,33 +62,37 @@ const TableBodyData = ({ children }) => {
     );
 };
 
-const ActionTimer = ({ timer, handleDeleteNotif }) => {
+const ActionTimer = ({ timer, handleDeleteNotif, user }) => {
     return (
         <div className="flex items-center gap-x-2">
             <ModalDetail timer={timer} />
 
-            {/* Update Button */}
-            <Link
-                href={route("edit.timer", { id: timer.id })}
-                as="button"
-                method="get"
-                data={{ id: timer.id }}
-                className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
-            >
-                Edit
-            </Link>
+            {user && (
+                <>
+                    {/* Update Button */}
+                    <Link
+                        href={route("edit.timer", { id: timer.id })}
+                        as="button"
+                        method="get"
+                        data={{ id: timer.id }}
+                        className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
+                    >
+                        Edit
+                    </Link>
 
-            {/* Delete Button */}
-            <Link
-                href={route("delete.timer")}
-                as="button"
-                method="post"
-                data={{ id: timer.id }}
-                onClick={handleDeleteNotif}
-                className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
-            >
-                Hapus
-            </Link>
+                    {/* Delete Button */}
+                    <Link
+                        href={route("delete.timer")}
+                        as="button"
+                        method="post"
+                        data={{ id: timer.id }}
+                        onClick={handleDeleteNotif}
+                        className="px-3 py-2 text-sm font-medium text-center text-white bg-red-primary rounded-lg hover:bg-red-primary-hover"
+                    >
+                        Hapus
+                    </Link>
+                </>
+            )}
         </div>
     );
 };

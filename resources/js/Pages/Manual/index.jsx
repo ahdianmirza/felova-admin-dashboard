@@ -61,9 +61,15 @@ export default function Manual(props) {
 
             {/* Sidebar Start */}
             {/* <Sidebar /> */}
-            <SidebarNew />
+            <SidebarNew
+                user={props.auth.user}
+                location={props.ziggy.location}
+            />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList
+                    user={props.auth.user}
+                    location={props.ziggy.location}
+                />
             </aside>
             {/* Sidebar End */}
 
@@ -87,9 +93,11 @@ export default function Manual(props) {
                             </div>
 
                             {/* Tambah Data */}
-                            <div className="mr-2">
-                                <ModalForm dataManual={dataManual} />
-                            </div>
+                            {props.auth.user && (
+                                <div className="mr-2">
+                                    <ModalForm dataManual={dataManual} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="my-5">
@@ -142,24 +150,26 @@ export default function Manual(props) {
                                                 </IndicatorOff>
                                             )}
                                         </DataCard.SolenoidBody>
-                                        <DataCard.ActionManual
-                                            editLink={route("manual.edit", {
-                                                id: manual.id,
-                                            })}
-                                            as="button"
-                                            methodEdit="get"
-                                            data={{ id: manual.id }}
-                                            deleteLink={route(
-                                                "manual.destroy",
-                                                {
+                                        {props.auth.user && (
+                                            <DataCard.ActionManual
+                                                editLink={route("manual.edit", {
                                                     id: manual.id,
+                                                })}
+                                                as="button"
+                                                methodEdit="get"
+                                                data={{ id: manual.id }}
+                                                deleteLink={route(
+                                                    "manual.destroy",
+                                                    {
+                                                        id: manual.id,
+                                                    }
+                                                )}
+                                                methodDelete="delete"
+                                                handleDeleteNotif={() =>
+                                                    handleDeleteNotif()
                                                 }
-                                            )}
-                                            methodDelete="delete"
-                                            handleDeleteNotif={() =>
-                                                handleDeleteNotif()
-                                            }
-                                        />
+                                            />
+                                        )}
                                     </DataCard>
                                 ))
                             ) : (
@@ -181,9 +191,11 @@ export default function Manual(props) {
                                     <TableData.TableHeadTitle>
                                         Solenoid
                                     </TableData.TableHeadTitle>
-                                    <TableData.TableHeadTitle>
-                                        Aksi
-                                    </TableData.TableHeadTitle>
+                                    {props.auth.user && (
+                                        <TableData.TableHeadTitle>
+                                            Aksi
+                                        </TableData.TableHeadTitle>
+                                    )}
                                 </TableData.TableHead>
 
                                 <TableData.TableBody>
@@ -251,29 +263,33 @@ export default function Manual(props) {
                                                     )}
                                                 </TableData.TableBodyData>
 
-                                                <TableData.TableBodyData>
-                                                    <TableData.ActionManual
-                                                        editLink={route(
-                                                            "manual.edit",
-                                                            {
+                                                {props.auth.user && (
+                                                    <TableData.TableBodyData>
+                                                        <TableData.ActionManual
+                                                            editLink={route(
+                                                                "manual.edit",
+                                                                {
+                                                                    id: manual.id,
+                                                                }
+                                                            )}
+                                                            as="button"
+                                                            method="get"
+                                                            data={{
                                                                 id: manual.id,
+                                                            }}
+                                                            deleteLink={route(
+                                                                "manual.destroy",
+                                                                {
+                                                                    id: manual.id,
+                                                                }
+                                                            )}
+                                                            methodDelete="delete"
+                                                            handleDeleteNotif={() =>
+                                                                handleDeleteNotif()
                                                             }
-                                                        )}
-                                                        as="button"
-                                                        method="get"
-                                                        data={{ id: manual.id }}
-                                                        deleteLink={route(
-                                                            "manual.destroy",
-                                                            {
-                                                                id: manual.id,
-                                                            }
-                                                        )}
-                                                        methodDelete="delete"
-                                                        handleDeleteNotif={() =>
-                                                            handleDeleteNotif()
-                                                        }
-                                                    />
-                                                </TableData.TableBodyData>
+                                                        />
+                                                    </TableData.TableBodyData>
+                                                )}
                                             </TableData.TableBodyRow>
                                         ))
                                     ) : (

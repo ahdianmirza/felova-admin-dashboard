@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { router } from "@inertiajs/react";
 
-const Sorted = () => {
+const Sorted = ({user}) => {
     const [sort, setSort] = useState();
     const [probabilitas, setProbabilitas] = useState();
 
@@ -10,7 +10,11 @@ const Sorted = () => {
             sort,
             probabilitas,
         };
-        router.get(route("index.weather"), data);
+        if (!user) {
+            router.get(route("index.weather.guest"), data);
+        } else {
+            router.get(route("index.weather"), data);
+        }
         setSort(data.sort);
     };
 

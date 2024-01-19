@@ -51,10 +51,15 @@ export default function Device(props) {
             />
 
             {/* Sidebar Start */}
-            {/* <Sidebar /> */}
-            <SidebarNew />
+            <SidebarNew
+                location={props.ziggy.location}
+                user={props.auth.user}
+            />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList
+                    location={props.ziggy.location}
+                    user={props.auth.user}
+                />
             </aside>
             {/* Sidebar End */}
 
@@ -78,25 +83,25 @@ export default function Device(props) {
                             </div>
 
                             {/* Tambah Data */}
-                            <div className="mr-2">
-                                <ModalForm dataDevice={dataDevice} />
-                            </div>
+                            {props.auth.user && (
+                                <div className="mr-2">
+                                    <ModalForm dataDevice={dataDevice} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="my-5">
-                            {/* Data Device Mobile Start */}
-
-                            {/* Data Device Mobile End */}
-
                             {/* Table md Breakpoint Start */}
                             <TableData>
                                 <TableData.TableHead>
                                     <TableData.TableHeadTitle>
                                         Nama Device
                                     </TableData.TableHeadTitle>
-                                    <TableData.TableHeadTitle>
-                                        Aksi
-                                    </TableData.TableHeadTitle>
+                                    {props.auth.user && (
+                                        <TableData.TableHeadTitle>
+                                            Aksi
+                                        </TableData.TableHeadTitle>
+                                    )}
                                 </TableData.TableHead>
 
                                 <TableData.TableBody>
@@ -106,15 +111,19 @@ export default function Device(props) {
                                                 <TableData.TableBodyData>
                                                     {device.name}
                                                 </TableData.TableBodyData>
-                                                <TableData.TableBodyData>
-                                                    <TableData.ActionDevice
-                                                        device={device}
-                                                        handleDeleteNotif={() =>
-                                                            handleDeleteNotif()
-                                                        }
-                                                        dataTimer={dataTimer}
-                                                    />
-                                                </TableData.TableBodyData>
+                                                {props.auth.user && (
+                                                    <TableData.TableBodyData>
+                                                        <TableData.ActionDevice
+                                                            device={device}
+                                                            handleDeleteNotif={() =>
+                                                                handleDeleteNotif()
+                                                            }
+                                                            dataTimer={
+                                                                dataTimer
+                                                            }
+                                                        />
+                                                    </TableData.TableBodyData>
+                                                )}
                                             </TableData.TableBodyRow>
                                         ))
                                     ) : (
