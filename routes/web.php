@@ -31,6 +31,9 @@ Route::get('/timer/guest', [TimerController::class, 'index'])->name('index.timer
 Route::get('/soil/guest', [SoilController::class, 'index'])->name('index.soil.guest');
 Route::get('/weather/guest', [WeatherController::class, 'index'])->name('index.weather.guest');
 
+Route::get('/weather/data', [WeatherController::class, 'viewExportTable'])->name('table.weather');
+Route::get('/weather/export', [WeatherController::class, 'exportTable'])->name('export.weather');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
