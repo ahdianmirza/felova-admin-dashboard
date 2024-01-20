@@ -27,6 +27,6 @@ class WeatherController extends Controller
     }
 
     public function exportTable() {
-        return Excel::download(new ExportWeather, 'weather.xlsx');
+        return Excel::download(new ExportWeather, 'Data Cuaca Mikro.xlsx');
     }
 }

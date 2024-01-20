@@ -6,7 +6,6 @@ import Sorted from "@/Components/Weather/Sorted";
 import TableData from "@/Components/Weather/TableData";
 import { Head } from "@inertiajs/react";
 import { ToastContainer } from "react-toastify";
-import { Link } from "@inertiajs/react";
 
 export default function Weather(props) {
     const { title, dataWeather } = props;
@@ -66,12 +65,14 @@ export default function Weather(props) {
                                     </small>
                                 </p>
                             </div>
-                            <a
-                                href="/weather/export"
-                                className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
-                            >
-                                Download Data
-                            </a>
+                            {props.auth.user && (
+                                <a
+                                    href="/weather/export"
+                                    className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
+                                >
+                                    Download Data
+                                </a>
+                            )}
                         </div>
 
                         <div className="my-5">
