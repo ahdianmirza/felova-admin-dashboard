@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportWeather;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\WeatherCollection;
 use App\Models\Weather;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WeatherController extends Controller
 {
@@ -16,5 +18,15 @@ class WeatherController extends Controller
             'title' => 'Weather',
             'dataWeather' => $dataWeather
         ]);
+    }
+
+    public function viewExportTable() {
+        return view('weather.table', [
+            'weatherData' => Weather::all()
+        ]);
+    }
+
+    public function exportTable() {
+        return Excel::download(new ExportWeather, 'Data Cuaca Mikro.xlsx');
     }
 }

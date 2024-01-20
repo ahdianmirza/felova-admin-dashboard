@@ -35,10 +35,15 @@ export default function Weather(props) {
             />
 
             {/* Sidebar Start */}
-            {/* <Sidebar /> */}
-            <SidebarNew user={props.auth.user} location={props.ziggy.location} />
+            <SidebarNew
+                user={props.auth.user}
+                location={props.ziggy.location}
+            />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList user={props.auth.user} location={props.ziggy.location} />
+                <MenuList
+                    user={props.auth.user}
+                    location={props.ziggy.location}
+                />
             </aside>
             {/* Sidebar End */}
 
@@ -60,6 +65,14 @@ export default function Weather(props) {
                                     </small>
                                 </p>
                             </div>
+                            {props.auth.user && (
+                                <a
+                                    href="/weather/export"
+                                    className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
+                                >
+                                    Download Data
+                                </a>
+                            )}
                         </div>
 
                         <div className="my-5">
