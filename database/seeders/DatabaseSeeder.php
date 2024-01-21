@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         Manual::create([
             'device' => 'HC001',
             'slug' => 'hc001',
-            'pompa' => 1,
-            'sol_1' => 1,
+            'pompa' => 0,
+            'sol_1' => 0,
             'sol_2' => 0,
-            'sol_3' => 1,
-            'sol_4' => 1,
+            'sol_3' => 0,
+            'sol_4' => 0
         ]);
 
         Device::create([
@@ -38,21 +38,21 @@ class DatabaseSeeder extends Seeder
             'slug' => 'hc002'
         ]);
 
-        Schedule::create([
-            'device_id' => 1,
-            'noJadwal' => 1,
-            'hari' => 'Senin',
-            'sol_1' => 1,
-            'sol_2' => 0,
-            'sol_3' => 0,
-            'sol_4' => 0,
-            'jam' => '06',
-            'menit' => '10',
-            'detik' => 0,
-            'durasiMenit' => '01',
-            'durasiDetik' => '10',
-            'status' => 0
-        ]);
+        // Schedule::create([
+        //     'device_id' => 1,
+        //     'noJadwal' => 1,
+        //     'hari' => 'Senin',
+        //     'sol_1' => 1,
+        //     'sol_2' => 0,
+        //     'sol_3' => 0,
+        //     'sol_4' => 0,
+        //     'jam' => '06',
+        //     'menit' => '10',
+        //     'detik' => 0,
+        //     'durasiMenit' => '01',
+        //     'durasiDetik' => '10',
+        //     'status' => 0
+        // ]);
 
         SoilAction::create([
             'sensor1' => "off",

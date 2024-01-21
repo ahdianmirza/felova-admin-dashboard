@@ -44,16 +44,6 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Cerah")}
-                name="probabilitas"
-                value={probabilitas}
-                className="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded"
-            >
-                Cerah
-            </button>
-
-            <button
-                onClick={() => handleSort()}
                 onMouseDown={() => setProbabilitas("Berawan")}
                 name="probabilitas"
                 value={probabilitas}
@@ -64,12 +54,52 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan")}
+                onMouseDown={() => setProbabilitas("Hujan Ringan")}
                 name="probabilitas"
                 value={probabilitas}
-                className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded"
+                className="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
-                Hujan
+                Hujan Ringan
+            </button>
+
+            <button
+                onClick={() => handleSort()}
+                onMouseDown={() => setProbabilitas("Hujan Sedang")}
+                name="probabilitas"
+                value={probabilitas}
+                className="bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded"
+            >
+                Hujan Sedang
+            </button>
+
+            <button
+                onClick={() => handleSort()}
+                onMouseDown={() => setProbabilitas("Hujan Lebat")}
+                name="probabilitas"
+                value={probabilitas}
+                className="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded"
+            >
+                Hujan Lebat
+            </button>
+
+            <button
+                onClick={() => handleSort()}
+                onMouseDown={() => setProbabilitas("Hujan Sangat Lebat")}
+                name="probabilitas"
+                value={probabilitas}
+                className="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded"
+            >
+                Hujan Sangat Lebat
+            </button>
+
+            <button
+                onClick={() => handleSort()}
+                onMouseDown={() => setProbabilitas("Hujan Ekstrem")}
+                name="probabilitas"
+                value={probabilitas}
+                className="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded"
+            >
+                Hujan Ekstrem
             </button>
         </div>
     );

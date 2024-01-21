@@ -68,9 +68,21 @@ export default function Weather(props) {
                             {props.auth.user && (
                                 <a
                                     href="/weather/export"
-                                    className="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg text-sm px-4 py-2"
+                                    className="flex justify-center items-center gap-x-1 text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg px-4 py-2 text-sm"
                                 >
-                                    Download Data
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        className="fill-current"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97933 19.8043 4.588 19.413C4.19667 19.0217 4.00067 18.5507 4 18V15H6V18H18V15H20V18C20 18.55 19.8043 19.021 19.413 19.413C19.0217 19.805 18.5507 20.0007 18 20H6Z"
+                                        />
+                                    </svg>
+                                    Data
                                 </a>
                             )}
                         </div>
