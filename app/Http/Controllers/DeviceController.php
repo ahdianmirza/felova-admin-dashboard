@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Device;
 use App\Http\Controllers\Controller;
+use App\Models\Manual;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -19,7 +20,8 @@ class DeviceController extends Controller
         return Inertia::render('Device/index', [
             'title' => 'Device',
             'dataDevice' => $dataDevice,
-            'dataTimer' => Schedule::all()
+            'dataTimer' => Schedule::all(),
+            'dataManual' => Manual::all()
         ]);
     }
 

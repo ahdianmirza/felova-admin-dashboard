@@ -7,7 +7,7 @@ import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import MenuList from "@/Components/Sidebar/MenuList";
 
 export default function EditManual(props) {
-    const {manual, title} = props;
+    const {manual, title, dataDevice} = props;
     const handleNotifUpdate = () => toast.success("Data berhasil diupdate");
     
     return (
@@ -15,7 +15,6 @@ export default function EditManual(props) {
             <Head title={title} />
 
             {/* Sidebar Start */}
-            {/* <Sidebar /> */}
             <SidebarNew />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
                 <MenuList />
@@ -74,6 +73,7 @@ export default function EditManual(props) {
                         <div className="my-4">
                             {manual && (
                                 <EditForm
+                                    dataDevice={dataDevice}
                                     manual={manual}
                                     handleNotifUpdate={handleNotifUpdate}
                                 />

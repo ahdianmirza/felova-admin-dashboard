@@ -62,12 +62,12 @@ const TableBodyData = ({ children }) => {
     );
 };
 
-const ActionDevice = ({ device, handleDeleteNotif, dataTimer }) => {
+const ActionDevice = ({ device, handleDeleteNotif, dataTimer, dataManual }) => {
 
     return (
         <div className="flex items-center gap-x-2">
             {dataTimer.filter((timer) => timer.device_id === device.id).length >
-            0 ? (
+            0 || dataManual.filter((manual) => manual.device === device.name).length > 0 ? (
                 <div className="flex items-center gap-x-2">
                     <button
                         type="button"
@@ -91,8 +91,6 @@ const ActionDevice = ({ device, handleDeleteNotif, dataTimer }) => {
                     Hapus
                 </Link>
             )}
-
-            {/* Delete Button */}
         </div>
     );
 };
