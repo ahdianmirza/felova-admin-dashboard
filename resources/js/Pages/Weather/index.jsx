@@ -101,7 +101,7 @@ export default function Weather(props) {
                                         Curah Hujan
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
-                                        Probabilitas
+                                        Kondisi
                                     </TableData.TableHeadTitle>
                                     <TableData.TableHeadTitle>
                                         Kecepatan Angin
