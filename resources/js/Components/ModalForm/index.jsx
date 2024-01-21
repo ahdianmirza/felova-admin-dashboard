@@ -3,12 +3,13 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { router } from "@inertiajs/react";
-import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
+import { Button, Label, Modal, ToggleSwitch, Select } from "flowbite-react";
 import { useState } from "react";
 
 const ModalForm = (props) => {
     const {
-        dataManual
+        dataManual,
+        dataDevice
     } = props;
 
     const toastNotifCreate = new Promise((resolve) =>
@@ -96,15 +97,29 @@ const ModalForm = (props) => {
                             <div className="mb-2 block">
                                 <Label htmlFor="device" value="Device" />
                             </div>
-                            <TextInput
+                            <Select
                                 id="device"
-                                placeholder="Masukkan nama device"
-                                value={device}
+                                required
                                 onChange={(device) =>
                                     setDevice(device.target.value)
                                 }
-                                required
-                            />
+                                defaultValue="disabled"
+                            >
+                                <option value="disabled" disabled>
+                                    Pilih device yang diinginkan
+                                </option>
+                                {dataDevice && dataDevice.length > 0 ? (
+                                    dataDevice.map((device, id) => (
+                                        <option key={id} value={device.name}>
+                                            {device.name}
+                                        </option>
+                                    ))
+                                ) : (
+                                    <option value="">
+                                        Device tidak ditemukan
+                                    </option>
+                                )}
+                            </Select>
                         </div>
                         <div className="flex flex-col gap-y-4">
                             <ToggleSwitch

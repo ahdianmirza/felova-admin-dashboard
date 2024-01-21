@@ -85,7 +85,7 @@ export default function Timer(props) {
                             {/* Tambah Data */}
                             {props.auth.user && (
                                 <div className="mr-2">
-                                    <ModalForm dataDevice={dataDevice} />
+                                    <ModalForm dataTimer={dataTimer} dataDevice={dataDevice} />
                                 </div>
                             )}
                         </div>

@@ -7,7 +7,8 @@ import { Button, Label, Select, Modal, TextInput, ToggleSwitch } from "flowbite-
 import { useState } from "react";
 
 const ModalForm = (props) => {
-    const { dataDevice } = props;
+    const { dataDevice, dataTimer } = props;
+    console.info(dataTimer);
 
     const toastNotifCreate = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil ditambahkan"), 1000)
@@ -62,7 +63,23 @@ const ModalForm = (props) => {
     };
 
     const handleDisabledButton = () => {
+        let sameDevice, sameDay, sameNoJadwal;
+
+        dataTimer.map((timer) => {
+            if (timer.hari == hari) {
+                sameDay = timer.hari;
+            }
+            if (timer.noJadwal == noJadwal) {
+                sameNoJadwal = timer.noJadwal;
+            }
+            if (timer.device.id == device) {
+                sameDevice = timer.device.id;
+            }
+        });
+
         if (device === "" || hari === "" || noJadwal === "" || durasiMenit === "" || durasiDetik === "" || waktu === "") {
+            return true;
+        } else if (hari == sameDay && noJadwal == sameNoJadwal && device == sameDevice) {
             return true;
         }
     };

@@ -13,7 +13,7 @@ class TimerController extends Controller
     public function index() {
         return Inertia::render('Timer/index', [
             'title' => 'Timer',
-            'dataTimer' => Schedule::all(),
+            'dataTimer' => Schedule::orderBy('device_id', 'asc')->orderBy('noJadwal', 'asc')->get(),
             'dataDevice' => Device::all()
         ]);
     }

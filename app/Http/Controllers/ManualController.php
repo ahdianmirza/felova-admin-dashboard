@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Manual;
 use App\Http\Controllers\Controller;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,10 +15,13 @@ class ManualController extends Controller
      */
     public function index()
     {
-        $dataManual = Manual::all();
+        $dataManual = Manual::orderBy('device', 'asc')->get();
+        $dataDevice = Device::all();
+
         return Inertia::render('Manual/index', [
             'title' => 'Manual',
-            'dataManual' => $dataManual
+            'dataManual' => $dataManual,
+            'dataDevice' => $dataDevice
         ]);
     }
 
@@ -71,10 +75,11 @@ class ManualController extends Controller
      */
     public function edit(Manual $manual, Request $request)
     {
-        // dd($request->id);
+        $dataDevice = Device::all();
         return Inertia::render('Manual/EditManual', [
             'title' => 'Update Manual',
-            'manual' => $manual->find($request->id)
+            'manual' => $manual->find($request->id),
+            'dataDevice' => $dataDevice
         ]);
     }
 

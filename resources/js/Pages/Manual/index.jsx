@@ -12,7 +12,7 @@ import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import MenuList from "@/Components/Sidebar/MenuList";
 
 export default function Manual(props) {
-    const {title, dataManual} = props;
+    const {title, dataManual, dataDevice} = props;
     const toastNotifDelete = new Promise((resolve) => setTimeout(() => resolve("Pengaturan berhasil dihapus"), 2000));
 
     useEffect(() => {
@@ -95,7 +95,7 @@ export default function Manual(props) {
                             {/* Tambah Data */}
                             {props.auth.user && (
                                 <div className="mr-2">
-                                    <ModalForm dataManual={dataManual} />
+                                    <ModalForm dataDevice={dataDevice} dataManual={dataManual} />
                                 </div>
                             )}
                         </div>

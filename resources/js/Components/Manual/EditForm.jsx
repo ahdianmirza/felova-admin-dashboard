@@ -1,11 +1,11 @@
 "use client";
 
 import { router } from "@inertiajs/react";
-import { Button, Label, TextInput, ToggleSwitch } from "flowbite-react";
+import { Button, Label, TextInput, ToggleSwitch, Select } from "flowbite-react";
 import { useState } from "react";
 
 const EditForm = (props) => {
-    const { manual, handleNotifUpdate } = props;
+    const { manual, handleNotifUpdate, dataDevice } = props;
     const [device, setDevice] = useState(manual.device);
     const [pompa, setPompa] = useState(manual.pompa);
     const [sol_1, setSol1] = useState(manual.sol_1);
@@ -32,14 +32,26 @@ const EditForm = (props) => {
                 <div className="mb-2 block">
                     <Label htmlFor="device" value="Device" />
                 </div>
-                <TextInput
+                <Select
                     id="device"
-                    type="text"
-                    placeholder="Masukkan nama device"
-                    defaultValue={manual.device}
-                    onChange={(device) => setDevice(device.target.value)}
                     required
-                />
+                    onChange={(device) => setDevice(device.target.value)}
+                    defaultValue={manual.device}
+                    disabled
+                >
+                    <option value="disabled" disabled>
+                        Pilih device yang diinginkan
+                    </option>
+                    {dataDevice && dataDevice.length > 0 ? (
+                        dataDevice.map((device, id) => (
+                            <option key={id} value={device.name}>
+                                {device.name}
+                            </option>
+                        ))
+                    ) : (
+                        <option value="">Device tidak ditemukan</option>
+                    )}
+                </Select>
             </div>
             <div className="flex flex-col gap-y-4">
                 <ToggleSwitch
@@ -70,8 +82,8 @@ const EditForm = (props) => {
             </div>
             <Button
                 onClick={() => {
-                    handleSubmit()
-                    handleNotifUpdate()
+                    handleSubmit();
+                    handleNotifUpdate();
                 }}
                 disabled={handleDisabledButton()}
                 className="w-full bg-primary hover:bg-primary-hover focus:ring-primary-hover enabled:hover:bg-primary-focus focus:bg-primary-focus"
