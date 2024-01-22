@@ -4,16 +4,44 @@ import { Link } from '@inertiajs/react';
 
 export default function Guest({ children }) {
     return (
-        <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div className="min-h-screen flex flex-col sm:justify-center items-center px-4 pt-6 sm:pt-2 bg-gray-100 bg-login-bg bg-cover bg-center bg-no-repeat">
+            <div className="hidden absolute z-10 top-0 left-0 sm:flex items-center sm:gap-x-2 lg:gap-x-4 p-4">
+                <img
+                    src="/img/logo-bsip-troa.png"
+                    alt="Logo BSIP TROA"
+                    className="sm:w-16 lg:w-24"
+                />
+
+                <img
+                    src="/img/logo-sv-ipb.png"
+                    alt="Logo Sekolah Vokasi IPB"
+                    className="sm:w-44 lg:w-52"
+                />
+            </div>
+
             <div>
-                <Link href="/device">
+                <Link href="/login">
                     {/* <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" /> */}
-                    <FelovaLogo className="w-28 h-28" />
+                    <FelovaLogo className="w-28" />
                 </Link>
             </div>
 
             <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {children}
+            </div>
+
+            <div className="sm:hidden bottom-0 flex items-center gap-x-2 lg:gap-x-4 p-4">
+                <img
+                    src="/img/logo-bsip-troa.png"
+                    alt="Logo BSIP TROA"
+                    className="w-16 sm:w-16 lg:w-24"
+                />
+
+                <img
+                    src="/img/logo-sv-ipb.png"
+                    alt="Logo Sekolah Vokasi IPB"
+                    className="w-44 sm:w-44 lg:w-52"
+                />
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="z-50">
                 <div>
                     <InputLabel htmlFor="username" value="Username" />
 
