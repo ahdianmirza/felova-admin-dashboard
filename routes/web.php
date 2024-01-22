@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\LogAlatController;
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SoilController;
@@ -30,6 +31,7 @@ Route::get('/manual/guest', [ManualController::class, 'index'])->name('index.man
 Route::get('/timer/guest', [TimerController::class, 'index'])->name('index.timer.guest');
 Route::get('/soil/guest', [SoilController::class, 'index'])->name('index.soil.guest');
 Route::get('/weather/guest', [WeatherController::class, 'index'])->name('index.weather.guest');
+Route::get('/log-alat/guest', [LogAlatController::class, 'index'])->name('index.logAlat.guest');
 
 Route::get('/weather/data', [WeatherController::class, 'viewExportTable'])->name('table.weather');
 Route::get('/weather/export', [WeatherController::class, 'exportTable'])->name('export.weather');
