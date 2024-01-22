@@ -54,6 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
 
     Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
+    Route::get('/log-alat', [LogAlatController::class, 'index'])->name('index.logAlat');
 });
 
 require __DIR__.'/auth.php';
