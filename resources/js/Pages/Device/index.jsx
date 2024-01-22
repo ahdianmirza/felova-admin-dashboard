@@ -52,12 +52,14 @@ export default function Device(props) {
 
             {/* Sidebar Start */}
             <SidebarNew
-                location={props.ziggy.location}
+                url={props.ziggy.url}
                 user={props.auth.user}
+                location={props.ziggy.location}
             />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
                 <MenuList
                     location={props.ziggy.location}
+                    url={props.ziggy.url}
                     user={props.auth.user}
                 />
             </aside>
@@ -121,7 +123,9 @@ export default function Device(props) {
                                                             dataTimer={
                                                                 dataTimer
                                                             }
-                                                            dataManual={dataManual}
+                                                            dataManual={
+                                                                dataManual
+                                                            }
                                                         />
                                                     </TableData.TableBodyData>
                                                 )}

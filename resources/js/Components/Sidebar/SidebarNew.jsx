@@ -4,7 +4,7 @@ import { Navbar } from "flowbite-react";
 import { Link } from "@inertiajs/react";
 import MenuList from "./MenuList";
 
-function SidebarNew({user, location}) {
+function SidebarNew({user, url, location}) {
     return (
         <Navbar fluid rounded className="fixed z-50 w-full bg-nav-bg border-b">
             <Navbar.Toggle className="sm:hidden" />
@@ -24,7 +24,7 @@ function SidebarNew({user, location}) {
                     <div className="p-4">
                         <Navbar.Toggle className="bg-nav-bg" />
                     </div>
-                    <MenuList user={user} location={location} />
+                    <MenuList user={user} url={url} location={location} />
                 </aside>
             </Navbar.Collapse>
         </Navbar>

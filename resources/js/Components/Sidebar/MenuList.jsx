@@ -2,7 +2,7 @@ import React from 'react'
 import MenuItem from './MenuItem';
 import 'flowbite';
 
-export default function MenuList({user, location}) {
+export default function MenuList({user, url, location}) {
     return (
         <div>
             <div className="h-full px-3 overflow-y-auto bg-primary">
@@ -10,8 +10,7 @@ export default function MenuList({user, location}) {
                     {!user ? (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location ===
-                                "http://www.felova.test/device/guest"
+                                location == `${url}/device/guest`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -60,7 +59,7 @@ export default function MenuList({user, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location === "http://www.felova.test/device"
+                                location == `${url}/device`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -111,8 +110,7 @@ export default function MenuList({user, location}) {
                     {!user ? (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location ===
-                                "http://www.felova.test/manual/guest"
+                                location == `${url}/manual/guest`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -138,7 +136,7 @@ export default function MenuList({user, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location === "http://www.felova.test/manual"
+                                location == `${url}/manual`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -166,8 +164,7 @@ export default function MenuList({user, location}) {
                     {!user ? (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location ===
-                                "http://www.felova.test/timer/guest"
+                                location == `${url}/timer/guest`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -198,7 +195,7 @@ export default function MenuList({user, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location === "http://www.felova.test/timer"
+                                location == `${url}/timer`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -231,7 +228,7 @@ export default function MenuList({user, location}) {
                     {!user ? (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location === "http://www.felova.test/soil/guest"
+                                location == `${url}/soil/guest`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -263,7 +260,7 @@ export default function MenuList({user, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location === "http://www.felova.test/soil"
+                                location == `${url}/soil`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -297,8 +294,7 @@ export default function MenuList({user, location}) {
                     {!user ? (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location ===
-                                "http://www.felova.test/weather/guest"
+                                location == `${url}/weather/guest`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
@@ -326,8 +322,7 @@ export default function MenuList({user, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location ===
-                                "http://www.felova.test/weather"
+                                location == `${url}/weather`
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}

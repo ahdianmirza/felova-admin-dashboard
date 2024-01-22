@@ -54,11 +54,13 @@ export default function Timer(props) {
             <SidebarNew
                 user={props.auth.user}
                 location={props.ziggy.location}
+                url={props.ziggy.url}
             />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
                 <MenuList
                     user={props.auth.user}
                     location={props.ziggy.location}
+                    url={props.ziggy.url}
                 />
             </aside>
             {/* Sidebar End */}
@@ -85,7 +87,10 @@ export default function Timer(props) {
                             {/* Tambah Data */}
                             {props.auth.user && (
                                 <div className="mr-2">
-                                    <ModalForm dataTimer={dataTimer} dataDevice={dataDevice} />
+                                    <ModalForm
+                                        dataTimer={dataTimer}
+                                        dataDevice={dataDevice}
+                                    />
                                 </div>
                             )}
                         </div>
