@@ -8,7 +8,6 @@ import { useState } from "react";
 
 const ModalForm = (props) => {
     const { dataDevice, dataTimer } = props;
-    console.info(dataTimer);
 
     const toastNotifCreate = new Promise((resolve) =>
         setTimeout(() => resolve("Pengaturan berhasil ditambahkan"), 1000)
