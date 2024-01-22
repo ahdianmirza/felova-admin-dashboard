@@ -30,6 +30,9 @@ export default {
                 "red-primary-hover": "#f14246",
                 "primary-text": "#353535",
             },
+            backgroundImage: {
+                "login-bg": "url('img/login-bg.png')",
+            },
         },
     },
 
