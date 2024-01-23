@@ -16,7 +16,16 @@ class SoilController extends Controller
         return Inertia::render('Soil/index', [
             'title' => 'Soil',
             'dataSoil' => $dataSoil,
-            'dataSoilAll' => DataSoil::all()
+            'dataSoilAll' => DataSoil::all(),
+            'dataAction' => SoilAction::all()
+        ]);
+    }
+
+    public function indexData() {
+        $dataSoil = new DataSoilCollection(DataSoil::filter(request(['search', 'sort']))->paginate(25)->withQueryString());
+        return Inertia::render('Soil/Data', [
+            'title' => 'Soil Data',
+            'dataSoil' => $dataSoil
         ]);
     }
 

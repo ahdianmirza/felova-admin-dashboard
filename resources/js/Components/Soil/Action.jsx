@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { router } from "@inertiajs/react";
 
-const Action = () => {
-    const [sensor1, setSensor1] = useState("off");
-    const [sensor2, setSensor2] = useState("off");
+const Action = ({dataAction}) => {
+    const [sensor1, setSensor1] = useState(dataAction[0].sensor1);
+    const [sensor2, setSensor2] = useState(dataAction[0].sensor2);
 
     const handleSensor = () => {
         const data = {

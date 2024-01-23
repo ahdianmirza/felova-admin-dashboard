@@ -64,7 +64,7 @@ function ModalDetail(props) {
                                     Durasi :
                                 </p>
                                 <span className="font-normal">
-                                    {`${timer.durasiMenit} min ${timer.durasiDetik} sec`}
+                                    {`${timer.durasiJam ? timer.durasiJam : 0} jam ${timer.durasiMenit} menit ${timer.durasiDetik} detik`}
                                 </span>
                             </div>
                         </div>

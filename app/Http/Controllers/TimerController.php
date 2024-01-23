@@ -25,6 +25,7 @@ class TimerController extends Controller
             'noJadwal' => 'required',
             'hari' => 'required',
             'waktu' => 'required',
+            'durasiJam' => 'required',
             'durasiMenit' => 'required',
             'durasiDetik' => 'required',
         ]);
@@ -45,6 +46,7 @@ class TimerController extends Controller
         $schedule->jam = $jam;
         $schedule->menit = $menit;
         $schedule->detik = "0";
+        $schedule->durasiJam = $request->durasiJam;
         $schedule->durasiMenit = $request->durasiMenit;
         $schedule->durasiDetik = $request->durasiDetik;
         $schedule->status = $request->status;
@@ -78,6 +80,7 @@ class TimerController extends Controller
         $schedule->jam = $jam;
         $schedule->menit = $menit;
         $schedule->detik = "0";
+        $schedule->durasiJam = $request->durasiJam;
         $schedule->durasiMenit = $request->durasiMenit;
         $schedule->durasiDetik = $request->durasiDetik;
         $schedule->status = $request->status;

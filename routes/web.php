@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
     Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
+    Route::get('/soil/data', [SoilController::class, 'indexData'])->name('indexData.soil');
 
     Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
     Route::get('/log-alat', [LogAlatController::class, 'index'])->name('index.logAlat');

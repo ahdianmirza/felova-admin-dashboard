@@ -13,6 +13,7 @@ const EditForm = (props) => {
     const [hari, setHari] = useState(timer.hari);
     const [noJadwal, setNoJadwal] = useState(timer.noJadwal);
     const [waktu, setWaktu] = useState(`${timer.jam}:${timer.menit}`);
+    const [durasiJam, setDurasiJam] = useState(parseInt(timer.durasiJam));
     const [durasiMenit, setDurasiMenit] = useState(parseInt(timer.durasiMenit));
     const [durasiDetik, setDurasiDetik] = useState(parseInt(timer.durasiDetik));
     const [sol_1, setSol1] = useState(timer.sol_1 == 1 ? true : false);
@@ -29,6 +30,7 @@ const EditForm = (props) => {
             hari,
             noJadwal,
             waktu,
+            durasiJam,
             durasiMenit,
             durasiDetik,
             sol_1,
@@ -61,6 +63,7 @@ const EditForm = (props) => {
                     required
                     onChange={(device) => setDevice(device.target.value)}
                     defaultValue={timer.device.name}
+                    disabled
                 >
                     <option value="disabled" disabled>
                         Pilih device yang diinginkan
@@ -85,6 +88,7 @@ const EditForm = (props) => {
                     required
                     onChange={(hari) => setHari(hari.target.value)}
                     defaultValue={timer.hari}
+                    disabled
                 >
                     <option value="disabled" disabled>
                         Pilih hari yang diinginkan
@@ -107,6 +111,7 @@ const EditForm = (props) => {
                     required
                     onChange={(noJadwal) => setNoJadwal(noJadwal.target.value)}
                     defaultValue={timer.noJadwal}
+                    disabled
                 >
                     <option value="disabled" disabled>
                         Pilih no jadwal yang diinginkan
@@ -130,6 +135,21 @@ const EditForm = (props) => {
                     value={`${timer.jam}:${timer.menit}`}
                     onChange={(waktu) => setWaktu(waktu.target.value)}
                     placeholder="Masukkan waktu mulai"
+                    required
+                />
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="durasiJam" value="Durasi dalam Jam" />
+                </div>
+                <TextInput
+                    id="durasiJam"
+                    type="number"
+                    value={durasiJam}
+                    onChange={(durasiJam) =>
+                        setDurasiJam(durasiJam.target.value)
+                    }
+                    placeholder="Angka tidak lebih dari 60"
                     required
                 />
             </div>
