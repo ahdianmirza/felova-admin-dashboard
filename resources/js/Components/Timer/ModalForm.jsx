@@ -18,6 +18,7 @@ const ModalForm = (props) => {
     const [hari, setHari] = useState("");
     const [noJadwal, setNoJadwal] = useState("");
     const [waktu, setWaktu] = useState("");
+    const [durasiJam, setDurasiJam] = useState("");
     const [durasiMenit, setDurasiMenit] = useState("");
     const [durasiDetik, setDurasiDetik] = useState("");
     const [sol_1, setSol1] = useState(false);
@@ -27,7 +28,7 @@ const ModalForm = (props) => {
     const [status, setStatus] = useState(false);
 
     const handleSubmit = () => {
-        const data = { device, hari, noJadwal, waktu, durasiMenit, durasiDetik, sol_1, sol_2, sol_3, sol_4, status };
+        const data = { device, hari, noJadwal, waktu, durasiJam, durasiMenit, durasiDetik, sol_1, sol_2, sol_3, sol_4, status };
         router.post(route("store.timer"), data);
         toast.promise(toastNotifCreate, {
             pending: {
@@ -52,6 +53,7 @@ const ModalForm = (props) => {
         setHari("Senin");
         setNoJadwal("1");
         setWaktu("");
+        setDurasiJam("");
         setDurasiMenit("");
         setDurasiDetik("");
         setSol1(false);
@@ -64,22 +66,31 @@ const ModalForm = (props) => {
     const handleDisabledButton = () => {
         let sameDevice, sameDay, sameNoJadwal;
 
+        if (device === "" || hari === "" || noJadwal === "" || durasiJam === "" || durasiMenit === "" || durasiDetik === "" || waktu === "") {
+            return true;
+        }
+
         dataTimer.map((timer) => {
-            if (timer.hari == hari) {
+            if (
+                timer.hari == hari &&
+                timer.noJadwal == noJadwal &&
+                timer.device.id == device
+            ) {
                 sameDay = timer.hari;
-            }
-            if (timer.noJadwal == noJadwal) {
+                sameDevice = timer.device.id;
                 sameNoJadwal = timer.noJadwal;
-            }
-            if (timer.device.id == device) {
+            } else if (timer.device.id == device && timer.noJadwal == noJadwal) {
+                sameNoJadwal = timer.noJadwal;
                 sameDevice = timer.device.id;
             }
         });
 
-        if (device === "" || hari === "" || noJadwal === "" || durasiMenit === "" || durasiDetik === "" || waktu === "") {
+        if (device == sameDevice && noJadwal == sameNoJadwal && hari == sameDay) {
             return true;
-        } else if (hari == sameDay && noJadwal == sameNoJadwal && device == sameDevice) {
+        } else if (device == sameDevice && noJadwal == sameNoJadwal) {
             return true;
+        } else {
+            return false;
         }
     };
 
@@ -116,7 +127,9 @@ const ModalForm = (props) => {
                                 }
                                 defaultValue="disabled"
                             >
-                                <option value="disabled" disabled>Pilih device yang diinginkan</option>
+                                <option value="disabled" disabled>
+                                    Pilih device yang diinginkan
+                                </option>
                                 {dataDevice && dataDevice.length > 0 ? (
                                     dataDevice.map((device, id) => (
                                         <option key={id} value={device.id}>
@@ -140,7 +153,9 @@ const ModalForm = (props) => {
                                 onChange={(hari) => setHari(hari.target.value)}
                                 defaultValue="disabled"
                             >
-                                <option value="disabled" disabled>Pilih hari yang diinginkan</option>
+                                <option value="disabled" disabled>
+                                    Pilih hari yang diinginkan
+                                </option>
                                 <option value="Senin">Senin</option>
                                 <option value="Selasa">Selasa</option>
                                 <option value="Rabu">Rabu</option>
@@ -162,7 +177,9 @@ const ModalForm = (props) => {
                                 }
                                 defaultValue="disabled"
                             >
-                                <option value="disabled" disabled>Pilih no jadwal yang diinginkan</option>
+                                <option value="disabled" disabled>
+                                    Pilih no jadwal yang diinginkan
+                                </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -190,6 +207,24 @@ const ModalForm = (props) => {
                         <div>
                             <div className="mb-2 block">
                                 <Label
+                                    htmlFor="durasiJam"
+                                    value="Durasi dalam Jam"
+                                />
+                            </div>
+                            <TextInput
+                                id="durasiJam"
+                                type="number"
+                                value={durasiJam}
+                                onChange={(durasiJam) =>
+                                    setDurasiJam(durasiJam.target.value)
+                                }
+                                placeholder="0-24"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
                                     htmlFor="durasiMenit"
                                     value="Durasi dalam Menit"
                                 />
@@ -201,7 +236,7 @@ const ModalForm = (props) => {
                                 onChange={(durasiMenit) =>
                                     setDurasiMenit(durasiMenit.target.value)
                                 }
-                                placeholder="Angka tidak lebih dari 60"
+                                placeholder="0-60"
                                 required
                             />
                         </div>
@@ -219,7 +254,7 @@ const ModalForm = (props) => {
                                 onChange={(durasiDetik) =>
                                     setDurasiDetik(durasiDetik.target.value)
                                 }
-                                placeholder="Angka tidak lebih dari 60"
+                                placeholder="0-60"
                                 required
                             />
                         </div>

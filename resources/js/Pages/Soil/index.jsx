@@ -1,9 +1,6 @@
 import MenuList from "@/Components/Sidebar/MenuList";
 import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import Action from "@/Components/Soil/Action";
-import Paginator from "@/Components/Soil/Paginator";
-import SearchBar from "@/Components/Soil/SearchBar";
-import Sorted from "@/Components/Soil/Sorted";
 import TableData from "@/Components/Soil/TableData";
 import { Head } from "@inertiajs/react";
 import { useState } from "react";
@@ -11,7 +8,7 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 export default function Soil(props) {
-    const { title, dataSoil } = props;
+    const { title, dataSoil, dataAction } = props;
     const [soilRT, setSoilRT] = useState([]);
     const [count, setCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
@@ -119,16 +116,44 @@ export default function Soil(props) {
                                     </small>
                                 </p>
                             </div>
+                            {props.auth.user && (
+                                <a
+                                    href="/soil/data"
+                                    className="flex justify-center items-center gap-x-1 text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg px-4 py-2 text-sm"
+                                >
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        className="stroke-current"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M20 8.25V18C20 21 18.21 22 16 22H8C5.79 22 4 21 4 18V8.25C4 5 5.79 4.25 8 4.25C8 4.87 8.25 5.43 8.66 5.84C9.07 6.25 9.63 6.5 10.25 6.5H13.75C14.99 6.5 16 5.49 16 4.25C18.21 4.25 20 5 20 8.25Z"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M8 13H12M8 17H16M16 4.25C16 5.49 14.99 6.5 13.75 6.5H10.25C9.63 6.5 9.07 6.25 8.66 5.84C8.25 5.43 8 4.87 8 4.25C8 3.01 9.01 2 10.25 2H13.75C14.37 2 14.93 2.25 15.34 2.66C15.75 3.07 16 3.63 16 4.25Z"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                    Data
+                                </a>
+                            )}
                         </div>
 
                         <div className="my-5">
-                            <SearchBar search={search} setSearch={setSearch} />
+                            {/* <SearchBar search={search} setSearch={setSearch} /> */}
                             {props.auth.user && (
                                 <>
-                                    <Action />
+                                    <Action dataAction={dataAction} />
                                 </>
                             )}
-                            <Sorted />
 
                             {/* Table md Breakpoint Start */}
                             <TableData>
@@ -153,19 +178,6 @@ export default function Soil(props) {
                                     {records ? (
                                         records.length > 0 ? (
                                             records
-                                                .filter((soil) => {
-                                                    return search.toLowerCase() ===
-                                                        ""
-                                                        ? soil
-                                                        : soil.created_at.includes(
-                                                              search
-                                                          );
-                                                })
-                                                .sort(
-                                                    (a, b) =>
-                                                        a.created_at <
-                                                        b.created_at
-                                                )
                                                 .map((soil, id) => (
                                                     <TableData.TableBodyRow
                                                         key={id}
@@ -304,11 +316,6 @@ export default function Soil(props) {
                                     )}
                                 </div>
                             </div>
-
-                            {/* <div className="flex justify-center items-center my-4">
-                                <Paginator meta={dataSoil.meta} />
-                            </div> */}
-                            {/* Table md Breakpoint End */}
                         </div>
                     </div>
                 </div>
