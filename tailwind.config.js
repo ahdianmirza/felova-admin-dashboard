@@ -31,7 +31,7 @@ export default {
                 "primary-text": "#353535",
             },
             backgroundImage: {
-                "login-bg": "url('img/login-bg.png')",
+                "login-bg": "url('/img/login-bg.png')",
             },
         },
     },

@@ -195,7 +195,8 @@ export default function MenuList({user, url, location}) {
                     ) : (
                         <MenuItem
                             className={`w-full flex items-center p-2 text-white rounded-lg ${
-                                location == `${url}/timer`
+                                location == `${url}/timer` ||
+                                location == route("edit.timer")
                                     ? "bg-primary-hover"
                                     : ""
                             } hover:bg-primary-hover dark:hover:bg-gray-700 group`}
