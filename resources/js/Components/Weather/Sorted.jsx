@@ -3,12 +3,12 @@ import { router } from "@inertiajs/react";
 
 const Sorted = ({user}) => {
     const [sort, setSort] = useState();
-    const [probabilitas, setProbabilitas] = useState();
+    const [kondisi, setKondisi] = useState();
 
     const handleSort = () => {
         const data = {
             sort,
-            probabilitas,
+            kondisi,
         };
         if (!user) {
             router.get(route("index.weather.guest"), data);
@@ -44,9 +44,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Berawan")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Berawan")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Berawan
@@ -54,9 +54,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan Ringan")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Hujan Ringan")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Hujan Ringan
@@ -64,9 +64,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan Sedang")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Hujan Sedang")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Hujan Sedang
@@ -74,9 +74,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan Lebat")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Hujan Lebat")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Hujan Lebat
@@ -84,9 +84,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan Sangat Lebat")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Hujan Sangat Lebat")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Hujan Sangat Lebat
@@ -94,9 +94,9 @@ const Sorted = ({user}) => {
 
             <button
                 onClick={() => handleSort()}
-                onMouseDown={() => setProbabilitas("Hujan Ekstrem")}
-                name="probabilitas"
-                value={probabilitas}
+                onMouseDown={() => setKondisi("Hujan Ekstrem")}
+                name="kondisi"
+                value={kondisi}
                 className="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded"
             >
                 Hujan Ekstrem

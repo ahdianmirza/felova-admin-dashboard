@@ -18,8 +18,8 @@ class Weather extends Model
         ->when($filters['sort'] ?? false, function ($query, $sort) {
             return $query->orderBy('created_at', $sort);
         })
-        ->when($filters['probabilitas'] ?? false, function ($query, $probabilitas) {
-            return $query->where('probabilitas', 'like', '%' . $probabilitas . '%');
+        ->when($filters['kondisi'] ?? false, function ($query, $kondisi) {
+            return $query->where('probabilitas', 'like', '%' . $kondisi . '%');
         });
     }
 }
