@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class WeatherController extends Controller
 {
     public function index() {
-        $dataWeather = new WeatherCollection(Weather::filter(request(['search', 'sort', 'probabilitas']))->paginate(25)->withQueryString());
+        $dataWeather = new WeatherCollection(Weather::filter(request(['search', 'sort', 'kondisi']))->paginate(25)->withQueryString());
         return Inertia::render('Weather/index', [
             'title' => 'Weather',
             'dataWeather' => $dataWeather

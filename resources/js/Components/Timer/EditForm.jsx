@@ -149,7 +149,7 @@ const EditForm = (props) => {
                     onChange={(durasiJam) =>
                         setDurasiJam(durasiJam.target.value)
                     }
-                    placeholder="Angka tidak lebih dari 60"
+                    placeholder="0-24"
                     required
                 />
             </div>
@@ -164,7 +164,7 @@ const EditForm = (props) => {
                     onChange={(durasiMenit) =>
                         setDurasiMenit(durasiMenit.target.value)
                     }
-                    placeholder="Angka tidak lebih dari 60"
+                    placeholder="0-60"
                     required
                 />
             </div>
@@ -179,7 +179,7 @@ const EditForm = (props) => {
                     onChange={(durasiDetik) =>
                         setDurasiDetik(durasiDetik.target.value)
                     }
-                    placeholder="Angka tidak lebih dari 60"
+                    placeholder="0-60"
                     required
                 />
             </div>
