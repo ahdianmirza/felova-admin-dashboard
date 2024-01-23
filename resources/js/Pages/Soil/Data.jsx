@@ -2,6 +2,7 @@ import MenuList from "@/Components/Sidebar/MenuList";
 import SidebarNew from "@/Components/Sidebar/SidebarNew";
 import Paginator from "@/Components/Soil/Paginator";
 import SearchBar from "@/Components/Soil/SearchBar";
+import Sorted from "@/Components/Soil/Sorted";
 import TableData from "@/Components/Soil/TableData";
 import { Head, Link } from "@inertiajs/react";
 import { useState } from "react";
@@ -57,9 +58,9 @@ export default function Data(props) {
                 <div className="p-1 mt-14">
                     <div className="w-full bg-white p-3">
                         <div className="flex items-center justify-between">
-                            <div className="flex flex-col justify-center items-start">
+                            <div className="flex items-center space-x-3">
                                 <Link
-                                    href={route("manual.index")}
+                                    href={route("index.soil")}
                                     as="button"
                                     method="get"
                                     className="px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary-hover"
@@ -88,25 +89,48 @@ export default function Data(props) {
                                         />
                                     </svg>
                                 </Link>
-                                <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
-                                    Menu Data Soil Station
-                                </h1>
-                                <p className="text-start">
-                                    <span className="text-sm font-bold text-primary-text">
-                                        {dataSoil.meta.total > 0
-                                            ? dataSoil.meta.total
-                                            : "0"}{" "}
-                                        data,
-                                    </span>{" "}
-                                    <small className="text-[#A3A4A8]">
-                                        hasil monitoring kualitas tanah
-                                    </small>
-                                </p>
+
+                                <div className="flex flex-col justify-center">
+                                    <h1 className="text-lg md:text-2xl font-extrabold text-primary-text text-start">
+                                        Menu Data Soil Station
+                                    </h1>
+                                    <p className="text-start">
+                                        <span className="text-sm font-bold text-primary-text">
+                                            {dataSoil.meta.total > 0
+                                                ? dataSoil.meta.total
+                                                : "0"}{" "}
+                                            data,
+                                        </span>{" "}
+                                        <small className="text-[#A3A4A8]">
+                                            hasil monitoring kualitas tanah
+                                        </small>
+                                    </p>
+                                </div>
                             </div>
+
+                            {props.auth.user && (
+                                <a
+                                    href={route("export.soil")}
+                                    className="flex justify-center items-center gap-x-1 text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-primary-focus font-medium rounded-lg px-4 py-2 text-sm"
+                                >
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        className="fill-current"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97933 19.8043 4.588 19.413C4.19667 19.0217 4.00067 18.5507 4 18V15H6V18H18V15H20V18C20 18.55 19.8043 19.021 19.413 19.413C19.0217 19.805 18.5507 20.0007 18 20H6Z" />
+                                    </svg>
+                                    Data
+                                </a>
+                            )}
                         </div>
 
                         <div className="my-5">
                             <SearchBar search={search} setSearch={setSearch} />
+                            <Sorted />
 
                             {/* Table md Breakpoint Start */}
                             <TableData>

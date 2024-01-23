@@ -8,7 +8,7 @@ const Sorted = () => {
         const data = {
             sort
         };
-        router.get(route("index.soil"), data);
+        router.get(route("indexData.soil"), data);
         setSort(data.sort);
     }
 

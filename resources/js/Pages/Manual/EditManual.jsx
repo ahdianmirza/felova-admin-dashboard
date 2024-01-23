@@ -15,9 +15,17 @@ export default function EditManual(props) {
             <Head title={title} />
 
             {/* Sidebar Start */}
-            <SidebarNew />
+            <SidebarNew
+                user={props.auth.user}
+                location={props.ziggy.location}
+                url={props.ziggy.url}
+            />
             <aside className="fixed top-0 left-0 z-0 pt-20 w-64 duration-500 hidden sm:block h-screen transition-all bg-primary">
-                <MenuList />
+                <MenuList
+                    user={props.auth.user}
+                    location={props.ziggy.location}
+                    url={props.ziggy.url}
+                />
             </aside>
             {/* Sidebar End */}
 
