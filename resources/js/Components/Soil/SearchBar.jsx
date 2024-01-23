@@ -6,7 +6,7 @@ const SearchBar = ({search, setSearch}) => {
         const data = {
             search,
         };
-        router.get(route("index.soil"), data);
+        router.get(route("indexData.soil"), data);
     };
 
     return (

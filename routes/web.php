@@ -33,9 +33,6 @@ Route::get('/soil/guest', [SoilController::class, 'index'])->name('index.soil.gu
 Route::get('/weather/guest', [WeatherController::class, 'index'])->name('index.weather.guest');
 Route::get('/log-alat/guest', [LogAlatController::class, 'index'])->name('index.logAlat.guest');
 
-Route::get('/weather/data', [WeatherController::class, 'viewExportTable'])->name('table.weather');
-Route::get('/weather/export', [WeatherController::class, 'exportTable'])->name('export.weather');
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -53,8 +50,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/soil', [SoilController::class, 'index'])->name('index.soil');
     Route::post('/soil', [SoilController::class, 'action'])->name('action.soil');
     Route::get('/soil/data', [SoilController::class, 'indexData'])->name('indexData.soil');
+    Route::get('/soil/data/view', [SoilController::class, 'viewExportTable'])->name('table.soil');
+    Route::get('/soil/data/export', [SoilController::class, 'exportTable'])->name('export.soil');
 
     Route::get('/weather', [WeatherController::class, 'index'])->name('index.weather');
+    Route::get('/weather/data', [WeatherController::class, 'viewExportTable'])->name('table.weather');
+    Route::get('/weather/export', [WeatherController::class, 'exportTable'])->name('export.weather');
+    
     Route::get('/log-alat', [LogAlatController::class, 'index'])->name('index.logAlat');
 });
 

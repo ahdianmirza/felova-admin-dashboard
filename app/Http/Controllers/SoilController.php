@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportSoil;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DataSoilCollection;
 use App\Models\DataSoil;
 use App\Models\SoilAction;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SoilController extends Controller
 {
@@ -27,6 +29,16 @@ class SoilController extends Controller
             'title' => 'Soil Data',
             'dataSoil' => $dataSoil
         ]);
+    }
+
+    public function viewExportTable() {
+        return view('soil.table', [
+            'soilData' => DataSoil::all()
+        ]);
+    }
+
+    public function exportTable() {
+        return Excel::download(new ExportSoil, 'Data Kualitas Tanah.xlsx');
     }
 
     public function action(Request $request) {
